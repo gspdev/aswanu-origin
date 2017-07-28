@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Mivec_Shipping>
+            <version>0.1</version>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </Mivec_Shipping>
+    </modules>
+
+    <global>
+        <models>
+            <mivec_shipping>
+                <class>Mivec_Shipping_Model</class>
+            </mivec_shipping>
+        </models>
+    </global>
+
+    <default>
+        <carriers>
+            <mivec_shipping>
+                <active>1</active>
+                <model>mivec_shipping_model_carrier</model>
+                <title>Express Method</title>
+                <allowed_methods></allowed_methods>
+                <weight_unit>kg</weight_unit>
+                <sallowspecific>0</sallowspecific>
+                <sort_order>10</sort_order>
+            </mivec_shipping>
+        </carriers>
+    </default>
+
+</config>

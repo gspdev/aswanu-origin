@@ -1,0 +1,77 @@
+<?php
+$banner = $this->getBannerSlider(3);
+//print_r($banner);
+
+?>
+				<!--edit by jerry 
+					为下面section新增一个Childhtml导入
+					accessory
+				-->
+				<div class="access-wrapper phone-access">
+					<div class="access-content">
+						<div class="access-box container">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+									<div class="kind-Category left">
+										<h4><a href="javascript:void(0)">Phone Accessories</a></h4>
+										<ul>
+											<li><a href="javascript:void(0)">Phone Bag&Case</a></li>
+											<li><a href="javascript:void(0)">Screen Protectors</a></li>
+											<li><a href="javascript:void(0)">Chargers&Cables</a></li>
+											<li><a href="javascript:void(0)">Earphone</a></li>
+											<li><a href="javascript:void(0)">Power Bank</a></li>
+											<li><a href="javascript:void(0)">Holders & Stands</a></li>
+											<li><a href="javascript:void(0)">Adapters</a></li>
+										</ul>
+									</div>
+									<div class="kind-Slide right">
+										<ul class="kind-SlideList">
+											<li class="item"><a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/kind-S1.jpg" alt="">
+											</a></li>
+											<li class="item"><a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/kind-S2.jpg" alt="">
+											</a></li>
+											<li class="item"><a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/kind-S3.jpg" alt="">
+											</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+									<div class="kind-R">
+										<div class="kind-R1 left">
+											<a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/kind-R.jpg" alt="">
+											</a>
+										</div>
+										<div class="kind-R2 right">
+											<a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/R1.jpg" alt="">
+												<p>Mobile Phone Chargers</p>
+											</a>
+										</div>
+										<div class="kind-R2 left">
+											<a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/R2.jpg" alt="">
+												<p>Screen Protectors</p>
+											</a>
+										</div>
+										<div class="kind-R2 left">
+											<a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/R3.jpg" alt="">
+												<p>Mobile Phone Cables</p>
+											</a>
+										</div>
+										<div class="kind-R2 right">
+											<a href="javascript:void(0)">
+												<img src="//192.168.1.250:90/skin/frontend/tv_bigboom_package/tv_bigboom1/images/new_add/R4.jpg" alt="">
+												<p>Holders & Stands</p>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
