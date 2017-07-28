@@ -1,0 +1,20 @@
+2017-07-24 07:37:40[Browser Return]
+response_type = 0
+account = 170618
+terminal = 17061801
+signValue = 054A437723451C86E11363B9D180817D69DC25D5AF5BEEEC7CDB0745F1020873
+methods = 
+order_number = 100000024
+order_currency = USD
+order_amount = 46.33
+order_notes = 100000024
+card_number = 
+payment_country = 
+payment_id = 170724153714127061816
+payment_Method = 
+payment_authType = 0
+payment_status = 0
+payment_details = 50008:Transaction canceled by customer
+payment_solutions = 
+payment_risk = 
+pay_barCode = 
