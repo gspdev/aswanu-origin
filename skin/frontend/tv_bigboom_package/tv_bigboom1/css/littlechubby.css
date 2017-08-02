@@ -193,7 +193,7 @@
 	.searchautocomplete .searchautocomplete-placeholder{left:0;min-width:initial;max-width:initial;}
 }
 @media (min-width: 1200px){
-	#tv-inivoslider{height:300px!important;}/*set height of slide*/
+	#tv-inivoslider{height:300px!important;height:300px!important\9}/*set height of slide*/
 	#tv-inivoslider .nivo-main-image{height:300px!important;}
 	.home-content .products-grid>li{float:left;width: 176px!important;}
 	.featuredproduct .box-images a>img{width:156px;height:156px;}
