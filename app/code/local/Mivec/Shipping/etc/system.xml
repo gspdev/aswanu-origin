@@ -4,7 +4,7 @@
         <carriers>
             <groups>
                 <mivec_shipping translate="label" module="shipping">
-                    <label>Express Method</label>
+                    <label>International Express Shipping</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
@@ -29,41 +29,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </title>
-                        <gateway_url translate="label">
-                            <label>SOAP Url</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>12</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </gateway_url>
-                        <tax_fee translate="label">
-                            <label>Tax</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>12</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </tax_fee>
-                        <sallowspecific translate="label">
-                            <label>Ship to applicable countries</label>
-                            <frontend_type>select</frontend_type>
-                            <sort_order>90</sort_order>
-                            <frontend_class>shipping-applicable-country</frontend_class>
-                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </sallowspecific>
-                        <specificcountry translate="label">
-                            <label>Ship to Specific countries</label>
-                            <frontend_type>multiselect</frontend_type>
-                            <sort_order>91</sort_order>
-                            <source_model>adminhtml/system_config_source_country</source_model>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </specificcountry>
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
@@ -74,7 +39,6 @@
                         </sort_order>
                     </fields>
                 </mivec_shipping>
-
             </groups>
         </carriers>
     </sections>

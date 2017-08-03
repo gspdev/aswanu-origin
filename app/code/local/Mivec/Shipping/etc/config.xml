@@ -20,11 +20,9 @@
     <default>
         <carriers>
             <mivec_shipping>
-                <active>1</active>
-                <model>mivec_shipping_model_carrier</model>
-                <title>Express Method</title>
-                <allowed_methods></allowed_methods>
-                <weight_unit>kg</weight_unit>
+                <active>0</active>
+                <model>mivec_shipping_model_rate_express</model>
+                <title>International Express</title>
                 <sallowspecific>0</sallowspecific>
                 <sort_order>10</sort_order>
             </mivec_shipping>
