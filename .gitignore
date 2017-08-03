@@ -1,6 +1,6 @@
-/app/etc/local.xml
-/media/
-/var/
+app/etc/local.xml
+media/
+var/
 index.php
 robots.txt
 sitemap.xml
