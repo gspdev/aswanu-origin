@@ -88,11 +88,7 @@
                     </country>
                     <carrier>
                         <table>mivec_shipping_carrier</table>
-                    </carrier>
-                    <quote>
-                        <table>mivec_shipping_quote</table>
-                    </quote>
-					
+                    </carrier>			
                     <express>
                         <table>mivec_shipping_quote_express</table>
                     </express>
