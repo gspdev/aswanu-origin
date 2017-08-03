@@ -139,6 +139,7 @@ dt, dd { line-height: 25px; }
 /* Content Columns */
 .col2-set .col-1 { float:left; width:48.5%; padding-left:40px;}
 .col2-set .col-2 { float:right; width:48.5%; }
+.registered-users a.f-left{line-height:40px;margin-left:20px;}
 .col2-set .col-narrow { width:32%; }
 .col2-set .col-wide { width:65%; }
 
@@ -169,7 +170,7 @@ input.qty { width:2.5em !important; }
 button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
 button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
 button.button { overflow:visible;  border:0; padding:0; margin:0; background:transparent; cursor:pointer; }
-button.button span span { display: inline-block; background:#db4c52!important; padding: 10px 20px;  text-align:center; white-space:nowrap; color:#fff; line-height: 20px;  text-transform: uppercase; font-size: 13px; font-weight: 500; }
+button.button span span { display: inline-block; background:#db4c52; padding: 10px 20px;  text-align:center; white-space:nowrap; color:#fff; line-height: 20px;  text-transform: uppercase; font-size: 13px; font-weight: 500; }
 button.button:hover span span { background-color: #666; color: #fff; }
 
 button.disabled span { border-color:#bbb !important; background:#bbb !important; }
@@ -286,9 +287,9 @@ input.input-text:focus,select:focus,textarea:focus {  }
 .form-list .customer-dob .dob-year input.input-text { width:134px; }
 
 .buttons-set { clear:both; margin:4em 0 0; padding:8px 0 0; border-top:1px solid #e4e4e4; text-align:right; }
-.buttons-set p.required { margin:0 0 10px; }
-.buttons-set .back-link { float:left; margin:0; padding-left:10px;}
-.buttons-set button.button { float:right; margin-left:5px; }
+.buttons-set p.required { margin:0 0 10px; text-align:left;}
+.buttons-set .back-link { float:left; margin:0; padding-left:10px;line-height:40px;}
+.buttons-set button.button { float:left; margin-left:5px; }
 
 .buttons-set-order { margin:10px 0 0; }
 .buttons-set-order .please-wait { padding:12px 7px 0 0; }
@@ -1944,6 +1945,7 @@ filter: alpha(opacity=100);opacity:1;box-shadow: 0 3px 6px rgba(51, 51, 51, 0.3)
   height:60px\9;
 }
 .cart-table tfoot tr button.button.btn-update,.cart-table tfoot tr button.button.btn-continue{font-weight:bold;}
+.cart-table tfoot tr button.button.btn-update span,.cart-table tfoot tr button.button.btn-continue span{background:#db4c52!important;font-size:18px;letter-spacing:1px;}
 .cart-table tfoot tr > td:after {
   content: '';
   display: table;
@@ -1983,7 +1985,7 @@ filter: alpha(opacity=100);opacity:1;box-shadow: 0 3px 6px rgba(51, 51, 51, 0.3)
     font-size: 14px;
 }
 .cart-table .product-cart-remove .btn-remove.btn-remove2{font-size:16px;width:auto;text-indent:0;line-height:normal;font-weight:bold;padding-left:12px\9;}
-.cart-table .product-cart-remove .btn-remove.btn-remove2:hover{color:red;}
+.cart-table .product-cart-remove .btn-remove.btn-remove2:hover{color:#db4c52;}
 .cart-table .cart-tax-total {
   position: relative;
   cursor: pointer;
@@ -2659,6 +2661,7 @@ text-align: center; margin:0 10px 0 0; font-size: 12px; color: #fff;  }
 .my-wishlist .data-table td { padding:10px; }
 .my-wishlist .product-image { display:block; width:113px; height:113px; margin:0 0 5px; }
 .my-wishlist textarea { display:block; width:97%; height:109px; }
+#wishlist-view-form a.btn-remove.btn-remove2{width:auto;font-size:16px;line-height:16px;text-indent:0;padding-left:20px;}
 .my-wishlist .buttons-set { margin-top:2em; }
 .my-wishlist .buttons-set button.button { float:none; }
 .my-wishlist .buttons-set .btn-add span,
@@ -2688,7 +2691,7 @@ text-align: center; margin:0 10px 0 0; font-size: 12px; color: #fff;  }
 
 /* Billing Agreements */
 .billing-agreements .info-box{ margin:15px 0; }
-.billing-agreements .form-list li select { float:left; }
+.billing-agreements .form-list li select { float:left;margin-top:10px;}
 .billing-agreements .form-list li button.button { float:left; margin-left:10px; }
 .billing-agreements .table-caption { font-weight:bold; font-size:13px; }
 /* ======================================================================================= */

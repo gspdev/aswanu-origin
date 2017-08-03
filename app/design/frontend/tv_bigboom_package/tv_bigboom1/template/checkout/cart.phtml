@@ -55,17 +55,17 @@
         <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
             <thead>
                 <tr>
-                    <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Images') ?></span></th>
+                    <th style="width:15%\9;" rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Images') ?></span></th>
 
-                    <th rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Product name'); ?></th>
+                    <th style="width:25%\9;" rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Product name'); ?></th>
 
-                    <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
+                    <th style="width:15%\9;" class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
 <!--                            <div class="cart-price-placeholder">-->
                             <span class="nobr"><?php echo $this->__('Price') ?></span>
 <!--                            </div>-->
                     </th>
 
-                    <th rowspan="<?php echo $mergedCells; ?>" class="a-center">
+                    <th style="width:15%\9;" rowspan="<?php echo $mergedCells; ?>" class="a-center">
                         <?php echo $this->__('Qty') ?>
 
                         <?php /*if ($this->helper('wishlist')->isAllowInCart()) : ?>
@@ -74,13 +74,13 @@
 
                     </th>
 
-                    <th class="a-center cart-total-head" colspan="<?php echo $mergedCells; ?>">
+                    <th style="width:15%\9;" class="a-center cart-total-head" colspan="<?php echo $mergedCells; ?>">
 <!--                            <div class="cart-total-placeholder">-->
                             <?php echo $this->__('Subtotal') ?>
 <!--                            </div>-->
                     </th>
 
-                    <th class="a-center" rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                    <th style="width:15%\9;" class="a-center" rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
 
                 </tr>
                 <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
