@@ -208,7 +208,6 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 		<input type="button" value="-" class="qtyBtn qtyReduce"/>
         <input type="text" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
 		<input type="button" value="+" class="qtyBtn qtyAdd">
-		
         <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update'); ?></span></span>
         </button>
 
@@ -328,5 +327,31 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo $this->__('Remove Item') ?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove') ?></a>
     </td>
 </tr>
-
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$("#shopping-cart-table tbody>tr").each(function(){
+			var tr = $(this);
+			var qtyObj = tr.find(".input-text.qty");
+			var qty = parseInt(qtyObj.val());
+			tr.find(".qtyBtn.qtyReduce").unbind('click').click(function(){
+					if(qty>1){
+						qty -=1;
+						postForm(qtyObj,qty);
+					}
+					else{
+						alert("The quantity can not less than 1.");
+					}
+			});
+			tr.find(".qtyBtn.qtyAdd").click(function(){
+				qty+=1;
+				postForm(qtyObj,qty);
+			});
+		});
+		//submit
+		function postForm(obj , qty){
+			obj.val(qty);
+			$(".cart>form").submit();
+		}
+	})
+</script>
 

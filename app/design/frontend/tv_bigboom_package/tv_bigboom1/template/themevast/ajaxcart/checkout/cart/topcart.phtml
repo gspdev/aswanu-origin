@@ -42,3 +42,30 @@
         'removeConfirm' : '<?php echo $this-> __('Are you sure you would like to remove this item ?') ?>',
     };
 </script>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$("#cart-sidebar .product-details").each(function(){
+			var list = $(this);
+			var qtyObjPro = list.find("strong.product-qty");
+			var qtyPro = parseInt(qtyObjPro.text());
+			list.find(".qtyBtn.qtyReduce").unbind('click').click(function(){
+					if(qtyPro>1){
+						qtyPro -=1;
+						postFormP(qtyObjPro,qtyPro);
+					}
+					else if(qtyPro<=1){
+						alert("The quantity can not less than 1.");
+					}
+			});
+			list.find(".qtyBtn.qtyAdd").click(function(){
+				qtyPro+=1;
+				postFormP(qtyObjPro,qtyPro);
+			});
+		});
+		//submit
+		function postFormP(obj , qty){
+			obj.text(qty);
+			$(".cart>form").submit();
+		}
+	});
+</script>
