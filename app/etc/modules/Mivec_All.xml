@@ -16,5 +16,10 @@
             <codePool>local</codePool>
         </Mivec_Shipping>
 		
+        <Mivec_Ship>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mivec_Ship>
+		
     </modules>
 </config>

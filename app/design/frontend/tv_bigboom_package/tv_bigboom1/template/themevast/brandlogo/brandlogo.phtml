@@ -1,4 +1,10 @@
-<?php if(!$this->getConfig('enabled')) return;
+<?php
+//edit by mivec
+$urlRequest = Mage::app()->getFrontController()->getRequest();
+$_pathInfo = $urlRequest->getPathInfo();
+
+if ($_pathInfo == '/') :
+if(!$this->getConfig('enabled')) return;
 $slider = $this->getBrandlogo();
 if(!count($slider)) return;
 $media = Mage::getBaseUrl('media');	
@@ -163,4 +169,4 @@ jQuery(document).ready(function(){
 });
 </script>
 </section>
-
+<?php endif;?>
