@@ -69,7 +69,7 @@
 					set_back_left_width();
 				});
 				function set_back_left_width(){
-					var tmp_vmegameny_width = $(document).width();
+					var tmp_vmegameny_width = $(document).width();//May IE show the bug
 					var tmp_vmegameny_left = -$(".nav-vcontainer").offset().left;
 					jQuery("#vmegamenu-background,#vmegamenu-mask").css({'left':tmp_vmegameny_left+'px','width':tmp_vmegameny_width+'px'});
 				}
