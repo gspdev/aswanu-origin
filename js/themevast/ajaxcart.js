@@ -260,7 +260,10 @@ function ajaxToCart(url,data,mine) {
                     }  
 
                     if(data.product_info) {
-                        showBoxInfo(data.product_info);
+                        //Item is added to your cart.
+                        //showBoxInfo(data.product_info);
+                        //alert(data.product_info);
+                        showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Item is added to your cart</p></div>');
                     }else {
                         loadingAjaxcart(false);
                     }
