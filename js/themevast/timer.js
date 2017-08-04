@@ -13,7 +13,7 @@ var SetTimeOutPeriod = (Math.abs(CountStepper)-1)*1000 + 990;
 function calcage(secs, num1, num2) {
     s = ((Math.floor(secs/num1)%num2)).toString();
     if (LeadingZero && s.length < 2) s = "0" + s;
-    return "<b>" + s + "</b>";
+    return "" + s + ""; //"<b>" + s + "</b>"
 }
 function CountBack(secs,iid,j) {
     if (secs < 0) {

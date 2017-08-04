@@ -65,6 +65,7 @@
     padding: 0;
     float: right;
     margin:10px 0 0;
+	height:40px\9;
 }
 .top-cart-contain .product-details .price {width: auto;font-size: 15px;font-weight: bold;}
 .top-subtotal span{ font-weight: bold; font-size: 13px} 
