@@ -21,8 +21,9 @@ require_once 'common.php';
 
 //order
 require_once 'order.common.php';
+
 //supplier
-require_once 'supplier.common.php';
+//require_once 'supplier.common.php';
 //echo get_include_path();exit;
 
 // load PhpMailer lib
