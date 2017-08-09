@@ -52,8 +52,6 @@
                 </connection>
             </default_setup>
         </resources>
-
-		<!--session_save><![CDATA[files]]></session_save-->
         <session_save>db</session_save>
         <redis_session>                       <!-- All options seen here are the defaults -->
             <host>127.0.0.1</host>            <!-- Specify an absolute path if using a unix socket -->
@@ -98,7 +96,7 @@
 			<load_from_slave>tcp://redis-slave:6379</load_from_slave> <!-- Perform reads from a different server --> 
 		  </backend_options>
 		</cache>
-
+	
     </global>
     <admin>
         <routers>
