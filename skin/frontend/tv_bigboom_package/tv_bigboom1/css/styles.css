@@ -2222,7 +2222,7 @@ filter: alpha(opacity=100);opacity:1;box-shadow: 0 3px 6px rgba(51, 51, 51, 0.3)
 /* ============================================ *
  * Checkout - Estimate Shipping and Tax
  * ============================================ */
-.cart .crosssell { background: #fff; margin-bottom: 20px;padding:0 20px;}
+.cart .crosssell { background: #fff; margin-bottom: 20px;padding:0 20px; border: 1px solid #a9a0a0;}
 .cart .crosssell h2.crossell-title  { padding: 17px; background: #e9e9e9; color: #525252; font-size: 20px; }
 .cart .crosssell-inner { padding: 15px;}
 .cart .crosssell .product-image { float:left; margin-right: 15px; }
