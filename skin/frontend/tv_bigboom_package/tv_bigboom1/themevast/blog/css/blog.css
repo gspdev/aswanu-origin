@@ -1,8 +1,13 @@
+@media (min-width: 992px){
+	.blog-list{padding-left:4%;}
+}
 .postWrapper {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     float: left;
     width: 100%;
-	padding:0 20px;
+	padding:0 25px;
+	font-family: open sans;
+	border: 1px solid #ddd;
 }
 
 .postTitle {
@@ -18,7 +23,7 @@ fieldset.group-select{
     color:#666;
     font-weight: bold;
 }
-
+.blog-list .postTitle h2{padding:0;}
 .postTitle h3 {
     font-size: 11px;
     margin: 0px;
@@ -29,6 +34,7 @@ fieldset.group-select{
     color: #888;
     font-style: italic;
     font-weight: normal;
+	text-align:right;
 }
 .blog-index-list .sorter .sort-by { margin: 0;}
 .postTitle a { color: #666;}
@@ -37,8 +43,9 @@ fieldset.group-select{
 }
 .postContent {
     padding-bottom: 10px;
+	text-indent:20px;
 }
-.postContent a.aw-blog-read-more { display: inline-block; margin-left: 10px;}
+.postContent a.aw-blog-read-more { display: inline-block;}
 .postDetails { }
 
 .postBookmarks {
@@ -74,7 +81,7 @@ fieldset.group-select{
 
 .tags {
     font-weight: bold;
-    padding-bottom: 10px;
+    padding:0;
 }
 
 .tags UL {
@@ -90,6 +97,7 @@ fieldset.group-select{
 .tags h4 {
     font-size: 12px;
     font-weight: bold;
+	display:inline-block;
 }
 
 .menu-tags, .menu-categories, .menu-recent {
