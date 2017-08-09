@@ -7,7 +7,7 @@ define("_TABLE_PRODUCT_VARCHAR_" , "catalog_product_entity_varchar");
 define("_TABLE_PRODUCT_TEXT_" , "catalog_product_entity_text");
 
 //set attribute_id
-define("_ATTR_TITLE_" , 71);
+define("_ATTR_NAME_" , 71);
 define("_ATTR_SEARCH_WEIGHT_" , 168); //The Weight Of Search Index
 
 define('_VALUE_WEIGHT_' , 999);
@@ -16,7 +16,7 @@ $_keyWords = array("LCD");
 
 $sql = "SELECT a.entity_id,a.`sku`,b.attribute_id,b.`value` FROM "._TABLE_PRODUCT_MAIN_." a LEFT JOIN 
 	"._TABLE_PRODUCT_VARCHAR_." b ON(a.entity_id = b.entity_id)
-	WHERE attribute_id = " ._ATTR_TITLE_. "
+	WHERE attribute_id = " ._ATTR_NAME_. "
 ";
 if (is_array($_keyWords)) {
 	foreach ($_keyWords as $_keyword) {
@@ -26,7 +26,6 @@ if (is_array($_keyWords)) {
 $sql.= "ORDER BY a.entity_id DESC";
 
 if ($row = $db->fetchAll($sql)) {
-
 	foreach ($row as $rs) {
 		$_id = $rs['entity_id'];
 		$_sku = $rs['sku'];

@@ -3,7 +3,6 @@ class Mivec_Shipping_Model_Rate_Airmail extends Mage_Shipping_Model_Carrier_Abst
 {
     protected $_code = 'mivec_shippingar';
 	protected $_quoteHelper;
-
     protected $_carrier;
 	protected $_prefix = "carrier_";
 	
