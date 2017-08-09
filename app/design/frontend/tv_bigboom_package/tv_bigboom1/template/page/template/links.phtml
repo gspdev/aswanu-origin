@@ -56,13 +56,13 @@
 			<li><a href="javascript:void(0)">About Us</a></li>
 		</ul>
 	</li>
-	<li ><a href="#" title="Buyer Protection" >Buyer Protection</a></li>
+	<li ><a href="<?php echo $this->getUrl('privacy-policy') ?>" title="Buyer Protection" >Buyer Protection</a></li>
     <li class="help last">
-		<a href="#" title="Help">Help<span class="spanDown"></span></a>
+		<a href="<?php echo $this->getUrl('more-contact') ?>" title="Help">Help<span class="spanDown"></span></a>
 		<ul class="headNav-DropList">
-			<li><a href="javascript:void(0)">Help Center</a></li>
-			<li><a href="javascript:void(0)">Customer Service</a></li>
-			<li><a href="javascript:void(0)">Submit a Complaint</a></li>
+			<li><a href="<?php echo $this->getUrl('more-contact') ?>">Help Center</a></li>
+			<li><a href="<?php echo $this->getUrl('customer-service') ?>">Customer Service</a></li>
+			<li><a href="mailto:service@aswanu.com" target="_blank">Submit a Complaint</a></li>
 		</ul>
 	</li>
 </ul>
