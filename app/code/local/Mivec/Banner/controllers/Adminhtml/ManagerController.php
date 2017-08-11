@@ -4,7 +4,7 @@ class Mivec_Banner_Adminhtml_ManagerController extends Mage_Adminhtml_Controller
 	protected function _initAction()
 	{
 		$this->loadLayout()
-			->_setActiveMenu('banner/manager')
+			->_setActiveMenu('mivec/banner')
 			->_addBreadcrumb(Mage::helper('adminhtml')->__('Manager Banner'), Mage::helper('adminhtml')->__('Manager Banner'));
 		
 		return $this;
