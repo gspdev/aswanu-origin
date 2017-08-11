@@ -1,8 +1,8 @@
-
-/app/etc/local.xml/
+app/etc/local.xml
 /media/
 /var/
 /.idea/
 index.php
 robots.txt
 sitemap.xml
+.htaccess

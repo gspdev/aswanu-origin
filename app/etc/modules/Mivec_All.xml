@@ -20,6 +20,11 @@
             <active>true</active>
             <codePool>local</codePool>
         </Mivec_Ship>
-		
+
+        <Mivec_Support>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mivec_Support>
+
     </modules>
 </config>

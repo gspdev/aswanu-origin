@@ -4,7 +4,7 @@ class Mivec_Ship_Adminhtml_AirmailController extends Mage_Adminhtml_Controller_A
 	protected function _initAction()
 	{
 		$this->loadLayout()
-			->_setActiveMenu("ship/airmail")
+			->_setActiveMenu("mivec/ship")
 			->_addBreadcrumb("Express Shipping Quotes" , "");
 		
 		return $this;

@@ -4,7 +4,7 @@ class Mivec_Ship_Adminhtml_QuoteController extends Mage_Adminhtml_Controller_Act
 	protected function _initAction()
 	{
 		$this->loadLayout()
-			->_setActiveMenu("ship/quote")
+			->_setActiveMenu("mivec/ship")
 			->_addBreadcrumb("Shipping Quotes" , "");
 		
 		return $this;

@@ -4,7 +4,7 @@ class Mivec_Ship_Adminhtml_CarrierController extends Mage_Adminhtml_Controller_A
 	protected function _initAction()
 	{
 		$this->loadLayout()
-			->_setActiveMenu("ship/carrier")
+			->_setActiveMenu("mivec/ship")
 			->_addBreadcrumb("Shipping Carrier" , "");
 		
 		return $this;
