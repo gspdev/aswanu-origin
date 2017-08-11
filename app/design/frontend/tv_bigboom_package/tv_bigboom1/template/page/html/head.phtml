@@ -25,7 +25,6 @@
  */
 ?>
 <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
-<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"/>
 <title><?php echo $this->getTitle() ?></title>
 <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
 <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
@@ -33,6 +32,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 <link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<?php // Warning if ie 8 and stop loading?>
+<!--[if lt IE 8]>
+<script type="text/javascript">
+	window.alert("您的IE浏览器版本太低，请升级此浏览器或使用其他浏览器！");
+	if (window.stop){
+		window.stop();
+	}else{
+		document.execCommand("Stop");
+	}
+</script>
+<![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"/>
 <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,500,600' rel='stylesheet' type='text/css'>-->
 <!--[if lt IE 7]>
