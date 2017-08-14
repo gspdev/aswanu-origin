@@ -38,7 +38,7 @@
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
-    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post" id="cartForm">
         <?php echo $this->getBlockHtml('formkey'); ?>
         <table id="shopping-cart-table" class="cart-table data-table">
             <col width="1" />
@@ -140,6 +140,33 @@
             </tbody>
         </table>
         <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				$("#shopping-cart-table tbody>tr").each(function(){
+					var tr = $(this);
+					var qtyObj = tr.find(".input-text.qty");
+					var qty = parseInt(qtyObj.val());
+					tr.find(".qtyBtn.qtyReduce").unbind('click').click(function(){
+							if(qty>1){
+								qty -=1;
+								postForm(qtyObj,qty);
+							}
+							else{
+								alert("The quantity can not less than 1.");
+							}
+					});
+					tr.find(".qtyBtn.qtyAdd").click(function(){
+						qty+=1;
+						postForm(qtyObj,qty);
+					});
+				});
+				//submit
+				function postForm(obj , qty){
+					obj.val(qty);
+					$("#cartForm").submit();
+				}
+			})
+		</script>
     </form>
 
     <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
