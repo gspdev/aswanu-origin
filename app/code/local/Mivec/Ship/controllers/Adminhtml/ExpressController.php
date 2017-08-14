@@ -1,7 +1,7 @@
 <?php
 class Mivec_Ship_Adminhtml_ExpressController extends Mage_Adminhtml_Controller_Action
 {
-	protected function _initAction()
+	protected function _init()
 	{
 		$this->loadLayout()
 			->_setActiveMenu("mivec/ship")
@@ -12,12 +12,13 @@ class Mivec_Ship_Adminhtml_ExpressController extends Mage_Adminhtml_Controller_A
 	
 	public function indexAction()
 	{
-		$this->_initAction()
+		$this->_init()
 			->renderLayout();
 	}
 	
 	public function editAction()
 	{
+	    $this->_init();
 		$id     = $this->getRequest()->getParam('id');
 		$model  = Mage::getModel('ship/express')->load($id);
 
@@ -28,10 +29,6 @@ class Mivec_Ship_Adminhtml_ExpressController extends Mage_Adminhtml_Controller_A
 			}
 			
 			Mage::register('express_data', $model);
-
-			$this->loadLayout();
-			$this->_setActiveMenu('ship/express');
-
 			$this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
 
 			$this->_addContent($this->getLayout()->createBlock('ship/adminhtml_express_edit'))

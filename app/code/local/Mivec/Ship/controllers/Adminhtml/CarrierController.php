@@ -1,7 +1,7 @@
 <?php
 class Mivec_Ship_Adminhtml_CarrierController extends Mage_Adminhtml_Controller_Action
 {
-	protected function _initAction()
+	protected function _init()
 	{
 		$this->loadLayout()
 			->_setActiveMenu("mivec/ship")
@@ -12,13 +12,14 @@ class Mivec_Ship_Adminhtml_CarrierController extends Mage_Adminhtml_Controller_A
 	
 	public function indexAction()
 	{
-		$this->_initAction()
+		$this->_init()
 			->renderLayout();
 			
 	}
 	
 	public function editAction()
 	{
+	    $this->_init();
 		$id     = $this->getRequest()->getParam('id');
 		$model  = Mage::getModel('ship/carrier')->load($id);
 
@@ -29,10 +30,6 @@ class Mivec_Ship_Adminhtml_CarrierController extends Mage_Adminhtml_Controller_A
 			}
 			
 			Mage::register('carrier_data', $model);
-
-			$this->loadLayout();
-			$this->_setActiveMenu('ship/carrier');
-
 			$this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
 
 			$this->_addContent($this->getLayout()->createBlock('ship/adminhtml_carrier_edit'))

@@ -1,7 +1,7 @@
 <?php
 class Mivec_Banner_Adminhtml_ManagerController extends Mage_Adminhtml_Controller_Action
 {
-	protected function _initAction()
+	protected function _init()
 	{
 		$this->loadLayout()
 			->_setActiveMenu('mivec/banner')
@@ -13,7 +13,7 @@ class Mivec_Banner_Adminhtml_ManagerController extends Mage_Adminhtml_Controller
 	public function indexAction()
 	{
 		//$model = Mage::getModel('banner/manager')->getCollection();
-		$this->_initAction()
+		$this->_init()
 			//->_addContent($this->getLayout()->createBlock('brandlogo/adminhtml_brandlogo'))
 			->_addContent($this->getLayout()->createBlock('banner/adminhtml_manager'))
 			->renderLayout();
@@ -21,6 +21,7 @@ class Mivec_Banner_Adminhtml_ManagerController extends Mage_Adminhtml_Controller
 	
 	public function editAction()
 	{
+	    $this->_init();
 		$id     = $this->getRequest()->getParam('id');
 		$model  = Mage::getModel('banner/manager')->load($id);
 
@@ -31,10 +32,6 @@ class Mivec_Banner_Adminhtml_ManagerController extends Mage_Adminhtml_Controller
 			}
 
 			Mage::register('banner_data', $model);
-
-			$this->loadLayout();
-			$this->_setActiveMenu('banner/manager');
-
 			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Item Manager'), Mage::helper('adminhtml')->__('Item Manager'));
 
 			$this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
@@ -52,39 +49,6 @@ class Mivec_Banner_Adminhtml_ManagerController extends Mage_Adminhtml_Controller
 	public function saveAction()
 	{
 		if ($data = $this->getRequest()->getPost()) {
-			//print_r($_FILES);exit;
-			
-			/*
-			if(isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
-				try {	
-					$uploader = new Varien_File_Uploader('image');
-	           		$uploader->setAllowedExtensions(array('jpg','jpeg','gif','png','zip','rar'));
-					$uploader->setAllowRenameFiles(true);
-					
-					// Set the file upload mode 
-					// false -> get the file directly in the specified folder
-					// true -> get the file in the product like folders 
-					//	(file.jpg will go in something like /media/f/i/file.jpg)
-					$uploader->setFilesDispersion(false);
-							
-					// We set media as the upload dir
-					$path = Mage::getBaseDir('media') . DS . 'themevast' . DS .'banner'. DS;
-					$result = $uploader->save($path, $_FILES['image']['name'] );
-					//this way the name is saved in DB
-					//$data['image'] = 'themevast/banner/'. $result['file'];
-					$data['image'] = 'themevast/banner/'. $uploader->getUploadedFileName();
-				} catch (Exception $e) {
-		      
-		        }	        
-			} else {
-				if(isset($data['image']['delete']) && $data['image']['delete'] == 1) {
-					 $data['image'] = '';
-				} else {
-					unset($data['image']);
-				}
-			}
-			*/
-			
 			/**
 			 * edit by mivec
 			*/
