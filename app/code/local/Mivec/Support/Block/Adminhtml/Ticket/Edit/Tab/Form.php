@@ -8,7 +8,7 @@ class Mivec_Support_Block_Adminhtml_Ticket_Edit_Tab_Form extends Mage_Adminhtml_
         $this->setForm($form);
         $fieldset = $form->addFieldset('ticket_form' , array('legend'    => 'View Ticket '));
 
-        $_customer = $this->helper('support')
+        $_customer = $this->helper('support/customer')
             ->getCustomer($ticketData->getCustomerId());
 
 

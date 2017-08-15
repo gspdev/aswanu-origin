@@ -12,9 +12,12 @@ class Mivec_Support_Helper_Mail extends Mage_Core_Helper_Abstract
         $translate->setTranslateInline(false);
         if (is_array($data)) {
             try {
-                $template = array('header'=>'','content'=>'');
+                $template = array(
+                    'header'=>'',
+                    'content'=>''
+                );
                 switch($method) {
-                    case 'new':{
+                    case 'new': {
                         $template['header'] = "We have got your new ticket. Your ticket is waiting for processing. We will send you email for the updates. Or you can check below URL for ticket updates.";
                         //$template['content'] = $data['content'];
                         break;

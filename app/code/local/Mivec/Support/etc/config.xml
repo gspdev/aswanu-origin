@@ -18,7 +18,7 @@
         <layout>
             <updates>
                 <support>
-                    <file>mivec_support.xml</file>
+                    <file>mivec/support.xml</file>
                 </support>
             </updates>
         </layout>

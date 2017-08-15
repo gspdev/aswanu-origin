@@ -1,12 +1,6 @@
 <?php
 class Mivec_Support_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    public function getCustomer($_CustomerId)
-    {
-        $customer = Mage::getModel('customer/customer')
-            ->load($_CustomerId);
-        return $customer;
-    }
 
     public function formText($_name , $_value , $_class = 'input-text')
     {
