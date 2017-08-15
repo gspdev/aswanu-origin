@@ -5,7 +5,7 @@
     <h2>Open New Support Ticket</h2>
     <div class="brcrm">
         <span class="left">Provide ticket details below. When reporting a problem make sure to provide as much relevant information as possible</span>
-        <div class="clear"></div>
+        <div class="clearfix"></div>
     </div>
     <form enctype="multipart/form-data" method="post" action="" class="p19" id="ticketsform">
         <input name="make" type="hidden" value="addticket">
@@ -13,34 +13,34 @@
             <tbody>
             <tr>
                 <td valign="middle" colspan="2">
-                    <label>Issue Type</label>
+                    <label class="labelTitle">Issue Type</label>
                     <?php echo $this->getHtmlType();?>
-                    <div class="clear"></div>
+                    <div class="clearfix"></div>
                 </td>
             </tr>
             <tr>
                 <td valign="middle" colspan="2">
-                    <label>Department</label>
+                    <label class="labelTitle">Department</label>
                     <?php echo $this->getHtmlDepartment();?>
-                    <div class="clear"></div>
+                    <div class="clearfix"></div>
                 </td>
             </tr>
             <tr>
                 <td id="p2" class="dptpriority" width="300">
-                    <label>Priority</label>
+                    <label class="labelTitle">Priority</label>
                     <?php echo $this->getHtmlPriority();?>
-                    <div class="clear"></div>
+                    <div class="clearfix"></div>
                 </td>
             </tr>
             <tr class="even">
                 <td colspan="2">
-                    <label for="subject">Subject</label>
+                    <label for="subject" class="labelTitle">Subject</label>
                     <input type="text" value="" name="subject" style="width: 99%;">
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <label for="body">Message</label>
+                    <label for="body" class="labelTitle">Message</label>
                     <textarea style="width: 99%;" cols="60" rows="12" name="body" id="ticketmessage"></textarea>
                     <div id="hintarea" style="display:none" class="well"></div>
                 </td>
@@ -55,7 +55,7 @@
                                 <!-- The fileinput-button span is used to style the file input field as button -->
                                 <span class="btn btn-mini fileinput-button">
 <i class="icon-plus"></i>
-<span>Add files...</span>
+<span><b style="font-size: 14px;font-weight: bold;">+</b> Add files...</span>
 <input type="file" name="attachments[]" multiple="">
 </span>
                                 <div class="fs11">(Allowed File Extension: .jpg, .gif, .zip, .png, .pdf)</div>
@@ -69,7 +69,7 @@
                                 <!-- The extended global progress information -->
                                 <div class="progress-extended">&nbsp;</div>
                             </div>
-                            <div class="clear"></div>
+                            <div class="clearfix"></div>
                         </div>
                         <!-- The table listing the files available for upload/download -->
                         <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
@@ -95,7 +95,7 @@
                             <input type="text" value="" size="15" name="image_verification" style="width:100px">
                         </div>
                         <div class="right"><input type="submit" value="Submit" class="btn btn-success btn-large" style="font-weight: bold" id="submitbutton"></div>
-                        <div class="clear"></div>
+                        <div class="clearfix"></div>
                     </div>
                 </td>
             </tr>
