@@ -26,5 +26,10 @@
             <codePool>local</codePool>
         </Mivec_Support>
 
+        <Mivec_Orderhook>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mivec_Orderhook>
+
     </modules>
 </config>
