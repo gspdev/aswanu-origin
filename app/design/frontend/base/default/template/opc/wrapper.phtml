@@ -8,24 +8,23 @@ $theme = Mage::getDesign()->getTheme('frontend');
     <h2><?php echo $this->__('Checkout')?></h2>
 	<div class="opc-menu">
 	
-	    <div class="clearfix"><?php //echo $this->getChildHtml('paypal.button')?></div>
-	            
+	    <div class="clear"><?php //echo $this->getChildHtml('paypal.button')?></div>
         <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
     		<?php echo $this->getChildHtml('login');?>	
     	<?php endif;?>
     	
     	
-    	<div class="review-menu-block">
-    	  <a class="review-total"><?php echo Mage::helper('opc')->getGrandTotal()?></a>
+    	<div class="review-menu-block clear">
+    	  <a class="review-total open"><?php echo Mage::helper('opc')->getGrandTotal()?></a>
     	  <!--<span class="polygon"></span>-->
     	  <div id="opc-review-block">
 		      <?php echo $this->_getReviewHtml()?>
 		  </div>
 		</div>
-	   <div class="clearfix move-columns"></div>
+	   <div class="clear move-columns"></div>
 	</div>
 	
-	<div class="clearfix" style="margin-bottom: 30px;"></div>
+	<div class="clear" style="margin-bottom: 30px;"></div>
     <div class="opc-col-left">
 		<form id="opc-address-form-billing" method="post">
         	<?php echo $this->getChildHtml('billing')?>
