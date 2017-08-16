@@ -8,34 +8,33 @@ $theme = Mage::getDesign()->getTheme('frontend');
     <h2><?php echo $this->__('Checkout')?></h2>
 	<div class="opc-menu">
 	
-	    <?php echo $this->getChildHtml('paypal.button')?>
+	    <div class="clearfix"><?php //echo $this->getChildHtml('paypal.button')?></div>
 	            
         <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
     		<?php echo $this->getChildHtml('login');?>	
     	<?php endif;?>
     	
     	
-    	<div class="right review-menu-block">
-    	  <a class="review-total"><?php echo Mage::helper('opc')->getGrandTotal()?></a>   
-    	  <span class="polygon"></span>
-    	  <div class="hidden" id="opc-review-block">
+    	<div class="review-menu-block">
+    	  <a class="review-total"><?php echo Mage::helper('opc')->getGrandTotal()?></a>
+    	  <!--<span class="polygon"></span>-->
+    	  <div id="opc-review-block">
 		      <?php echo $this->_getReviewHtml()?>
 		  </div>
 		</div>
-	   <div class="clear move-columns"></div>
+	   <div class="clearfix move-columns"></div>
 	</div>
 	
-	<div class="clear"></div>
-
+	<div class="clearfix" style="margin-bottom: 30px;"></div>
     <div class="opc-col-left">
 		<form id="opc-address-form-billing" method="post">
         	<?php echo $this->getChildHtml('billing')?>
         </form>
-        	
+
         <form id="opc-address-form-shipping" class="hidden" method="post">
         <?php echo $this->getChildHtml('shipping')?>
         </form>
-		
+
     </div>
 
     <div class="opc-col-center">
@@ -47,7 +46,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			</div>
 		</div>
 		<?php endif;?>
-		
+
 		<?php if(Mage::helper('opc')->isShowDiscount()):?>
 		<div class="discount-block">
 			<h3><?php echo $this->__('Discount Codes')?><span class='expand_plus'></span></h3>
@@ -67,7 +66,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			<h3><?php echo $this->__('Payment Method')?></h3>
 			<?php echo $this->getChildHtml('payment')//$this->_getPaymentMethodsHtml();?>
 		</div>
-    
+
         <?php if (Mage::getConfig()->getModuleConfig('IWD_OnepageCheckoutSignature')->is('active', 'true')): ?>
             <div class="signature-block">
                 <h3><?php echo $this->__('Signature')?><span class='expand_plus'></span></h3>
