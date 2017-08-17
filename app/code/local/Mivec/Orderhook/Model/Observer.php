@@ -9,7 +9,7 @@ class Mivec_Orderhook_Model_Observer
         if ($this->_getPaymentMethod($order) == 'banktransfer') {
             if ($order->canInvoice())
                 $this->_processOrderStatus($order);
-            $this->_sendmail($order);
+            //$this->_sendmail($order);
         }
         return $this;
     }
@@ -28,12 +28,15 @@ class Mivec_Orderhook_Model_Observer
     {
         $invoice = $order->prepareInvoice();
 
+        $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::NOT_CAPTURE);
+        //$invoice->setState(Mage_Sales_Model_Order_Invoice::STATE_OPEN);
+
         $invoice->register();
         Mage::getModel('core/resource_transaction')
             ->addObject($invoice)
             ->addObject($invoice->getOrder())
             ->save();
-        
+
         $invoice->sendEmail(true, '');
         $this->_changeOrderStatus($order);
         return true;

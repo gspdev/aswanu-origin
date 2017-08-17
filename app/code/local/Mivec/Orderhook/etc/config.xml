@@ -6,6 +6,18 @@
         </Mivec_Orderhook>
     </modules>
 
+    <frontend>
+        <routers>
+            <orderhook>
+                <use>standard</use>
+                <args>
+                    <module>Mivec_Orderhook</module>
+                    <frontName>orderhook</frontName>
+                </args>
+            </orderhook>
+        </routers>
+    </frontend>
+
     <global>
         <models>
             <orderhook>
@@ -23,5 +35,11 @@
                 </observers>
             </sales_order_place_after>
         </events>
+
+        <helpers>
+            <orderhook>
+                <class>Mivec_Orderhook_Helper</class>
+            </orderhook>
+        </helpers>
     </global>
 </config>
