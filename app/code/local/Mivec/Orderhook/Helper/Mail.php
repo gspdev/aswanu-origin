@@ -1,5 +1,5 @@
 <?php
-class Mivec_Support_Helper_Mail extends Mage_Core_Helper_Abstract
+class Mivec_Orderhook_Helper_Mail extends Mage_Core_Helper_Abstract
 {
     const XML_PATH_EMAIL_RECIPIENT  = 'contacts/email/recipient_email';
     const XML_PATH_EMAIL_SENDER     = 'contacts/email/sender_email_identity';
@@ -13,33 +13,21 @@ class Mivec_Support_Helper_Mail extends Mage_Core_Helper_Abstract
         if (is_array($data)) {
             try {
                 $template = array(
-                    'header'=>'',
+                    'header'=>"We have got your new ticket. Your ticket is waiting for processing. We will send you email for the updates. Or you can check below URL for ticket updates.",
                     'content'=>''
                 );
-                switch($method) {
-                    case 'new': {
-                        $template['header'] = "We have got your new ticket. Your ticket is waiting for processing. We will send you email for the updates. Or you can check below URL for ticket updates.";
-                        //$template['content'] = $data['content'];
-                        break;
-                    }
-                    case 'update': {
-                        $template['header'] = "Your Ticket # ".$data['ticket_id']." was updated,You can view this detail in you account dashboard --> My Tickets,or click this url to check.";
-                        //$template['content'] = '';
-                        break;
-                    }
-                }
+                $_templateId = 5;
                 $data['header'] = $template['header'];
                 $postObject = new Varien_Object();
                 $postObject->setData($data);
-
                 //setup mail notification //edit by mivec
                 $mailTemplate = Mage::getModel('core/email_template');
-                /* @var $mailTemplate Mage_Core_Model_Email_Template */
 
+                /* @var $mailTemplate Mage_Core_Model_Email_Template */
                 $mailTemplate->setDesignConfig(array('area' => 'frontend'))
-                    ->setReplyTo(Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER))
+                    //->setReplyTo(Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER))
                     ->sendTransactional(
-                        7,
+                        $_templateId,
                         Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER),
                         $data['email'],
                         null,
@@ -51,8 +39,8 @@ class Mivec_Support_Helper_Mail extends Mage_Core_Helper_Abstract
                 $translate->setTranslateInline(true);
                 return true;
             } catch (Exception $e) {
+                Mage::logException($e);
                 $translate->setTranslateInline(true);
-                Mage::getSingleton('customer/session')->addError(Mage::helper('contacts')->__('Unable to submit your request. Please, try again later'));
                 return false;
             }
         }

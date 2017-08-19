@@ -1,0 +1,113 @@
+<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f6f6f6">
+    <tbody>
+            <tr>
+                <td>
+                    <table class="outer" width="800" style="" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff">
+                        <!--header-->
+                        <tr style="padding: 0 1px;height:100px;">
+                            <td width="400" style="vertical-align: top;padding-top: 20px;">
+                            <div style="padding-left:50px">
+								<a href="https://www.aswanu.com/" style="display: block;">
+									<img src="https://www.aswanu.com/skin/frontend/tv_bigboom_package/tv_bigboom1/images/logo.png" alt="GSP" width="165" height="48" style="margin-left:10px;">
+								</a>
+                                </div>
+                                <!--head-left-->
+                                <div style="width:auto;padding:20px auto auto 40px;;font-size:14px;">
+                                  <p>{{depend store_phone}} Call Us: {{var store_phone}}{{/depend}}</p>
+                                  <p>{{depend store_hours}} {{var store_hours}}{{/depend}}</p>
+                                  <p>{{depend store_email}} Email: {{var store_email}}{{/depend}}</p>
+                                  <p>Address: {{config path="general/store_information/address"}}</p>
+                                  <p><a href="http://www.aswanu.com/">http://www.aswanu.com/</a></p>
+                                </div>
+                            </td>
+                            <!--head-right-->
+                            <td width="500" style="padding-top: 20px;">
+                                <table width="500">
+                                    <tr>
+                                        <td width="500">
+                                            <table width="100%" border="0" cellspacing="1" cellpadding="0">
+                                              <tr>
+                                                <td>
+                                                <div style="font-size:14px;">
+                                                Thank you for your order from {{var store.getFrontendName()}}.
+                        <p>You can check the status of your order by <a href="{{store url="customer/account/"}}">logging into your account</a>.</p>
+                        </div>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <table>
+                                                <tr>
+                                                    <td width="167" style="vertical-align: top;">
+                                                        <div style="font-size: 12px;">
+                                                            <p style="margin: 0;font-weight:bold;">Date</p>
+                                                            <p style="margin: 0;">{{var date}}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td width="313" style="vertical-align: top;">
+                                                        <div style="font-size: 12px;">
+                                                            <h3> Invoice #{{var invoice.increment_id}}</h3>
+                                                            <h3>Order #{{var order.increment_id}}</h3>
+                                                        </div>
+                                                    </td>
+                                              </tr>
+                                                <tr>
+                                                    <td colspan="2" style="vertical-align: top;"><h5 style="text-transform: uppercase;padding: 25px 0 0 6px;margin:0 0 10px 0">Shipping address</h5>
+                                                        <div style="border:1px solid #000;font-size: 12px;padding:0 12px;">
+                                                          <p>{{var order.shipping_address.format('html')}}</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                          </table>
+                                      </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 10px;"></td>
+                        </tr>
+                        <tr>
+                            <td width="450" style="vertical-align: bottom">
+                            </td>
+                            <td width="450">
+                                <div style="border: 1px solid #000;float:right;width: 200px;font-size:14px;">
+                                    <p style="font-weight: bold;margin: 0;padding: 0 10px;text-transform: uppercase"> Total: <span style="font-weight: normal;text-align: right;float: right;text-transform: none">{{var grand_total}}</span>                                </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="height: 10px;"></tr>
+                        <!--order-->
+                        <tr>
+                            <td colspan="2" align="center">{{layout area="frontend" handle="sales_email_order_invoice_items" invoice=$invoice order=$order}}</td>
+                        </tr>
+                    </table>
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="outer" width="800" style="" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff">
+                        <!--footer-->
+                        <tr>
+                            <td width="450" style="vertical-align: top;">
+                                <h5 style="text-transform: uppercase;padding: 25px 0 0 10px;">Order info:</h5>
+                                <div style="font-size: 12px;padding:0 12px;">
+                                    <p>Grand Total:{{var grand_total}}</p>
+                                    <p>Due Date:{{var paydate}}</p>
+                                </div>
+                            </td>
+                            <td width="450" style="vertical-align: top;">
+                                <h5 style="text-transform: uppercase;padding: 25px 0 0 10px;">Payment method:</h5>
+                                <div style="font-size: 12px;padding:0 12px;border-left:1px solid #000;">
+								{{var payment_html}} 
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center" valign="middle" style="vertical-align: top;"><br>
+                          Thank You! Aswanu.com</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+  </tbody>
+    </table>

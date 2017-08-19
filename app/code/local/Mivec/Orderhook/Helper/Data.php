@@ -6,7 +6,7 @@ class Mivec_Orderhook_Helper_Data extends Mage_Core_Helper_Abstract
         $invoice = $order->prepareInvoice();
 
         $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::NOT_CAPTURE);
-        //$invoice->setState(Mage_Sales_Model_Order_Invoice::STATE_OPEN);
+        $invoice->setState(Mage_Sales_Model_Order_Invoice::STATE_OPEN);
 
         $invoice->register();
         Mage::getModel('core/resource_transaction')

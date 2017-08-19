@@ -799,6 +799,11 @@ class Mage_Sales_Model_Order_Invoice extends Mage_Sales_Model_Abstract
             $customerName = $order->getCustomerName();
         }
 
+        //specific template_id  //edit by mivec
+/*        //if ($order->getPayment()->getMethodInstance()->getCode() == 'banktransfer') {
+            $templateId = 6;
+        }*/
+
         $mailer = Mage::getModel('core/email_template_mailer');
         if ($notifyCustomer) {
             $emailInfo = Mage::getModel('core/email_info');
@@ -821,6 +826,11 @@ class Mage_Sales_Model_Order_Invoice extends Mage_Sales_Model_Abstract
             }
         }
 
+        //edit by mivec
+        $total = $order->getData('base_currency_code') . number_format($order->getData('base_grand_total') , 2);
+        $date = $order->getData("created_at");
+        $paydate = date("Y-m-d" , strtotime($date) + (86400*15));
+
         // Set all required params and send emails
         $mailer->setSender(Mage::getStoreConfig(self::XML_PATH_EMAIL_IDENTITY, $storeId));
         $mailer->setStoreId($storeId);
@@ -830,9 +840,14 @@ class Mage_Sales_Model_Order_Invoice extends Mage_Sales_Model_Abstract
                 'invoice'      => $this,
                 'comment'      => $comment,
                 'billing'      => $order->getBillingAddress(),
-                'payment_html' => $paymentBlockHtml
+                'payment_html' => $paymentBlockHtml,
+                //edit by mivec
+                "grand_total"         => $total,
+                "date"          => $date,
+                "paydate"   =>  $paydate,
             )
         );
+
         $mailer->send();
         $this->setEmailSent(true);
         $this->_getResource()->saveAttribute($this, 'email_sent');
