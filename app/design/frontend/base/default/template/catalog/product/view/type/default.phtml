@@ -27,6 +27,13 @@
 <?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
 <?php $_product = $this->getProduct() ?>
 
+<p><?php echo "SKU : " . $_product->getSku()?></p>
+<p>
+    <?php
+        $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
+        echo "Stock QTY : " . floor($stock->getQty());
+    ?>
+</p>
 <?php if ($this->displayProductStockStatus()): ?>
     <?php if ($_product->isAvailable()): ?>
         <p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
