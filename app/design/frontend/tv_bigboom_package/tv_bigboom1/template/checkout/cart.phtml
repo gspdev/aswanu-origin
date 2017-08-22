@@ -106,12 +106,13 @@
                         <span class="or"></span>
 
                         <?php if($this->getContinueShoppingUrl()): ?>
-                            <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="submitAndContinue();"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button><!--setLocation('<?php echo $this->getContinueShoppingUrl();?>')-->
+                            <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="submitAndContinue()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button><!--setLocation('<?php //echo $this->getContinueShoppingUrl();?>')-->
                         <?php endif; ?>
                         <script type="text/javascript">
+                            //submit at current window,continue shopping at new window.
                             function submitAndContinue(){
                                 jQuery("#cartForm").submit();
-                                window.location.href = '<?php echo $this->getContinueShoppingUrl();?>';
+                                window.open('<?php echo $this->getContinueShoppingUrl();?>');
                             }
                         </script>
                         <!--[if lt IE 8]>
