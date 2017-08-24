@@ -39,7 +39,7 @@ class Mivec_Shipping_Model_Rate_Airmail extends Mage_Shipping_Model_Carrier_Abst
 	
     public function getAllowedMethods()
     {
-		return array($this->_code => "mivec_shipping_express");
+		return array($this->_code => "mivec_shipping_airmail");
     }
 
     public function collectRates(Mage_Shipping_Model_Rate_Request $request)
@@ -62,6 +62,7 @@ class Mivec_Shipping_Model_Rate_Airmail extends Mage_Shipping_Model_Carrier_Abst
     protected function _getAirmailRate(Mage_Shipping_Model_Rate_Request $request , $_carrierId , $_carrierCode,$_carrierTitle)
     {
         $this->_initSetup();
+        //echo $request->getPackageWeight();exit;
 
 		if ($request->getPackageWeight() <= 2) {
 			$rate = Mage::getModel('shipping/rate_result_method');
@@ -114,7 +115,7 @@ class Mivec_Shipping_Model_Rate_Airmail extends Mage_Shipping_Model_Carrier_Abst
         } catch (Exception $e) {
             echo "Line:" . $e->getLine() ." ". $e->getMessage();
         }
-        return $shippingPrice;
+        return $shippingPrice < 40 ? $shippingPrice : 40;
     }
 	
 	protected function calculatePrice(Mage_Shipping_Model_Rate_Request $request , $_quote)
