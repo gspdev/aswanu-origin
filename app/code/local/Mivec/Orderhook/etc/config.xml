@@ -16,6 +16,13 @@
                 </args>
             </orderhook>
         </routers>
+        <layout>
+            <updates>
+                <orderhook>
+                    <file>mivec/orderhook.xml</file>
+                </orderhook>
+            </updates>
+        </layout>
     </frontend>
 
     <global>
@@ -36,6 +43,11 @@
             </sales_order_place_after>
         </events>
 
+        <blocks>
+            <orderhook>
+                <class>Mivec_Orderhook_Block</class>
+            </orderhook>
+        </blocks>
         <helpers>
             <orderhook>
                 <class>Mivec_Orderhook_Helper</class>

@@ -11,7 +11,7 @@ function getOrderDetail(Mage_Sales_Model_Order $order)
 		'increment_id'	=> $order->getIncrementId(),
 		'customer_id' => $order->getData('customer_id'),
 		'email'	=> $order->getCustomerEmail(),
-		'order_date' => $order->getData('created_at'),
+		'order_date' => date("Y-m-d" , strtotime($order->getData('created_at'))),
 		'status'	=> $order->getStatus(),
 		'remote_ip'	=> $order->getData('remote_ip'),
 	);
@@ -40,19 +40,19 @@ function getOrderDetail(Mage_Sales_Model_Order $order)
 		'carrier'	=> $order->getData('shipping_description'),
 		'amount'	=> $order->getData('base_shipping_amount')
 	);
-	
+
 	$data['amount'] = array(
 		'weight'	=> $order->getData('weight') . '/KG',
 		'subtotal'	=> $order->getData('order_currency_code') . ' ' 
-				. number_format($order->getData('grand_total') , 2),
-		'grand_total'	=> $order->getData('base_currency_code]') .' ' 
+				. number_format($order->getData('subtotal') , 2),
+		'grand_total'	=> $order->getData('order_currency_code') .' '
 				. number_format($order->getData('base_grand_total') , 2),
-		'shipping'	=> $order->getData('base_shipping_amount'),
+		'shipping'	=> $order->getData('order_currency_code') .' ' . number_format($order->getData('base_shipping_amount') , 2),
 	);
 	return $data;
 }
 
-function getOredrItems(Mage_Sales_Model_Order $order)
+function getOrderItems(Mage_Sales_Model_Order $order)
 {
 	//$itemCollection = $order->getAllItems();
 	$items = $order->getAllItems();
@@ -81,9 +81,9 @@ function getOredrItems(Mage_Sales_Model_Order $order)
 			'options'	=> $_options,
 			'sku'	=> $item->getSku(),
 			'qty'	=> $qty,
-			'price'	=> $price,
+			'price'	=> $order->getData('order_currency_code') .' ' . number_format($price , 2),
 			'discount'	=> $discount,
-			'row'	=> (($price - $discount) * $qty)
+			'subtotal'	=> $order->getData('order_currency_code') . " " . (($price - $discount) * $qty)
 		);
 	}
 	return $arr;
@@ -106,7 +106,7 @@ function getItemOptions($_item)
 	return $result;
 }
 
-function getFormatedOptionValue($optionValue)
+function getFormatedOptionValue($optionValue, $_truncatedValue)
 {
 	$optionInfo = array();
 

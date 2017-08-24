@@ -33,4 +33,8 @@ require_once 'PhpMailer/class.phpmailer.php';
 define('MEDIA',ROOT . '/media');
 define('MEDIA_PRODUCT',MEDIA . '/catalog/product');
 
+//website
+define("__WEB_BASE__" , Mage::getBaseUrl());
+define("__WEB_SKIN__" , Mage::getSingleton('core/design_package')->getSkinBaseUrl());
+
 //$db = Mage::getSingleton('core/resource')->getConnection('core_read');

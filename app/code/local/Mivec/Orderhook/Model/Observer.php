@@ -9,7 +9,7 @@ class Mivec_Orderhook_Model_Observer
         if ($this->_getPaymentMethod($order) == 'banktransfer') {
             if ($order->canInvoice())
                 $this->_processOrderStatus($order);
-            $this->_sendmail($order);
+            //$this->_sendmail($order);
         }
         return $this;
     }
@@ -37,7 +37,7 @@ class Mivec_Orderhook_Model_Observer
             ->addObject($invoice->getOrder())
             ->save();
 
-        $invoice->sendEmail(true, '');
+        //$invoice->sendEmail(true, '');
         $this->_changeOrderStatus($order);
         return true;
     }

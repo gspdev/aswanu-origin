@@ -828,7 +828,7 @@ class Mage_Sales_Model_Order_Invoice extends Mage_Sales_Model_Abstract
 
         //edit by mivec
         $total = $order->getData('base_currency_code') . number_format($order->getData('base_grand_total') , 2);
-        $date = $order->getData("created_at");
+        $date = date("Y-m-d" , strtotime($order->getData("created_at")));
         $paydate = date("Y-m-d" , strtotime($date) + (86400*15));
 
         // Set all required params and send emails
@@ -841,6 +841,7 @@ class Mage_Sales_Model_Order_Invoice extends Mage_Sales_Model_Abstract
                 'comment'      => $comment,
                 'billing'      => $order->getBillingAddress(),
                 'payment_html' => $paymentBlockHtml,
+
                 //edit by mivec
                 "grand_total"         => $total,
                 "date"          => $date,
