@@ -143,7 +143,7 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                                     <th align="left" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Item</th>
                                     <th align="center" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Qty</th>
                                     <th align="left" style="font-size:13px;padding:3px 9px;text-transform: uppercase;width:90px;">Unit Price</th>
-                                    <th align="right" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Subtotal</th>
+                                    <th align="right" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Total</th>
                                 </tr>
                             </thead>
                             <?php
@@ -167,7 +167,7 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                         <table width="100%" border="0" cellspacing="5" cellpadding="0" style="border-collapse: collapse;">
                           <tfoot style="padding:20px;">
                             <tr class="m_-9064054173632497493subtotal">
-                              <td colspan="3" align="right" style="padding:3px 9px">Subtotal</td>
+                              <td colspan="3" align="right" style="padding:3px 9px;text-transform: uppercase;">Subtotal</td>
                               <td width="24%" align="right" style="padding:3px 9px"><?php echo $_orderData["amount"]["subtotal"]?></td>
                             </tr>
                             <tr class="m_-9064054173632497493shipping">
