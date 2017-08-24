@@ -57,7 +57,7 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
 ?>
 <p style="text-align: right;padding-right: 200px;"><button id="renderPdf">DOWNLOAD PDF</button></p>
 <div id="print" style="background: #f6f6f6;width:700px;margin:0 auto;">
-    <table width="700" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" style="font-family: 'Helvetica Neue', Helvetica-Neue, HelveticaNeue, Helvetica, Arial, sans-serif;font-size: 10px;">
+    <table width="700" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" style="font-family:Calibri,Times New Roman,'Helvetica Neue', Helvetica-Neue, HelveticaNeue, Helvetica, Arial, sans-serif;font-size: 10px;">
         <tbody>
         <tr>
             <td>
@@ -71,8 +71,8 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                             </a>
                             <!--head-left-->
                             <div style="width:200px;padding:0 10px;font-size:10px;line-height: 16px;">
-                                <h5 style="text-transform: uppercase;padding: 25px 0 0 0;margin:0">Shipping From</h5>
-                                <p style="margin:20px 0 10px 0;">Add : Rm.6409 SEG Plaza Huaqiangbei Rd.Futian Shenzhen P.R.C.</p>
+                                <h5 style="text-transform: uppercase;padding: 25px 0 0 0;margin:0">Ship From</h5>
+                                <p style="margin:20px 0 10px 0;">Add : Rm.6409 SEG Plaza Huaqiangbei Rd. Futian Shenzhen P.R.C.</p>
                                 <p style="margin:0 auto;">Email : <?php echo $_general["email"];?></p>
                                 <p style="margin: 0 auto;">Tel : <?php echo $_general["tel"]?></p>
                                 <p style="margin:0 auto;"><a href="<?php echo __WEB_BASE__?>" style="color:#000;"><?php echo __WEB_BASE__;?></a></p>
@@ -95,14 +95,14 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                                                 </td>
                                                 <td width="200" style="vertical-align: top;">
                                                     <div style="font-size: 10px;">
-                                                        <p style="margin: 0;"><span style="display: inline-block;width: 80px;font-weight: bold;">Invoice:</span><?php echo $_orderData["general"]["increment_id"]?></p>
-                                                        <p style="margin: 0;"><span style="display: inline-block;width: 80px;font-weight: bold;">Order:</span><?php echo $_orderData["general"]["increment_id"]//$_invoiceData["increment_id"]?></p>
+                                                        <p style="margin: 0;"><span style="display: inline-block;width: 80px;font-weight: bold;text-transform: uppercase;">Invoice:</span><?php echo $_orderData["general"]["increment_id"]?></p>
+                                                        <p style="margin: 0;"><span style="display: inline-block;width: 80px;font-weight: bold;text-transform: uppercase;">Order:</span><?php echo $_orderData["general"]["increment_id"]//$_invoiceData["increment_id"]?></p>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2" style="vertical-align: top;">
-                                                    <h5 style="text-transform: uppercase;padding: 36px 0 0 0;margin:0;font-size:12px;">Shipping To</h5>
+                                                    <h5 style="text-transform: uppercase;padding: 36px 0 0 0;margin:0;font-size:12px;">Ship To</h5>
                                                     <div style="font-size: 10px;padding:0 12px 0 0;">
                                                         <p style="line-height:16px;"><?php echo $_orderData["shipping_address"];?></p>
                                                     </div>
@@ -136,27 +136,27 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                     <!--order-->
                     <tr>
                         <td colspan="3" align="center">
-                        <table cellspacing="0" cellpadding="0" border="0" width="650" style="border:1px solid #eaeaea">
+                        <table cellspacing="0" cellpadding="0" border="0" width="650">
                             <thead>
                                 <tr>
-                                    <th align="left" bgcolor="#EAEAEA" style="font-size:13px;padding:3px 9px">Sku</th>
-                                    <th align="left" bgcolor="#EAEAEA" style="font-size:13px;padding:3px 9px">Item</th>
-                                    <th align="center" bgcolor="#EAEAEA" style="font-size:13px;padding:3px 9px">Qty</th>
-                                    <th align="left" bgcolor="#EAEAEA" style="font-size:13px;padding:3px 9px">Unit Per Qty</th>
-                                    <th align="right" bgcolor="#EAEAEA" style="font-size:13px;padding:3px 9px">Subtotal</th>
+                                    <th align="left" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Sku</th>
+                                    <th align="left" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Item</th>
+                                    <th align="center" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Qty</th>
+                                    <th align="left" style="font-size:13px;padding:3px 9px;text-transform: uppercase;width:90px;">Unit Price</th>
+                                    <th align="right" style="font-size:13px;padding:3px 9px;text-transform: uppercase;">Subtotal</th>
                                 </tr>
                             </thead>
                             <?php
                             if ($_orderItems = getOrderItems($_order)):
                                 foreach ($_orderItems as $_item) :
                             ?>
-                            <tbody bgcolor="#F6F6F6">
+                            <tbody>
                                 <tr>
-                                    <td height="30" align="left" valign="center" style="padding:3px 9px;border-bottom:1px dotted #cccccc;"><strong style="font-size:11px;"><?php echo $_item["sku"]?></strong></td>
-                                    <td align="left" valign="center" style="font-size:11px;padding:3px 9px;border-bottom:1px dotted #cccccc"><?php echo $_item["name"]?></td>
-                                    <td align="center" valign="center" style="font-size:11px;padding:3px 9px;border-bottom:1px dotted #cccccc"><?php echo (int)$_item["qty"]?></td>
-                                    <td align="center" valign="center" style="font-size:11px;padding:3px 9px;border-bottom:1px dotted #cccccc"><?php echo $_item["price"]?></td>
-                                    <td align="right" valign="center" style="font-size:11px;padding:3px 9px;border-bottom:1px dotted #cccccc"><span class="m_-9064054173632497493price"><?php echo $_item["subtotal"]?></span></td>
+                                    <td height="30" align="left" valign="center" style="padding:3px 9px;"><strong style="font-size:11px;"><?php echo $_item["sku"]?></strong></td>
+                                    <td align="left" valign="center" style="font-size:11px;padding:3px 9px;"><?php echo $_item["name"]?></td>
+                                    <td align="center" valign="center" style="font-size:11px;padding:3px 9px;"><?php echo (int)$_item["qty"]?></td>
+                                    <td align="center" valign="center" style="font-size:11px;padding:3px 9px;"><?php echo $_item["price"]?></td>
+                                    <td align="right" valign="center" style="font-size:11px;padding:3px 9px;"><span class="m_-9064054173632497493price"><?php echo $_item["subtotal"]?></span></td>
                                 </tr>
                             </tbody>
                             <?php
@@ -175,7 +175,7 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                               <td align="right" style="padding:3px 9px"><?php echo $_orderData["amount"]["shipping"]?></td>
                             </tr>
                             <tr class="m_-9064054173632497493grand_total" style="border-top:2px solid #000;">
-                              <td colspan="3" align="right" style="padding:3px 9px;"><strong>Grand Total</strong></td>
+                              <td colspan="3" align="right" style="padding:3px 9px;text-transform: uppercase;"><strong>Grand Total</strong></td>
                               <td align="right" style="padding:3px 9px;"><strong><?php echo $_orderData["amount"]["grand_total"]?></strong></td>
                             </tr>
                           </tfoot>
@@ -204,9 +204,6 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                                 <?php echo $_orderData["payment_info"];?>
                             </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center" valign="middle" style="vertical-align: top;font-size: 12px;"><br>Thank You! Aswanu.com</td>
                     </tr>
                 </table>
             </td>
