@@ -23,7 +23,13 @@ IWD.OPC = {
 		initSaveOrder: function(){
 			
 			$j(document).on('click', '.opc-btn-checkout', function(){
-
+				
+				//add by jerry,test 'accept purchase items'.
+				if(!accept_item.checked){
+                    accept_item_box.style.display = "block";
+					return;
+				}
+				//add finished.
 				if (IWD.OPC.Checkout.disabledSave==true)
 					return;
 
