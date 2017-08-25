@@ -23,6 +23,29 @@
                             <?php endforeach; ?>
                         </ol>
                         <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ($j) {
+                                $j("#cart-sidebar .item").each(function(){
+                                    var $itemBox = $j(this).children(".product-details");
+                                    var $qtyBox = $j(this).find(".product-qty");
+                                    var qty;
+                                    $itemBox.find(".qtyBtn").click(function(){
+                                        if($j(this).hasClass("qtyAdd")){
+                                            qty = parseInt($qtyBox.text())+1;
+                                            $qtyBox.text(qty);
+                                        }else if($j(this).hasClass("qtyReduce")){
+                                            qty = parseInt($qtyBox.text());
+                                            if(qty <= 1){
+                                                $itemBox.find(".btn-remove").click();
+                                            }else if(qty>1){
+                                                qty -=1;
+                                                $qtyBox.text(qty);
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
                     <?php else: ?>
                         <p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
                     <?php endif ?>

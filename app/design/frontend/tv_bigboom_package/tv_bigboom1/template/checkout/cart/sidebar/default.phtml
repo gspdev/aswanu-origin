@@ -29,6 +29,8 @@
     $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
     $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
+<?php //print_r($this->getSubmitUrl($_formProduct));exit; ?>
+
 <li class="item">
     <?php if ($this->hasProductUrl()): ?>
         <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
@@ -41,8 +43,8 @@
         <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item') ?>" class="btn-edit"><?php echo $this->__('Edit item')?></a>
         <?php endif ?>
         <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
-        <?php//<input type="button" class="qtyBtn qtyReduce" value="-"/?><strong class="product-qty"><?php echo $this->getQty() ?></strong><?php //input type="button" value="+" class="qtyBtn qtyAdd"/?> x
-
+        <input type="button" class="qtyBtn qtyReduce" value="-"/><strong class="product-qty"><?php echo $this->getQty() ?></strong><input type="button" value="+" class="qtyBtn qtyAdd"/> x
+	</form>
     <?php if ($canApplyMsrp): ?>
 
         <span class="map-cart-sidebar-item"><?php echo $this->__('See price before order confirmation.'); ?></span>
