@@ -45,6 +45,8 @@ function getOrderDetail(Mage_Sales_Model_Order $order)
 
 	$data['amount'] = array(
 		'weight'	=> $order->getData('weight') . '/KG',
+		'discount'  => $order->getData('order_currency_code') . ' '
+                . number_format($order->getData("base_discount_amount"),2),
 		'subtotal'	=> $order->getData('order_currency_code') . ' ' 
 				. number_format($order->getData('subtotal') , 2),
 		'grand_total'	=> $order->getData('order_currency_code') .' '

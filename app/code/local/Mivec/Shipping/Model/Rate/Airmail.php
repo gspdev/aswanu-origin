@@ -23,7 +23,7 @@ class Mivec_Shipping_Model_Rate_Airmail extends Mage_Shipping_Model_Carrier_Abst
 	protected function setEnableCarrier()
 	{
 		//get carriers
-		$_carriers = Mage::helper('ship/carrier')->getCarriers();
+		$_carriers = Mage::helper('ship/carrier')->getCarriers(array("type") , array("airmail"));
 		if (count($_carriers) > 0) {
 			foreach ($_carriers as $_id => $_carrier) {
 				//check
@@ -107,27 +107,32 @@ class Mivec_Shipping_Model_Rate_Airmail extends Mage_Shipping_Model_Carrier_Abst
 			->addAttributeToFilter('country_id' , $_countryData['id']);
 		$_quoteData = $_quoteCollection->getItems();
 
-		$shippingPrice = 0;
-        try {
-            if (!empty($shippingPrice)) {
+		//print_r($_quoteCollection->getSelect()->__toString());exit;
+        if (is_array($_quoteData[0])) {
+            $shippingPrice = 0;
+            try {
                 $shippingPrice = $this->calculatePrice(
                     $request, $_quoteData[0]
                 );
-                $shippingPrice = $shippingPrice / $_currencyRate;
+                if (!empty($shippingPrice)) {
+                    $shippingPrice = $shippingPrice / $_currencyRate;
+                }
+
+            } catch (Exception $e) {
+                echo "Line:" . $e->getLine() ." ". $e->getMessage();
             }
-			
-        } catch (Exception $e) {
-            echo "Line:" . $e->getLine() ." ". $e->getMessage();
+            return $shippingPrice;
         }
-        return $shippingPrice;
     }
 	
 	protected function calculatePrice(Mage_Shipping_Model_Rate_Request $request , $_quote)
 	{
 		if (!empty($_quote['quote'])) {
 			$_price = new stdClass;
-			$_productWeight = (int)$request->getPackageWeight() * 1000;
+			$_productWeight = $request->getPackageWeight();
 			$_price->quote = ($_quote['quote'] * $_productWeight);
+			//print_r($_price);exit;
+
 			if ($_price->quote < 10) {
 				$_price->quote = 10;
 			}

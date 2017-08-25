@@ -23,7 +23,7 @@ class Mivec_Shipping_Model_Rate_Express extends Mage_Shipping_Model_Carrier_Abst
 	protected function setEnableCarrier()
 	{
 		//get carriers
-		$_carriers = Mage::helper('ship/carrier')->getCarriers();
+		$_carriers = Mage::helper('ship/carrier')->getCarriers("type" , "express");
 		if (count($_carriers) > 0) {
 			foreach ($_carriers as $_id => $_carrier) {
 				//check express

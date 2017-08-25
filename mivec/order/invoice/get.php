@@ -20,6 +20,8 @@ $_general["address"] = Mage::getStoreConfig("general/store_information/address")
 //print_r($_general);exit;
 
 $_order = Mage::getModel("sales/order")->load($orderId , "increment_id");
+//print_r($_order->getData());exit;
+
 $_orderData = getOrderDetail($_order);
 $_orderData["shipping_address"] = $_orderData["shipping_address"]["firstname"]
     . " " . $_orderData["shipping_address"]["lastname"] . "<br>"
@@ -194,6 +196,10 @@ if ($pdf == "yes") {
                             <tr class="m_-9064054173632497493subtotal">
                               <td colspan="3" align="right" style="padding:3px 9px;text-transform: uppercase;">Subtotal</td>
                               <td width="24%" align="right" style="padding:3px 9px"><?php echo $_orderData["amount"]["subtotal"]?></td>
+                            </tr>
+                            <tr class="m_-9064054173632497493shipping">
+                                <td colspan="3" align="right" style="padding:3px 9px;text-transform: uppercase;">Discount</td>
+                                <td width="24%" align="right" style="padding:3px 9px"><?php echo $_orderData["amount"]["discount"]?></td>
                             </tr>
                             <tr class="m_-9064054173632497493shipping">
                               <td colspan="3" align="right" style="padding:3px 9px">Shipping &amp; Handling</td>
