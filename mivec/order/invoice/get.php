@@ -1,5 +1,15 @@
 <?php
 require 'config.php';
+$_hookHelper = Mage::helper("orderhook");
+
+$orderId = $app->getRequest()->getParam("order_id");
+$token = $app->getRequest()->getParam("token");
+$pdf = $app->getRequest()->getParam("pdf");
+$pdf = empty($pdf) ? "no" : $pdf;
+
+if (!$token ) die("Access Denied");
+if ($token != $_hookHelper->encryptToken(array($orderId))) die("Access Denied");
+
 //general config
 $_general["name"] = Mage::getStoreConfig("general/store_information/name");
 $_general["email"] = Mage::getStoreConfig("contacts/email/recipient_email");
@@ -9,8 +19,6 @@ $_general["country"] = "China";
 $_general["address"] = Mage::getStoreConfig("general/store_information/address");
 //print_r($_general);exit;
 
-$token = $app->getRequest()->getParam("token");
-$orderId = $app->getRequest()->getParam("order_id");
 $_order = Mage::getModel("sales/order")->load($orderId , "increment_id");
 $_orderData = getOrderDetail($_order);
 $_orderData["shipping_address"] = $_orderData["shipping_address"]["firstname"]
@@ -54,8 +62,26 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
     endif;
     return $_invoiceData;
 }
+
+$_viewUrl = Mage::getUrl("orderhook/invoice/get" , array(
+        "token" => $token,
+        "order_id"  => $orderId,
+        "pdf"   => "yes"
+));
+$_message = "";
+if ($pdf == "yes") {
+    $_message = 'You Can Save This Invoice,Click<a id="renderPdf" style="color:blue;padding: 0 10px 0 10px;" href="javascript:void(0)">DOWNLOAD PDF</a> To Get It';
+} else {
+    $_message = "You Can Download Invoice Below This Link <a href='$_viewUrl'>Download Invoice</a>";
+}
 ?>
-<p style="text-align: right;padding-right: 200px;"><button id="renderPdf">DOWNLOAD PDF</button></p>
+
+<div style="color: #222;background: #fff1a8;border: 1px solid #ccc;height:30px;line-height: 30px;">
+    <div style="width:700px;margin:0 auto;padding:0;text-align: right;">
+        <p style="margin:0;padding:0;font-size: 14px;"><?php echo $_message?></p></div>
+    </div>
+</div>
+
 <div id="print" style="background: #f6f6f6;width:700px;margin:0 auto;">
     <table width="700" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" style="font-family:Calibri,Times New Roman,'Helvetica Neue', Helvetica-Neue, HelveticaNeue, Helvetica, Arial, sans-serif;font-size: 10px;">
         <tbody>
@@ -66,8 +92,7 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                     <tr style="padding: 0 1px;height:100px;">
                         <td width="200" style="vertical-align: top;padding-top: 20px;">
                             <a href="<?php echo __WEB_BASE__?>" style="display: block;">
-                                <img src="<?php echo __WEB_SKIN__;?>images/logo.png" alt="Aswanu"
-                                     width="165" height="48">
+                                <img src="<?php echo __WEB_SKIN__;?>images/logo.png" alt="Aswanu" width="165" height="48">
                             </a>
                             <!--head-left-->
                             <div style="width:200px;padding:0 10px;font-size:10px;line-height: 16px;">
@@ -95,7 +120,7 @@ function getOrderInvoice(Mage_Sales_Model_Order $order)
                                                 </td>
                                                 <td width="200" style="vertical-align: top;">
                                                     <div style="font-size: 10px;">
-                                                        <p style="margin: 0;"><span style="display: inline-block;width: 80px;font-weight: bold;text-transform: uppercase;">Invoice:</span><?php echo $_orderData["general"]["increment_id"]?></p>
+                                                        <p style="margin: 0;"><span style="display: inline-block;width: 80px;font-weight: bold;text-transform: uppercase;">Invoice:</span><?php echo $_invoiceData["increment_id"]?></p>
                                                         <p style="margin: 0;"><span style="display: inline-block;width: 80px;font-weight: bold;text-transform: uppercase;">Order:</span><?php echo $_orderData["general"]["increment_id"]//$_invoiceData["increment_id"]?></p>
                                                     </div>
                                                 </td>

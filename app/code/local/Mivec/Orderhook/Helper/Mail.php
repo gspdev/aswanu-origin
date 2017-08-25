@@ -5,7 +5,43 @@ class Mivec_Orderhook_Helper_Mail extends Mage_Core_Helper_Abstract
     const XML_PATH_EMAIL_SENDER     = 'contacts/email/sender_email_identity';
     const XML_PATH_EMAIL_TEMPLATE   = 'contacts/email/email_template';
 
-    public function sendMail($data , $method = 'new')
+    public function sendMail($_recipient , $_subject , $_content)
+    {
+        $_host = trim(Mage::getStoreConfig('smtppro/general/smtp_host'));
+        $_config = $this->_config();
+        $mail = new Zend_Mail();
+
+        $transport = new Zend_Mail_Transport_Smtp($_host, $_config);
+
+        $send = $mail->setBodyHtml($_content)
+            ->setFrom(Mage::getStoreConfig(self::XML_PATH_EMAIL_RECIPIENT), 'Service')
+            ->addTo($_recipient)
+            ->setSubject($_subject);
+        //print_r($send);exit;
+
+        try {
+            if ($send->send($transport)) {
+                return true;
+            }
+        } catch (Exception $e) {
+            echo $e->getCode() . " " . $e->getMessage();
+        }
+    }
+
+    protected function _config()
+    {
+        $_smtpConfig = array(
+            "port"  => Mage::getStoreConfig('smtppro/general/smtp_port'),
+            "username"  => Mage::getStoreConfig('smtppro/general/smtp_username'),
+            "password"  => Mage::getStoreConfig('smtppro/general/smtp_password'),
+            "ssl"   => Mage::getStoreConfig('smtppro/general/smtp_ssl'),
+            //"ssl"       => "tls",
+            "auth"  => Mage::getStoreConfig('smtppro/general/smtp_authentication')
+        );
+        return $_smtpConfig;
+    }
+
+    public function _sendMail($data , $method = 'new')
     {
         //初始化mail
         $translate = Mage::getSingleton('core/translate');

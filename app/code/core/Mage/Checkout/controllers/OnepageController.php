@@ -288,6 +288,13 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
             return;
         }
 
+        //edit by mivec
+        $order = Mage::getModel("sales/order")->load($lastOrderId);
+        //set banktransfer can execute only.
+        if ($this->_getPaymentMethod($order) == 'banktransfer') {
+            $this->_requestInvoiceEmail($order);
+        }
+
         $session->clear();
         $this->loadLayout();
         $this->_initLayoutMessages('checkout/session');
@@ -295,6 +302,47 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         $this->renderLayout();
     }
 
+    private function _getPaymentMethod($order)
+    {
+        return $order->getPayment()->getMethodInstance()->getCode();
+    }
+
+    private function _requestInvoiceEmail($order)
+    {
+        $_helper = Mage::helper("orderhook");
+
+        $_invoiceUrl = Mage::getBaseUrl() . "mivec/order/invoice/get.php";
+        $_orderId = $order->getIncrementId();
+        $_token = $_helper->encryptToken(array($_orderId));//print_r($_token);print_r($_helper->decryptToken($_token));exit;
+
+        $httpClientConfig = array(
+            'maxredirects' => 0,
+            'curloptions' => array(CURLOPT_HEADER => false),
+        );
+        $client = new Zend_Http_Client($_invoiceUrl, $httpClientConfig);
+        $client->setMethod(Zend_Http_Client::POST);
+        $client->setParameterPost(array(
+            "order_id"  => $_orderId,
+            "token"     => $_token,
+            "mail"      => 1
+        ));
+
+        //mail setting
+        $store = Mage::app()->getStore();
+        $_subject = $store->getFrontendName() . ": New Order #" . $_orderId;
+
+        try {
+            $response = $client->request();
+            //test sendmail
+            $sendMail = Mage::helper("orderhook/mail")->sendMail(
+                $order->getCustomerEmail(),
+                $_subject,
+                $response->getBody()
+            );
+        } catch (Exception $e) {
+            Mage::logException($e);
+        }
+    }
     /**
      * Failure action
      */

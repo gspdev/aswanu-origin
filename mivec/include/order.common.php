@@ -22,19 +22,21 @@ function getOrderDetail(Mage_Sales_Model_Order $order)
 		'lastname'	=> $order->getData('customer_lastname'),
 		'email'		=> $order->getData('customer_email'),
 	);
-	
-	$country = Mage::getModel('directory/country')->loadByCode($shippingAddress->getCountryId());
-	$data['shipping_address'] = array(
-		'firstname'	=> $shippingAddress->getData('firstname'),
-		'lastname'	=> $shippingAddress->getData('lastname'),
-		'company'	=> $shippingAddress->getCompany(),
-		'city'		=> $shippingAddress->getCity(),
-		'region'	=> $shippingAddress->getRegion(),
-		'street'	=> $shippingAddress->getData('street'),
-		'telephone'	=> $shippingAddress->getTelephone(),
-		'zip'	=> $shippingAddress->getData('postcode'),
-		'country'	=> $country->getName(),
-	);
+
+    $data['shipping_address'] = array(
+        'firstname'	=> $shippingAddress->getData('firstname'),
+        'lastname'	=> $shippingAddress->getData('lastname'),
+        'company'	=> $shippingAddress->getCompany(),
+        'city'		=> $shippingAddress->getCity(),
+        'region'	=> $shippingAddress->getRegion(),
+        'street'	=> $shippingAddress->getData('street'),
+        'telephone'	=> $shippingAddress->getTelephone(),
+        'zip'	=> $shippingAddress->getData('postcode'),
+    );
+
+	if ($country = Mage::getModel('directory/country')->loadByCode($shippingAddress->getCountryId())) {
+	    $data["shipping_address"]["country"] = $country->getName();
+    }
 	
 	$data['carrier'] = array(
 		'carrier'	=> $order->getData('shipping_description'),
