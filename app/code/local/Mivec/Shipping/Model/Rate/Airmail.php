@@ -109,13 +109,17 @@ class Mivec_Shipping_Model_Rate_Airmail extends Mage_Shipping_Model_Carrier_Abst
 
 		$shippingPrice = 0;
         try {
-			$shippingPrice = $this->calculatePrice($request , $_quoteData[0]);
-			$shippingPrice = $shippingPrice / $_currencyRate;
+            if (!empty($shippingPrice)) {
+                $shippingPrice = $this->calculatePrice(
+                    $request, $_quoteData[0]
+                );
+                $shippingPrice = $shippingPrice / $_currencyRate;
+            }
 			
         } catch (Exception $e) {
             echo "Line:" . $e->getLine() ." ". $e->getMessage();
         }
-        return $shippingPrice < 40 ? $shippingPrice : 40;
+        return $shippingPrice;
     }
 	
 	protected function calculatePrice(Mage_Shipping_Model_Rate_Request $request , $_quote)
