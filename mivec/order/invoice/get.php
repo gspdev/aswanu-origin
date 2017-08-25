@@ -100,7 +100,6 @@ if ($pdf == "yes") {
                             <div style="width:200px;padding:0 10px;font-size:10px;line-height: 16px;">
                                 <h5 style="text-transform: uppercase;padding: 25px 0 0 0;margin:0">Ship From</h5>
                                 <p style="margin:20px 0 10px 0;">Add : Rm.6409 SEG Plaza Huaqiangbei Rd. Futian Shenzhen P.R.C.</p>
-                                <p style="margin:0 auto;">Email : <a href="mailto:<?php echo $_general['email']?>"><?php echo str_replace("@" , "#",$_general["email"]);?></a></p>
                                 <p style="margin: 0 auto;">Tel : <?php echo $_general["tel"]?></p>
                                 <p style="margin:0 auto;"><a href="<?php echo __WEB_BASE__?>" style="color:#000;"><?php echo __WEB_BASE__;?></a></p>
                             </div>
