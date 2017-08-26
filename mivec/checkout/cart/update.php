@@ -8,7 +8,9 @@ $quote = Mage::getSingleton('checkout/session')->getQuote();
 $_productId = $app->getRequest()->getParam("product_id");
 $_qty = $app->getRequest()->getParam($_qty);
 
-updateCart($_productId , $_qty);
+if (!empty($_productId)):
+    updateCart($_productId , $_qty);
+endif;
 
 function updateCart($_productId , $_qty)
 {
