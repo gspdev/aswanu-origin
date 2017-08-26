@@ -25,7 +25,7 @@ if (is_array($_keyWords)) {
 }
 $sql.= "ORDER BY a.entity_id DESC";
 
-if ($row = $db->fetchAll($sql)) {
+/*if ($row = $db->fetchAll($sql)) {
 	foreach ($row as $rs) {
 		$_id = $rs['entity_id'];
 		$_sku = $rs['sku'];
@@ -38,7 +38,7 @@ if ($row = $db->fetchAll($sql)) {
 		    echo $e->getCode() . " : " . $e->getMessage();
         }
 	}
-}
+}*/
 
 function updateIndexWeight($_productId)
 {
