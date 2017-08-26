@@ -6,7 +6,7 @@ Mage::getSingleton('core/session', array('name' => 'frontend'));
 $quote = Mage::getSingleton('checkout/session')->getQuote();
 
 $_productId = $app->getRequest()->getParam("product_id");
-$_qty = $app->getRequest()->getParam($_qty);
+$_qty = $app->getRequest()->getParam("qty");
 
 if (!empty($_productId)):
     updateCart($_productId , $_qty);
