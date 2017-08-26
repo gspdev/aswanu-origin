@@ -9,7 +9,7 @@ $_productId = $app->getRequest()->getParam("product_id");
 $_qty = $app->getRequest()->getParam("qty");
 
 if (!empty($_productId)):
-    updateCart($_productId , $_qty);
+    echo updateCart($_productId , $_qty);
 endif;
 
 function updateCart($_productId , $_qty)

@@ -1,4 +1,8 @@
-<?php $_cartQty = $this->getSummaryCount() ?>
+<?php
+$_cartQty = $this->getSummaryCount();
+
+$_webMiniCartUrl = Mage::getBaseUrl();
+?>
 <div id ="mini_cart_block">
     <div class="block-cart mini_cart_ajax">
             <div class="block-cart">
@@ -28,22 +32,39 @@
                                 $j("#cart-sidebar .item").each(function(){
                                     var $itemBox = $j(this).children(".product-details");
                                     var $qtyBox = $j(this).find(".product-qty");
-                                    var qty;
+                                    var item_id = $itemBox.find(".btn-edit").attr("href").split("/id/")[1].split("/")[0];
+                                    var item_qty;
                                     $itemBox.find(".qtyBtn").click(function(){
                                         if($j(this).hasClass("qtyAdd")){
-                                            qty = parseInt($qtyBox.text())+1;
-                                            $qtyBox.text(qty);
+                                            item_qty = parseInt($qtyBox.text())+1;
+                                            $qtyBox.text(item_qty);
+                                            ajaxMiniCart(item_id,item_qty);
                                         }else if($j(this).hasClass("qtyReduce")){
-                                            qty = parseInt($qtyBox.text());
-                                            if(qty <= 1){
+                                            item_qty = parseInt($qtyBox.text());
+                                            if(item_qty <= 1){
                                                 $itemBox.find(".btn-remove").click();
-                                            }else if(qty>1){
-                                                qty -=1;
-                                                $qtyBox.text(qty);
+                                            }else if(item_qty>1){
+                                                item_qty -=1;
+                                                $qtyBox.text(item_qty);
+                                                ajaxMiniCart(item_id,item_qty);
                                             }
                                         }
                                     });
                                 });
+                                function ajaxMiniCart(id, itemqty){
+                                    if($j.ajax){
+                                        $j.ajax({
+                                            type:'post',
+                                            async:true,
+                                            url:'<?php echo $_webMiniCartUrl.'/mivec/checkout/cart/update.php'?>',
+                                            data:{product_id:id,qty:itemqty},
+                                            dataType:'json',
+                                            success:function (data) {
+                                                alert(data.msg);
+                                            }
+                                        });
+                                    }
+                                }
                             });
                         </script>
                     <?php else: ?>
