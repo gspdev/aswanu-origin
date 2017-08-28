@@ -60,7 +60,7 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                         $j.ajax({
                                             type:'post',
                                             async:true,
-                                            url:'<?php echo $_webMiniCartUrl.'/mivec/checkout/cart/update.php'?>',
+                                            url:'<?php echo $_webMiniCartUrl."/mivec/checkout/cart/update.php"?>',
                                             data:{product_id:id,qty:itemqty,method:'update'},
                                             dataType:'json',
                                             beforeSend: function(){ loadingAjaxcart(true);},
@@ -68,11 +68,15 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                                 loadingAjaxcart(false);
                                             },
                                             complete: function(XMLHttpRequest, textStatus) {
+                                                if(textStatus!=='success'){
+                                                    showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Can&acute;t update cart now</p></div>');
+                                                    return false;
+                                                }
                                                 sumMiniCart();
                                                 showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Your cart has been updated</p></div>');
                                             },
-                                            error: function(){
-                                                confirm('Find error in updating cart!');
+                                            error: function(XMLHttpRequest, textStatus, errorThrown){
+                                                showBoxInfo('<div class ="ajaxcartReponse"><p class="info">Can&acute;t update cart now,please try again</p></div>')
                                             }
                                         });
                                     }

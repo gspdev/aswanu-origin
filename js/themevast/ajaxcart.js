@@ -23,7 +23,7 @@ function getBaseUrl()
     var baseUrl = protocol + '//' + domain + path;   // http://domain.com/ or / https://domain.com/magento/
     return baseUrl;
 }
-
+//add cart at the list page
 function addCartOnListProduct() {
     var isList = isCategoryPage();
     if(!isList) return;
@@ -67,6 +67,7 @@ function isCategoryPage(){
     if(is_view || is_list_compare || is_checkout_page || is_wishlist_page || typeof wishlist_view_form != "undefined") return false;
     else return true;
 }
+//add to cart at the product detail page
 function addCartOnDetail() {
     var is_view = jQuery('#product_addtocart_form').attr('method');
     var effect_to_cart = getConfigAjaxCart();
@@ -79,7 +80,7 @@ function addCartOnDetail() {
                 if (url) form.action = url;
                 if(!url) url = jQuery('#product_addtocart_form').attr('action');
                 var data = jQuery('#product_addtocart_form').serialize();
-                
+
                 if(effect_to_cart.flyToCart) {
                     var img = jQuery('#product_addtocart_form').find('.product-img-box .product-image img');
                     if(jQuery('#ajaxcart_product_view').attr('class')!='popup') flyToCart(jQuery(img), jQuery('.top-link-cart'));
@@ -216,15 +217,16 @@ function insertContentTopLinkToParent(element,data) {
 function ajaxToCart(url,data,mine) {
     url = url.replace(/http[^:]*:/, document.location.protocol);
     url = url.replace('checkout/cart', 'ajaxcart/ajaxcart');
+    console.log(data);
     try {
         jQuery.ajax({
             url: url,
             dataType: 'json',
             type : 'post',
             data : data,
-            beforeSend: function(){ loadingAjaxcart(true); },
+            beforeSend: function(){ loadingAjaxcart(true); },   //show loading animate
             success: function(data){
-                loadingAjaxcart(false);
+                loadingAjaxcart(false); //close loading animate
                 if(data.status==1) {
 
                     if(data.sidebar_cart) {
@@ -248,12 +250,12 @@ function ajaxToCart(url,data,mine) {
                              }
                         }
                     }
-                    //show minicart
+                    //update minicart
                     if(data.mini_cart) {
                         jQuery('#mini_cart_block').html('');
                         jQuery('#mini_cart_block').html(data.mini_cart);
                     }
-                    
+                    //update checkout
                     if(data.checkout_cart){
                         jQuery('.col-main .cart').html('');
                         jQuery('.col-main .cart').append(data.checkout_cart);

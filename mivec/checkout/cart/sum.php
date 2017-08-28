@@ -10,6 +10,7 @@ echo json_encode(array(
 
 function getCartSum()
 {
+    Mage::getSingleton("checkout/session")->setCartWasUpdated(true);
     $quote = Mage::getSingleton('checkout/session')->getQuote();
     //print_r($quote->getData());
     return $quote->getItemsQty();

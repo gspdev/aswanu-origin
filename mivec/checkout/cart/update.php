@@ -51,6 +51,7 @@ function updateCart($_productId , $_qty)
     try {
         if ($quote->save()) :
             //echo "Update Quantity successfully";
+            Mage::getSingleton("checkout/session")->setCartWasUpdated(true);
             return json_encode(array(
                 "status"    => true,
                 "msg"       => "success"
