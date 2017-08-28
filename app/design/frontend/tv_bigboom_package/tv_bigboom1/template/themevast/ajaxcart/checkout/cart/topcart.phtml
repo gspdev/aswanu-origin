@@ -51,19 +51,38 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                         }
                                     });
                                 });
+                                /*
+                                * ajaxMiniCart
+                                * product_id,qty,method('update')
+                                * */
                                 function ajaxMiniCart(id, itemqty){
                                     if($j.ajax){
                                         $j.ajax({
                                             type:'post',
                                             async:true,
                                             url:'<?php echo $_webMiniCartUrl.'/mivec/checkout/cart/update.php'?>',
-                                            data:{product_id:id,qty:itemqty},
+                                            data:{product_id:id,qty:itemqty,method:'update'},
                                             dataType:'json',
+                                            beforeSend: function(){ loadingAjaxcart(true);},
                                             success:function (data) {
-                                                alert(data.msg);
+                                                loadingAjaxcart(false);
+                                            },
+                                            complete: function(XMLHttpRequest, textStatus) {
+                                                sumMiniCart();
+                                                showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Your cart has been updated</p></div>');
+                                            },
+                                            error: function(){
+                                                confirm('Find error in updating cart!');
                                             }
                                         });
                                     }
+                                }
+                                function sumMiniCart() {
+                                    var sumItem = 0;
+                                    $j.each($j("#cart-sidebar li"),function(){
+                                        sumItem += parseInt($j(this).find(".product-qty").text());
+                                    });
+                                    $j(".cart-mini-title .cart-count").text(sumItem);
                                 }
                             });
                         </script>
