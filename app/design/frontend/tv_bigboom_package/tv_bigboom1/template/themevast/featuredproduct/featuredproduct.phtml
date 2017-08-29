@@ -60,7 +60,7 @@ $helpLabels = $this->helper('themevast/labels');
 					<?php echo $this->getPriceHtml($_product, true) ?>
 				<?php endif; ?>
 				<div class="actions">
-                    <input type="number" class="act-input f-left" value="" oninput="if(value.length>2)value=value.slice(0,2)" data-toggle="tooltip" title="qty > 0">
+                    <input type="number" class="act-input f-left" value="" oninput="if(value.length>3)value=value.slice(0,3)" data-toggle="tooltip" title="qty > 0">
 					<?php if($cart): ?>
 						<?php if($_product->isSaleable()): ?>
 							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>

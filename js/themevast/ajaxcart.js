@@ -224,7 +224,6 @@ function insertContentTopLinkToParent(element,data) {
 function ajaxToCart(url,data,mine) {
     url = url.replace(/http[^:]*:/, document.location.protocol);
     url = url.replace('checkout/cart', 'ajaxcart/ajaxcart');
-    console.log(data);
     try {
         jQuery.ajax({
             url: url,
