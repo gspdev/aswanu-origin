@@ -67,6 +67,10 @@
     <div id="back-top" class="hidden-xs"><i class="fa fa-angle-up"></i></div>
 </footer>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_social_right')->toHtml() ?>
+<!--show message of 'qty > 0'-->
+<script type="text/javascript">
+    jQuery("input.act-input[data-toggle='tooltip']").tooltip();
+</script>
 <!--Start of Zendesk Chat Script-->
 <script type="text/javascript">
 window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=

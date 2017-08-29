@@ -41,7 +41,7 @@ function addCartOnListProduct() {
                     if(!qty){
                         qty = 1;
                     }else if(/^-[0-9]*[1-9][0-9]*$/.test(qty)){
-                        showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Input number must more than <b>1</b></p></div>');
+                        showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Input number must more than <b>0</b></p></div>');
                         return false;
                     }
                     var data = 'qty='+ qty;
