@@ -32,11 +32,18 @@ function addCartOnListProduct() {
         var effectToCart = getConfigAjaxCart();
         if(linkToCart){
             linkToCart = linkToCart.replace("setLocation('","").replace("')","");
-            jQuery(this).removeAttr('onclick')
+            jQuery(this).removeAttr('onclick');
             jQuery(this).live('click',function(){
                 if(linkToCart.search('checkout/cart/add')!= -1 || linkToCart.search('ajaxcart/ajaxcart/add') !=-1) {
                     linkToCart =  linkToCart.replace('checkout/cart', 'ajaxcart/ajaxcart');
-                    var qty = jQuery(this).parent().children('.qty').val();
+                    //var qty = jQuery(this).parent().children('.qty').val();
+                    var qty = jQuery(this).parent().find(".act-input").val();
+                    if(!qty){
+                        qty = 1;
+                    }else if(/^-[0-9]*[1-9][0-9]*$/.test(qty)){
+                        showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Input number must more than <b>1</b></p></div>');
+                        return false;
+                    }
                     var data = 'qty='+ qty;
                     ajaxToCart(linkToCart,data,jQuery(this));
                     var img = jQuery(this).closest('li').find('img:first');

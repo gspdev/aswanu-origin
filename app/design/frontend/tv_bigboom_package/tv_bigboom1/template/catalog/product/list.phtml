@@ -76,7 +76,7 @@
                         <div class="actions">
                             <?php if($_product->isSaleable()): ?>
                                 <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
-                                <input type="text" class="act-input f-right" value="" style="margin-right: 20px;">
+                                <input type="number" class="act-input f-right" value="" style="margin-right: 20px;">
                             <?php else: ?>
                                 <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                             <?php endif; ?>
@@ -133,7 +133,7 @@
                     <?php echo $this->getPriceHtml($_product, true) ?>               
                     <div class="actions">
                          <?php if($_product->isSaleable()): ?>
-                             <input type="text" class="act-input f-left" value=" ">
+                             <input type="number" class="act-input f-left" value=" ">
                             <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
                         <?php else: ?>
                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
