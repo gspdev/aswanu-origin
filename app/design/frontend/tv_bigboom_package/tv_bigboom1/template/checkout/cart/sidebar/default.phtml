@@ -44,6 +44,8 @@
         <?php endif ?>
         <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
         <input type="button" class="qtyBtn qtyReduce" value="-"/><strong class="product-qty"><?php echo $this->getQty() ?></strong><input type="button" value="+" class="qtyBtn qtyAdd"/> x
+
+        <input type="hidden" class="product_id" value="<?php echo $_item->getItemId()?>" />
 	</form>
     <?php if ($canApplyMsrp): ?>
 

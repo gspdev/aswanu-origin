@@ -32,8 +32,7 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                 $j("#cart-sidebar .item").each(function(){
                                     var $itemBox = $j(this).children(".product-details");
                                     var $qtyBox = $j(this).find(".product-qty");
-                                    var item_id = $itemBox.find(".btn-edit").attr("href").split("/id/")[1].split("/")[0];
-                                    var item_qty;
+                                    var item_id = $itemBox.find(".product_id").val();
                                     $itemBox.find(".qtyBtn").click(function(){
                                         if($j(this).hasClass("qtyAdd")){
                                             item_qty = parseInt($qtyBox.text())+1;
@@ -57,13 +56,12 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                 * */
                                 function ajaxMiniCart(id, itemqty){
                                     try{
-                                        if($j.ajax){
                                             $j.ajax({
+                                                url:'<?php echo $_webMiniCartUrl."/mivec/checkout/cart/update.php"?>',
+                                                dataType:'json',
                                                 type:'post',
                                                 async:true,
-                                                url:'<?php echo $_webMiniCartUrl."/mivec/checkout/cart/update.php"?>',
-                                                data:{product_id:id,qty:itemqty,method:'update'},
-                                                dataType:'json',
+                                                data:{'product_id':id,'qty':itemqty,'method':'update'},
                                                 beforeSend: function(){ loadingAjaxcart(true);},
                                                 success:function (data) {
                                                     loadingAjaxcart(false);
@@ -80,7 +78,6 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                                     showBoxInfo('<div class ="ajaxcartReponse"><p class="info">Can&acute;t update cart now,please try again</p></div>')
                                                 }
                                             });
-                                        }
                                     }catch (e){
                                         alert('Have error ajaxcart here you checkout none ajax');
                                         return false;
