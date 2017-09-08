@@ -3354,10 +3354,9 @@ background: url(../images/new_add/seller/it_04.png) center center no-repeat\9;		
 .access-box .col-xs-12 ,.access-box .col-sm-6 ,.access-box .col-md-6 ,.access-box .col-lg-6{padding:0!important;}
 .kind-Category{width:40%;height:550px;}
 .kind-Category h4 {
-        box-sizing: border-box;
-        padding-left: 20px;
-        height: 60px;
-        line-height: 80px; }
+    box-sizing: border-box;
+    padding: 40px 0 0 20px;
+    margin-bottom: 30px;}
 .kind-Category h4 a {
           color: #333;
           font-size: 18px;
