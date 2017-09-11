@@ -25,9 +25,8 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
             //echo $_price . "</p>";
             if (hasProduct($_id)) {
                 $_data = getFinalPrice($_id, $_price);
-
                 //currency exchange
-                $_data = $_data['price'] / 6.53;
+                $_data['price'] = $_data['price'] / 6.53;
                 try {
                     if (updatePrice($_id, $_data['price'])) {
                         echo $_id . " was success updated</p>";
@@ -41,7 +40,7 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
                 }
             }
         }
-        //if ($i==100) break;
+        if ($i==10) break;
         $i++;
     }
 }
