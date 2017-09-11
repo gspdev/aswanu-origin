@@ -14,7 +14,8 @@ class Mivec_Support_TicketController extends Mivec_Support_Controllers_Abstract
         $this->_init();
         if (!$this->ifCustomerLogin()) {
             $_forwardUrl = Mage::getUrl("support/ticket/post");
-            $this->redirectLogin();
+            Mage::getSingleton('customer/session')->setBeforeAuthUrl(Mage::helper("core/url")->getCurrentUrl());
+            $this->_redirect('customer/account/login' , array('uenc' => Mage::helper('core')->urlEncode($_forwardUrl)));
         }
 
         $this->renderLayout();
@@ -24,5 +25,10 @@ class Mivec_Support_TicketController extends Mivec_Support_Controllers_Abstract
     {
         $this->_init()
             ->renderLayout();
+    }
+
+    public function captchaAction()
+    {
+
     }
 }
