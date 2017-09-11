@@ -29,7 +29,7 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
                         echo $_id . " was success updated</p>";
 
                         updateLogToFile($handle, $_data);
-                        sleep(5);
+                        usleep(10);
                         //if ($i == 200) break;
                     }
                 } catch (Exception $e) {
