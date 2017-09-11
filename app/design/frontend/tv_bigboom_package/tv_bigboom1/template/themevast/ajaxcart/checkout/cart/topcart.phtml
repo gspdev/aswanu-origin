@@ -85,10 +85,13 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                 }
                                 function sumMiniCart() {
                                     var sumItem = 0;
+                                    var sumTotal = 0;
                                     $j.each($j("#cart-sidebar li"),function(){
                                         sumItem += parseInt($j(this).find(".product-qty").text());
+                                        sumTotal += parseInt($j(this).find(".product-qty").text())*$j(this).find("span.price").text().split("$")[1];
                                     });
                                     $j(".cart-mini-title .cart-count").text(sumItem);
+                                    $j(".top-subtotal .price").text(sumTotal);
                                 }
                             });
                         </script>
