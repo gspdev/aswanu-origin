@@ -24,6 +24,9 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
         if (!empty($_price)) {
             if (hasProduct($_id)) {
                 $_data = getFinalPrice($_id, $_price);
+
+                //currency exchange
+                $_data = $_data['price'] / 6.53;
                 try {
                     if (updatePrice($_id, $_data['price'])) {
                         echo $_id . " was success updated</p>";
