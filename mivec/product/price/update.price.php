@@ -21,7 +21,8 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
     foreach ($_content as $_con) {
         $_id = $_con[0];
         $_price = $_con[3]; //price in file
-        if (!empty($_price)) {
+        if (!empty($_price) != 0) {
+            //echo $_price . "</p>";
             if (hasProduct($_id)) {
                 $_data = getFinalPrice($_id, $_price);
 
@@ -40,6 +41,7 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
                 }
             }
         }
+        //if ($i==100) break;
         $i++;
     }
 }
