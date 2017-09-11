@@ -166,7 +166,7 @@
 	.cart-footer-actions .forPc{display: none!important;}
 	.cart-footer-actions button.button{margin: 0 10px 12px 0;}
 	#discount-coupon-form button span span,.shipping-form button span span,
-	.cart-footer-actions button.button span span{padding: 5px 8px;}
+	.cart-footer-actions button.button span span{padding: 2px 8px;font-size: 12px;}
 	.crosssellBox,.crosssell{display: none;}
 /*SearchPage*/
 	.sorter .sort-by{margin:10px 0 0 0;}
