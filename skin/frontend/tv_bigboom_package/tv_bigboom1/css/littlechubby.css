@@ -25,8 +25,7 @@
 	.searchautocomplete .nav-search-in{top:-1px!important;}
 	.form-search input.input-text{width:100%;padding-right:72px;}
 	.page-header-content .search-right-box{height:initial;padding:0 15px;margin-top:10px;}
-	.search-right-box{display: none;}
-	.search-right-box.mobile-search{display: block!important;}
+	.search-right .forPc{display: none!important;}
 	.search-right> div{margin:0;}
 	.page-header-content .search-right{padding:0;position: relative;z-index: 101;}
 	.page-header-content .search-right .head-Cart{float:right;}
@@ -161,11 +160,13 @@
 	.addresses-list .col-1,.addresses-list .col-2{float:none;width:100%;padding:0 20px;}
 /*CheckOutPage*/
 	.form-list li.wide .input-box,.form-list li.wide select{width:100%!important;}
-	.cart-table .cart-footer-actions .btn-update, .cart-table .cart-footer-actions span.or{display: block!important;}
-	.cart-table .cart-footer-actions .btn-update:nth-child(1){display: none!important;}
+	#empty_cart_button span span{background-color:#d5d6d3}
+	.cart-table .cart-footer-actions .btn-update{display: inline-block!important;float:left;}
 	.cart-table .cart-footer-actions #empty_cart_button{display: inline-block;float:left;}
+	.cart-footer-actions .forPc{display: none!important;}
 	.cart-footer-actions button.button{margin: 0 10px 12px 0;}
-	.cart-footer-actions button.button span span{padding: 10px;}
+	#discount-coupon-form button span span,.shipping-form button span span,
+	.cart-footer-actions button.button span span{padding: 5px 8px;}
 	.crosssellBox,.crosssell{display: none;}
 /*SearchPage*/
 	.sorter .sort-by{margin:10px 0 0 0;}
@@ -173,10 +174,25 @@
 	.sorter .sort-by>label,.sorter .limiter>label{display:inline-block;width:50px;}
 	.tooltip{display: none!important;}
 	.cart-table .product-cart-actions .qty{margin-right: 0;}
-	.nivo-controlNav{display: none;}
+/*CheckOut Total*/
+	.cart .totals{}
+	.cart .totals .totals-title{text-align: right;padding:10px 0 8px 6px;}
+	.cart .totals td{padding: 4px;}
+	.cart .totals tfoot td{padding:8px 4px;}
+	.cart .totals .checkout-types li{text-align: right;}
+	.btn-checkout{width: auto;}
+	.cart .totals{border:none;}
+	.cart .totals .checkout-types li .paypal-or{display: none;}
+	button.btn-checkout span span{padding: 10px 20px;}
+	/*banner*/
+	.nivo-directionNav a{width: 32px;}
+	.banner-slideshow .nivo-directionNav .nivo-prevNav{left:0;}
+	.banner-slideshow .nivo-directionNav .nivo-nextNav{right:0;}
 }
 @media (min-width:768px){	
 	.drop-currency .currency-trigger .sub-currency{left:initial;right:0;}
+	.search-right .forMobile{display: none!important;}
+	.cart-footer-actions .forMobile{display: none!important;}
 }
 @media (max-width: 992px) and (min-width: 768px){
 	.header-toplinks .links>li>a{padding:0 2px;}

@@ -95,19 +95,27 @@
             <tfoot>
                 <tr>
                     <td colspan="50" class="a-right cart-footer-actions">
+                        <div class="forPc">
+                            <!-- Make this button the first responder rather than empty cart -->
+                            <button type="submit" style="visibility:hidden;" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
 
-                        <!-- Make this button the first responder rather than empty cart -->
-                        <button type="submit" style="visibility:hidden;" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+                            <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Empty Cart'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Empty Cart'); ?></span></span></button>
 
-                        <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Empty Cart'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Empty Cart'); ?></span></span></button>
+                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Cart'); ?></span></span></button>
 
-                        <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Cart'); ?></span></span></button>
+                            <span class="or"></span>
 
-                        <span class="or"></span>
-
-                        <?php if($this->getContinueShoppingUrl()): ?>
-                            <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="submitAndContinue()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button><!--setLocation('<?php //echo $this->getContinueShoppingUrl();?>')-->
-                        <?php endif; ?>
+                            <?php if($this->getContinueShoppingUrl()): ?>
+                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="submitAndContinue()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button><!--setLocation('<?php //echo $this->getContinueShoppingUrl();?>')-->
+                            <?php endif; ?>
+                        </div>
+                        <div class="forMobile">
+                            <?php if($this->getContinueShoppingUrl()): ?>
+                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="submitAndContinue()"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button><!--setLocation('<?php //echo $this->getContinueShoppingUrl();?>')-->
+                            <?php endif; ?>
+                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Cart'); ?></span></span></button>
+                            <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Empty Cart'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Empty Cart'); ?></span></span></button>
+                        </div>
                         <script type="text/javascript">
                             //submit at current window,continue shopping at new window.
                             function submitAndContinue(){

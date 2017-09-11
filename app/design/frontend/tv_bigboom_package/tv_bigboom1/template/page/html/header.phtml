@@ -93,7 +93,8 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 f-right search-right-box">
 						<div class="search-right clear_fix">
 							<div class="head-Cart fl">
-								<a href="<?php echo$this->getUrl('checkout/cart')?>"></a>
+								<a href="<?php echo$this->getUrl('checkout/cart')?>" class="forPc"></a>
+                                <a href="javascript:void(0)" class="forMobile"></a>
 								<div class="header-cart-mini">
 									<div class="topcart-mini-container">
 										<?php echo $this->getChildHtml('top_cart_mini') ?>
@@ -109,7 +110,8 @@
 								</a>
 							</div>
 							<div class="head-My fl">
-								<a href="<?php echo $this->getUrl('customer/account')?>" class="myAccount"></a>
+								<a href="<?php echo $this->getUrl('customer/account')?>" class="myAccount forPc"></a>
+                                <a href="javascript:void(0)" class="myAccount forMobile"></a>
 								<a class="myText signin hidden-xs" href="<?php echo $this->getUrl('customer/account') ?>">
                                 <?php if (!empty($session->getId())):?>
 									<span>Hi,<i><?php echo $customer_data->getLastname()?></i></span>
@@ -146,63 +148,6 @@
 							</div>
 						</div>
 					</div>
-                    <!--for mobile-->
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 f-right search-right-box mobile-search hidden-sm hidden-md hidden-lg">
-                        <div class="search-right clear_fix">
-                            <div class="head-Cart fl">
-                                <a href="javascript:void(0);"></a>
-                                <div class="header-cart-mini">
-                                    <div class="topcart-mini-container">
-                                        <?php echo $this->getChildHtml('top_cart_mini') ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="head-Wishlist fl hidden-xs">
-                                <?php //edit herf by jerry?>
-                                <a class="wishMask" href="<?php echo $this->getUrl('wishlist') ?>"></a>
-                                <a class="wishText" href="javascript:void(0)">
-                                    <span>Wish</span>
-                                    <span>List</span>
-                                </a>
-                            </div>
-                            <div class="head-My fl">
-                                <a href="javascript:void(0)" class="myAccount"></a>
-                                <a class="myText signin hidden-xs" href="<?php echo $this->getUrl('customer/account') ?>">
-                                    <?php if (!empty($session->getId())):?>
-                                        <span>Hi,<i><?php echo $customer_data->getLastname()?></i></span>
-                                        <span>My Account</span>
-                                    <?php else:?>
-                                        <span>Welcome !</span>
-                                        <span>Sign in</span>
-                                    <?php endif;?>
-                                </a>
-                                <a class="myText signin visible-xs hidden-sm" href="<?php echo $this->getUrl('customer/account')?>">
-                                    <?php if (!empty($session->getId())):?>
-                                        <span>Hi,<i><?php echo $customer_data->getLastname()?></i></span>
-                                        <span>My Account</span>
-                                    <?php else:?>
-                                        <span>Welcome !</span>
-                                        <span>Sign in</span>
-                                    <?php endif;?>
-                                </a>
-                                <div class="top-Line"></div>
-                                <div class="my-Drop">
-                                    <?php if (empty($session->getId())):?>
-                                        <a href="<?php echo $this->getUrl('customer/account/login') ?>" title="Sign in" class="myDrop-Sign signin">Sign in</a>
-                                        <p class="myDrop-Join">New to Aswanu? <a href="<?php echo $this->getUrl('customer/account/create') ?>" title="Join Free" class="register">Join Free</a></p>
-                                    <?php endif;?>
-                                    <ul class="myDrop-List">
-                                        <li><a href="<?php echo $this->getUrl('customer/account/')?>">My Aswasu</a></li>
-                                        <li><a href="<?php echo $this->getUrl('sales/order/history')?>">My Orders</a></li>
-                                        <li><a href="<?php echo $this->getUrl('review/customer/')?>">My Reviews</a></li>
-                                        <li><a href="<?php echo $this->getUrl('wishlist')?>">My Favorites</a></li>
-                                    </ul>
-                                    <a class="myDrop-Request" href="javascript:void(0)">Submit a Buying Request</a>
-                                    <p>Let us help you find what you need</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div> 
             </div>
         </div>
