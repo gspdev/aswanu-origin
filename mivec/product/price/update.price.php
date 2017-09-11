@@ -40,7 +40,7 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
                 }
             }
         }
-        if ($i==10) break;
+        //if ($i==10) break;
         $i++;
     }
 }
