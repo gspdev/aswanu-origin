@@ -79,12 +79,12 @@
 						<div class="learn-box"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a></div>
                         <div class="actions">
                             <?php if($_product->isSaleable()): ?>
-                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
-                                <div class="qtyBox f-right clearfix" style="margin-right: 20px;">
+                                <div class="qtyBox f-left clearfix" style="margin-right: 10px;">
                                     <input type="button" value="-" class="left qtyBtn qtyReduce"/>
                                     <input type="number" class="act-input f-left"  value="1" oninput="if(value.length>3)value=value.slice(0,3)" data-toggle="tooltip" title="qty > 0"/>
                                     <input type="button" value="+" class="left qtyBtn qtyAdd"/>
                                 </div>
+                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-left" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
                             <?php else: ?>
                                 <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                             <?php endif; ?>
