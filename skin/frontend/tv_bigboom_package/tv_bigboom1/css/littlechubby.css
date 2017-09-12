@@ -76,7 +76,7 @@
 	.seller-L3{height:initial!important;}
 	/*Cellphone Accessory and parts*/
 	.kind-Category{width:initial;height:auto;}
-	.kind-Category h4{height:40px;line-height:40px;}
+	.kind-Category h4{height:40px;padding: 20px 0 0 20px;margin-bottom: 20px;}
 	.kind-Category ul li{margin-top:0;}
 	.kind-R .kind-R2 a p{line-height:initial;word-break: break-all;}
 	/*deal of the day*/
@@ -188,11 +188,16 @@
 	.nivo-directionNav a{width: 32px;}
 	.banner-slideshow .nivo-directionNav .nivo-prevNav{left:0;}
 	.banner-slideshow .nivo-directionNav .nivo-nextNav{right:0;}
+	.featuredproduct .forPc{display: none!important;}
+	.featuredproduct button.btn-cart{margin-left: 10px;}
+	.featuredproduct button.btn-cart span .fa{margin:0 0 0 4px;}
+	.cart .shipping {margin:0;}
 }
 @media (min-width:768px){	
 	.drop-currency .currency-trigger .sub-currency{left:initial;right:0;}
 	.search-right .forMobile{display: none!important;}
 	.cart-footer-actions .forMobile{display: none!important;}
+	.featuredproduct .forMobile{display: none!important;}
 }
 @media (max-width: 992px) and (min-width: 768px){
 	.header-toplinks .links>li>a{padding:0 2px;}

@@ -7,7 +7,7 @@ $helpLabels = $this->helper('themevast/labels');
 ?>
 <style>
     .qtyBox{display: inline-block;}
-    .qtyBtn{display: inline-block;width: 12px;height: 20px;font-size: 14px;line-height: 16px;-webkit-appearance : none ;border-radius: 0;}
+    .qtyBtn{display: inline-block;width: 12px;height: 20px;font-size: 14px;line-height: 16px;-webkit-appearance : none!important; ;border-radius: 0;}
 </style>
 <div class="featuredproduct">
 	<?php echo $this->getConfig('title') ? '<div class="bx-title featured-title"><h2>' .$this->getConfig('title'). '</h2></div>' : '';
@@ -70,7 +70,8 @@ $helpLabels = $this->helper('themevast/labels');
                                 <input type="number" class="act-input f-left"  value="1" oninput="if(value.length>3)value=value.slice(0,3)" data-toggle="tooltip" title="qty > 0"/>
                                 <input type="button" value="+" class="left qtyBtn qtyAdd"/>
                             </div>
-							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-left forMobile" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add') ?><i class="fa fa-shopping-cart"></i></span></span></button>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right forPc" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
 						<?php else: ?>
 							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
 						<?php endif; ?>
