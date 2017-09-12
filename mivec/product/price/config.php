@@ -89,10 +89,9 @@ function setFormula($_price)
         //$_percent = $_pricePercent[$_key];
 
         //首位
-        if ($_key == 0 && $_price < $_unit) {
+        if ($_key == 0 && $_price <= $_unit) {
             $_percent = $_pricePercent[0];
             //return calculatePrice($_price , $_percent);
-
         }
 
         //中位

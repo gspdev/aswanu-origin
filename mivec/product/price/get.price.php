@@ -7,6 +7,7 @@ $_rate = 6.53;
 $result = array();
 if ($_cost = $app->getRequest()->getParam("cost")) {
     $result = setFormula($_cost);
+    $result['USD'] = $result['price'] / $_rate;
 }
 ?>
 
