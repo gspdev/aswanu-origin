@@ -1,24 +1,11 @@
 <?php
 require dirname(dirname(__FILE__)) . '/config.php';
-
-define("__CFG_CURRENCY__" , 6.796);
-
 define("__DATA_PATH__" , dirname(__FILE__) . "/data/");
-
-define("__TABLE_PRODUCT__" , "catalog_product_entity");
-define("__TABLE_PRICE__" , "catalog_product_entity_decimal");
-
-//price's attribute_id is 75
-define("__ATTR_PRICE__",75);
-
-//primary key
-define("__PRIMARY_KEY_PRODUCT__" , "entity_id");
-
 
 function hasProduct($_entityId)
 {
     global $db;
-    $sql = "SELECT COUNT(*) FROM " . __TABLE_PRODUCT__
+    $sql = "SELECT COUNT(*) FROM " . __TABLE_PRODUCT_MAIN__
         . " WHERE " . __PRIMARY_KEY_PRODUCT__ . "=" . $_entityId;
     return $db->fetchOne($sql);
 }
@@ -26,9 +13,9 @@ function hasProduct($_entityId)
 function updatePrice($_entityId , $_price)
 {
     global $db;
-    $sql = "UPDATE ". __TABLE_PRICE__
+    $sql = "UPDATE ". __TABLE_PRODUCT_PRICE__
         . " SET `value`=$_price"
-        . " WHERE attribute_id=" . __ATTR_PRICE__
+        . " WHERE attribute_id=" . __ATTR_PRICE_RETAIL__
         . " AND " . __PRIMARY_KEY_PRODUCT__ . "=" . $_entityId;
     return $db->query($sql);
 }
@@ -36,8 +23,8 @@ function updatePrice($_entityId , $_price)
 function deletePrice($_entityId)
 {
     global $db;
-    $sql = "DELETE FROM " . __TABLE_PRICE__
-        . " WHERE attribute_id=" . __ATTR_PRICE__
+    $sql = "DELETE FROM " . __TABLE_PRODUCT_PRICE__
+        . " WHERE attribute_id=" . __ATTR_PRICE_RETAIL__
         . " AND " .__PRIMARY_KEY_PRODUCT__. "=" . $_entityId;
 
     return $db->query($sql);
@@ -49,8 +36,8 @@ function deletePrice($_entityId)
 function getFinalPrice($_entityId , $_price)
 {
     global $db;
-    $sql = "SELECT * FROM " . __TABLE_PRICE__
-        . " WHERE attribute_id=" . __ATTR_PRICE__
+    $sql = "SELECT * FROM " . __TABLE_PRODUCT_PRICE__
+        . " WHERE attribute_id=" . __ATTR_PRICE_RETAIL__
         . " AND " .__PRIMARY_KEY_PRODUCT__. "=" . $_entityId;
 
     $_return = 0;

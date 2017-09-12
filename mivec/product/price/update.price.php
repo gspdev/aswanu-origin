@@ -33,7 +33,7 @@ if ($_content = getCsvContent(__DATA_PATH__ . $_file)) {
 
                         updateLogToFile($handle, $_data);
                         usleep(10);
-                        //if ($i == 200) break;
+                        if ($i == 1) break;
                     }
                 } catch (Exception $e) {
                     echo $e->getMessage();
