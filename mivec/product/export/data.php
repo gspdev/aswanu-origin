@@ -23,7 +23,7 @@ if ($row = $db->fetchAll($sql)) {
 
         $data = array(
             "id"    => $_id,
-            "sku"   => $rs["sku"],
+            "sku"   => $_product->getSku(),
             "name"  => $_product->getName(),
             "price" => $rs['value']
         );
