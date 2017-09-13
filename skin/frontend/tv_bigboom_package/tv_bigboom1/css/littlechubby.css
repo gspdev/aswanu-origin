@@ -106,7 +106,7 @@
     -webkit-animation: turn 2s linear infinite alternate;}
 	#navMask{position:fixed;z-index:1000;left:0;top:0;background:rgba(0,0,0,.8);width:0;height:100%;transition:all ease 0.35s;}
 	.menuShow{left:0!important;}
-	.block.block-layered-nav{position:absolute;z-index:1001;left:-800px;top:0;width:100%;transition:all ease 0.8s;}
+	.block.block-layered-nav{position:absolute;z-index:1001;left:-800px;top:0;width:100%;transition:all ease 0.8s;border-radius: 5px;}
 	.block-compare{display:none!important;}
 	.products-list li.item .product-images{width:35%;}
 	.products-list li.item .product-shop{width:65%;}
@@ -116,7 +116,7 @@
 	.category-products .products-grid li.item .item-inner>p{display:none!important;}
 	.category-products{background:#ffffff;}
 /*ProductPage*/
-	.col2-left-layout .col-main{margin-bottom:20px;}
+	.col2-left-layout .col-main{margin: 14px 0 20px 0;}
 	.upsellslider,.addthis_native_toolbox{display:none!important;}
 	.product-view .product-shop{padding:0 25px;}
 	.short-description .std p{margin:0;}
@@ -148,7 +148,7 @@
 	.block-account .block-title{padding-top:20px;}
 	.block-account .block-content{padding:0 0 15px 0;}
 	.block-reorder{display:none!important;}
-	.block-account{background:#fff;padding:0 15px 0 25px;position:absolute;z-index:200;left:-767px;top:-140px;width:100%;
+	.block-account{background:#fff;padding:0 15px 0 25px;position:fixed;z-index:200;left:-767px;top:50px;width:90%;margin:0 5%;
 		border-radius:12px;transition:all 0.25s ease;}
 	.dashboard{margin-top:20px;}
 	.dashboard .welcome-msg{margin:0 0 1.5em 0;}
@@ -186,12 +186,18 @@
 	button.btn-checkout span span{padding: 10px 20px;}
 	/*banner*/
 	.nivo-directionNav a{width: 32px;}
-	.banner-slideshow .nivo-directionNav .nivo-prevNav{left:0;}
-	.banner-slideshow .nivo-directionNav .nivo-nextNav{right:0;}
+	.banner-slideshow .nivo-directionNav .nivo-prevNav{left:0;z-index: 11;}
+	.banner-slideshow .nivo-directionNav .nivo-nextNav{right:0;z-index: 11;}
 	.featuredproduct .forPc{display: none!important;}
 	.featuredproduct button.btn-cart{margin-left: 10px;}
 	.featuredproduct button.btn-cart span .fa{margin:0 0 0 4px;}
 	.cart .shipping {margin:0;}
+	.block-layered-nav #narrow-by-list{padding-left: 40px;}
+	.block-layered-nav.menuShow .block-subtitle{display: block;font-size: 16px;}
+	.block-layered-nav dt span,.block-layered-nav dd li{font-size: 12px;}
+	.my-wishlist .buttons-set button.button{margin:4px 0;}
+	.my-wishlist .buttons-set button.button span span{padding: 4px 12px;font-size: 12px;}
+	.sorter .view-mode .grid{display: none;}
 }
 @media (min-width:768px){	
 	.drop-currency .currency-trigger .sub-currency{left:initial;right:0;}
