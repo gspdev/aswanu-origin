@@ -7,7 +7,8 @@ $helpLabels = $this->helper('themevast/labels');
 ?>
 <style>
     .qtyBox{display: inline-block;}
-    .qtyBtn{display: inline-block;width: 12px;height: 20px;font-size: 14px;line-height: 16px;-webkit-appearance : none!important; ;border-radius: 0;}
+    .qtyBtn{display: inline-block;width: 12px;height: 20px;font-size: 14px;line-height: 16px;-webkit-appearance : none!important;border: 1px solid #a29e9e;background: #f5f5f5;border-radius: 0;}
+    .qtyBtn:active{background: #bfc1c1;}
 </style>
 <div class="featuredproduct">
 	<?php echo $this->getConfig('title') ? '<div class="bx-title featured-title"><h2>' .$this->getConfig('title'). '</h2></div>' : '';
