@@ -64,7 +64,7 @@ function getFinalPrice($_entityId , $_price)
 function setFormula($_price)
 {
     global $db;
-    $_price = floor($_price);
+    //$_price = floor($_price);
 
     $_priceRange = array(
         1,2,3,4,5,6,7,8,9,10
