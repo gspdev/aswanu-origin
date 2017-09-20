@@ -15,7 +15,16 @@ class Mivec_Ship_Block_Adminhtml_Carrier_Edit_Tab_Form extends Mage_Adminhtml_Bl
 			'required'	=> true,
 			'value'		=> Mage::registry('carrier_data')->getData("carrier_name")
 		));
-		
+
+		if (Mage::registry('carrier_data')->getData('type') == 'express') {
+            $fieldset->addField('tax_oil', 'text', array(
+                'label' => 'Tax Of Oil',
+                'name' => 'tax_oil',
+                'required' => true,
+                'value' => Mage::registry('carrier_data')->getData("tax_oil")
+            ));
+        }
+
 		$fieldset->addField('type', 'select', array(
 			'label'     => "Type",
 			'name'      => 'type',

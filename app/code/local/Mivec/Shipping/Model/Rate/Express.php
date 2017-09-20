@@ -2,7 +2,8 @@
 class Mivec_Shipping_Model_Rate_Express extends Mage_Shipping_Model_Carrier_Abstract implements Mage_Shipping_Model_Carrier_Interface
 {
     protected $_code = 'mivec_shippingex';
-	protected $_quoteHelper;
+	protected $_quoteExpress;
+	protected $_carrierHelper;
     protected $_carrier;
 	protected $_prefix = "carrier_";
 	
@@ -10,7 +11,8 @@ class Mivec_Shipping_Model_Rate_Express extends Mage_Shipping_Model_Carrier_Abst
     {
 		//helper
 		$this->_quoteExpress = Mage::helper('ship/express');
-		
+		$this->_carrierHelper = Mage::helper('ship/carrier');
+
 		//setup carrier data
 		$this->_carrier['id'] = array();
 		$this->_carrier['name'] = array();
@@ -59,6 +61,21 @@ class Mivec_Shipping_Model_Rate_Express extends Mage_Shipping_Model_Carrier_Abst
         return $result;
     }
 
+    protected function _getTaxOil($_carrierId , $_shippingPrice)
+    {
+        //get carrier
+        //$_carrierData = $this->_carrierHelper->getCarrier("carrier_id" ,$_carrierId);
+        $_carrierData = Mage::getModel('ship/carrier')->load($_carrierId);
+        //print_r($_carrierId . "</p>");
+        //print_r($_carrierData->getData());
+
+        if (!empty($_carrierData->getData("tax_oil"))) {
+            //tax
+            $_shippingPrice = $_shippingPrice + ($_shippingPrice * $_carrierData->getData("tax_oil"));
+        }
+        return $_shippingPrice;
+    }
+
 	protected function _getShippingRate(Mage_Shipping_Model_Rate_Request $request , $_carrierId , $_carrierCode,$_carrierTitle)
 	{
 		if ($request->getPackageWeight()) {
@@ -75,6 +92,9 @@ class Mivec_Shipping_Model_Rate_Express extends Mage_Shipping_Model_Carrier_Abst
 				'code'	=> $_carrierCode
 			);
 			$shippingPrice = $this->getShippingCost($request , $_carrier);
+
+			//get tax
+            $shippingPrice = $this->_getTaxOil($_carrierId , $shippingPrice);
 			if ($shippingPrice > 0) {
 				$rate->setPrice($shippingPrice);
 				return $rate;
@@ -105,7 +125,6 @@ class Mivec_Shipping_Model_Rate_Express extends Mage_Shipping_Model_Carrier_Abst
 			->addAttributeToFilter('carrier_id' , $_carrier['id'])
 			->addAttributeToFilter('country_id' , $_countryData['id']);
 		$_quoteData = $_quoteCollection->getItems();
-		//print_r($_quoteData);exit;
 
 		$shippingPrice = 0;
         try {
@@ -140,7 +159,7 @@ class Mivec_Shipping_Model_Rate_Express extends Mage_Shipping_Model_Carrier_Abst
 			}
 		}
 		$_price->added =  $_wei['added'] * $_quote['quote_add']; //续重价
-		$_totalPrice = $_price->fist + $_price->added;		
+		$_totalPrice = $_price->fist + $_price->added;
 		//remote
 		if (!empty($_quote)) {
 			$_totalPrice += $_quote['remote'];

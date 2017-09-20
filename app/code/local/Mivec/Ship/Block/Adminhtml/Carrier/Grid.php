@@ -33,15 +33,23 @@ class Mivec_Ship_Block_Adminhtml_Carrier_Grid extends Mage_Adminhtml_Block_Widge
 			'width'     => '300px',
 			'index'     => 'carrier_name',
 		));
-		
+
+        $this->addColumn('tax_oil' , array(
+            'header'	=> 'Tax Of Oil',
+            'align'		=> 'left',
+            "width"     => "200px",
+            'index'		=> 'tax_oil',
+        ));
+
 		$this->addColumn('type' , array(
-			'header'	=> 'Type',
+			'header'	=> 'Carrier Type',
 			'align'		=> 'left',
 			'index'		=> 'type',
 			'type'		=> 'options',
 			"options"	=> Mivec_Ship_Model_Carrier_Type::getCarrierType(),
 		));
-		
+
+
 		$this->addColumn('updated_at' , array(
 			'header'	=> 'Updated Date',
 			'align'		=> 'left',
