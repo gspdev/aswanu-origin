@@ -81,7 +81,7 @@
         <dl class="order-about">
             <?php foreach ($_history as $_historyItem): ?>
                 <dt><?php echo $this->formatDate($_historyItem->getCreatedAtStoreDate(), 'medium', true) ?></dt>
-                <dd><?php echo $this->escapeHtml($_historyItem->getComment()) ?></dd>
+                <dd><?php echo $_historyItem->getComment();//edit by mivec //$this->escapeHtml($_historyItem->getComment()) ?></dd>
             <?php endforeach; ?>
         </dl>
     </div>
