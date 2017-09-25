@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Themevast_CategorySearch>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Themevast_CategorySearch>
     </modules>
