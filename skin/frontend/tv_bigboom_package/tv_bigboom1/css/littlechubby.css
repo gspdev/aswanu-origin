@@ -169,8 +169,9 @@
 	.cart-footer-actions button.button span span{padding: 2px 8px;font-size: 12px;}
 	.crosssellBox,.crosssell{display: none;}
 /*SearchPage*/
-	.sorter .sort-by{margin:10px 0 0 0;}
-	.sorter .limiter{float:left;margin:10px 0 0 0;}
+	.sorter .view-mode{float:none;}
+	.sorter .sort-by{float:none;margin:20px 0 0 0;}
+	.sorter .limiter{float:none;margin:10px 0 0 0;}
 	.sorter .sort-by>label,.sorter .limiter>label{display:inline-block;width:50px;}
 	.tooltip{display: none!important;}
 	.cart-table .product-cart-actions .qty{margin-right: 0;}
