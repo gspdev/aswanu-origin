@@ -169,8 +169,9 @@
 	.cart-footer-actions button.button span span{padding: 2px 8px;font-size: 12px;}
 	.crosssellBox,.crosssell{display: none;}
 /*SearchPage*/
-	.sorter .sort-by{margin:10px 0 0 0;}
-	.sorter .limiter{float:left;margin:10px 0 0 0;}
+	.sorter .view-mode{float:none;}
+	.sorter .sort-by{float:none;margin:20px 0 0 0;}
+	.sorter .limiter{float:none;margin:10px 0 0 0;}
 	.sorter .sort-by>label,.sorter .limiter>label{display:inline-block;width:50px;}
 	.tooltip{display: none!important;}
 	.cart-table .product-cart-actions .qty{margin-right: 0;}
@@ -232,8 +233,8 @@
 	.searchautocomplete .searchautocomplete-placeholder{left:0;min-width:initial;max-width:initial;}
 }
 @media (min-width: 1200px){
-	#tv-inivoslider{height:300px!important;height:300px!important\9}/*set height of slide*/
-	#tv-inivoslider .nivo-main-image{height:300px!important;}
+	#tv-inivoslider{}/*set height of slide*/
+	#tv-inivoslider .nivo-main-image{}
 	.home-content .products-grid>li{float:left;width: 176px!important;}
 	.featuredproduct .box-images a>img{width:156px;height:156px;}
 	.dealproducts .box-images a>img{width:190px;height:190px;}
