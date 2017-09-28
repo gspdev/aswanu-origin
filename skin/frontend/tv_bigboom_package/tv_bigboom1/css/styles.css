@@ -3160,8 +3160,8 @@ footer {
 .bx-wrapper .bx-pager{padding-top:10px;}
 .bx-wrapper .bx-pager.bx-default-pager a{border-radius:50%;}
 .phone-access .bx-wrapper,.phone-parts .bx-wrapper{padding:0;background:#fff;}
-.nivoSlider{/*height:auto!important;*/}
-.nivoSlider>img{/*height:auto!important;*/}
+.nivoSlider{height:auto!important;}
+.nivoSlider>img{height:auto!important;}
 /*Related Product Slider*/
 .relatedslider { margin-bottom: 20px; }
 .relatedslider .products-grid{background:#fff; box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);padding:2px;}
