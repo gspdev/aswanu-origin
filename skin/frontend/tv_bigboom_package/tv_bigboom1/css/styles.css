@@ -3450,7 +3450,9 @@ background: url(../images/new_add/seller/it_04.png) center center no-repeat\9;		
 .kind-R .kind-R1 a {
         display: block;
         width: 100%;
-        height: 100%; }
+        height: 100%;
+        background: #fff;
+}
 .kind-R .kind-R1 a img {
           display: block;
           width: 100%;

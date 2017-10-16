@@ -231,6 +231,8 @@
 	.page-header-content .search-right{position: relative;z-index: 101;}
 	.search-right .head-My .myText span{padding:0;}
 	.searchautocomplete .searchautocomplete-placeholder{left:0;min-width:initial;max-width:initial;}
+	.sidebar .block-account{margin-top: 0;}
+	.account-login .col-1.new-users.visible-xs{display: none!important;}
 }
 @media (min-width: 1200px){
 	#tv-inivoslider{}/*set height of slide*/
@@ -242,4 +244,12 @@
 }
 @media (max-width: 1280px){
 	.access-box.container{padding:0;}
+}
+@media (max-width:992px){
+	.data-table {
+		display: block;
+		width: 100%;
+		overflow-x: scroll;
+	}
+	.form-list li.wide .input-box,.form-list li.wide input.input-text{width: 100%;}
 }
