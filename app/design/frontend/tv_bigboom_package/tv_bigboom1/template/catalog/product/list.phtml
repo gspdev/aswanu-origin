@@ -71,6 +71,8 @@
                         <p class="sku">SKU:<?php echo $_product->getSku()?></p> <!-- copy by Jerry -->
 						<?php if($_product->getRatingSummary()): ?>
                         <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                        <?php else: ?>
+                            <div class="ratings"></div>
                         <?php endif; ?>
                         <?php echo $this->getPriceHtml($_product, true) ?>
                         <div class="desc std">
@@ -138,6 +140,8 @@
                     
                     <?php if($_product->getRatingSummary()): ?>
                     <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php else: ?>
+                        <div class="ratings"></div>
                     <?php endif; ?>
                     <?php echo $this->getPriceHtml($_product, true) ?>               
                     <div class="actions">
