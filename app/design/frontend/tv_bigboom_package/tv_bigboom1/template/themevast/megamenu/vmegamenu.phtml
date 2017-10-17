@@ -26,7 +26,7 @@
 			*set .dropdown top
 			*/
 			;jQuery(document).ready(function($){
-				$("#vmegamenu-background").css('height','282px');
+				$("#vmegamenu-background").css('height',(40*$("#nav_vmegamenu>div").length)+'px');
 				(function(){
 					jQuery(".vmegamenu-contain .megamenu").each(function(){
 						var tmpMindex = $(this).index();
