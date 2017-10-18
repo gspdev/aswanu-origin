@@ -99,7 +99,6 @@
     /*box-shadow: 1px 1px 1px 1px #eee;*/
     border-top: 0;
     width: 935px;
-	min-height:281px!important;
 }
 .dropdownHide{display:none!important;}
 .dropdownShow{display:block!important;}

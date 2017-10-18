@@ -42,6 +42,7 @@
 				$("#nav_vmegamenu .megamenu").find(".dropdown").removeClass("dropdownShow").addClass("dropdownHide");
 				$("#nav_vmegamenu").mouseout(function(){
 					$("#nav_vmegamenu .megamenu").find(".dropdownShow").addClass("dropdownHide").removeClass("dropdownShow");
+                    $("#vmegamenu-background").css('height',(40*$("#nav_vmegamenu>div").length)+'px');//init
 				});
 				get_back_Height();
 				function get_back_Height(){
