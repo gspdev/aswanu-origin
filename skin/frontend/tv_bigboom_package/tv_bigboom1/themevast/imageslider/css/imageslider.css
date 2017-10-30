@@ -38,7 +38,7 @@ opacity:0.6;background: #000000; display: block; position: absolute; top: 50%; c
     padding: 0;
     text-align: center;
     position: absolute;
-	z-index: 66;
+	z-index: 64;
     bottom: 0;
     right: 50px;
 }
