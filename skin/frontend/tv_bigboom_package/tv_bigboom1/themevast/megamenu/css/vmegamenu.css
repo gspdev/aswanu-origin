@@ -24,7 +24,7 @@
 #vmegamenu-mask{display:none;position:absolute;z-index:64;left:0;top:40px;width:1170px;min-height:3000px;background:rgba(0,0,0,.3);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C00000;)\9;}
 .nav-vcontainer:hover .vmegamenu-contain { display: block;position:absolute;z-index:66;left:0;top:40px;width:100%;}
 .nav-vcontainer .vmegamenu-title {   }
-.nav-vcontainer .vmegamenu-title h2 { color: #333; font-size: 16px; text-transform: uppercase; line-height:40px;padding-right:15px;text-align:center; background: #b9b9b9; font-weight: 700; margin: 0; font-family: Montserrat; height: 40px;}
+.nav-vcontainer .vmegamenu-title h2 { color: #333; font-size: 16px; text-transform: uppercase; line-height:40px;padding-right:15px;text-align:center; background: #b9b9b9; font-weight: 700; margin: 0; font-family: arial,sans-serif; height: 40px;}
 .nav-vcontainer .vmegamenu-title h2 i { margin-top: 0; font-size: 14px; float: right;line-height:40px;}
 
 .nav_vmegamenu {
@@ -142,7 +142,7 @@
     /*text-transform: uppercase;*/
     font-weight: bold;
     color: #555555;
-    font-family: Montserrat;
+    font-family: arial,sans-serif;
 }
 
 .megamenu .itemMenu a.level2:before,
@@ -151,7 +151,7 @@
   /*content:"\f111";*/
   margin-right: 10px;
   color: #bababa;
-  font-family: FontAwesome;
+  font-family: arial,sans-serif;
   font-size: 5px;
   position: relative;
   top: -2px;
@@ -173,7 +173,7 @@
 }
 .viewmore:hover{color:#ff0000;}
 .nav_vmegamenu .itemSubMenu a.itemMenuName {
-	font-family: Helvetica,Arial,sans-serif;
+	font-family: arial,sans-serif;
     color: #666666;
     text-transform: none;
     font-weight: normal;
