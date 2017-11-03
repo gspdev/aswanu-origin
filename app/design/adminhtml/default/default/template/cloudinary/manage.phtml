@@ -1,0 +1,108 @@
+<script type="text/javascript">
+
+    function openCloudinaryMigrationPopup() {
+
+        if ($('browser_window') && typeof(Windows) != 'undefined') {
+            Windows.focus('browser_window');
+            return;
+        }
+
+        var dialogWindow = Dialog.info(null, {
+            closable:true,
+            resizable:false,
+            draggable:true,
+            className:'magento',
+            windowClassName:'popup-window',
+            title:'Start image migration to Cloudinary',
+            width:400,
+            height:100,
+            zIndex:1000,
+            recenterAuto:true,
+            hideEffect:Element.hide,
+            showEffect:Element.show,
+            id:'browser_window'
+        });
+
+        dialogWindow.setHTMLContent('<p style="margin-top: 10px;">A cron job has to be configured for a successful migration. Are you sure you have configured a cron job?</p><div class="form-buttons" style="position: absolute; bottom: 10px; right: 10px;"><button title="No" type="button" class="scalable" onclick="closeCloudinaryMigrationPopup();" style="margin-right: 10px;"><span><span><span>No</span></span></span></button><button title="Yes - start migration" type="button" class="scalable" onclick="startCloudinaryMigration();"><span><span><span>Yes - start migration</span></span></span></button></div>');
+    }
+
+    function closeCloudinaryMigrationPopup() {
+        Windows.close('browser_window');
+    }
+
+    function startCloudinaryMigration() {
+        setLocation("<?php echo $this->getStartMigrationUrl(); ?>");
+    }
+
+</script>
+
+<div class="content-header">
+    <table cellspacing="0"><tbody>
+        <tr>
+            <td style="width:50%;"><h3 class="icon-head">Migrate images to Cloudinary</h3></td>
+            <td class="form-buttons">
+                <?php echo $this->getMigrateButton() ?>
+            </td>
+        </tr>
+    </tbody></table>
+</div>
+
+<p>
+        Manual migration is only required if auto upload mapping cannot be used. New images will be automatically
+        uploaded to Cloudinary when they are added to products or CMS pages.
+</p>
+<p>
+    <strong>
+        <?php if ($this->isAutoUploadMappingEnabled()): ?>
+            You have auto upload mapping enabled, and do not need to perform a manual migration.
+        <?php else: ?>
+            You can enable auto upload mapping in the
+        <a href="<?php echo $this->getCloudinaryConfigurationLink(); ?>">Cloudinary Configuration</a> section.
+        <?php endif; ?>
+    </strong>
+</p>
+
+<p>
+    <?php if ($this->allImagesSynced()): ?>
+        <div id="messages"><ul class="messages"><li class="notice-msg"><ul><li><span>All images have been successfully migrated to Cloudinary</span></li></ul></li></ul></div>
+    <?php else: ?>
+        <p>Image migration progress: <?php echo floor($this->getPercentComplete()) ?>%</p>
+        <p><?php echo $this->getSynchronizedImageCount() ?> of <?php echo $this->getTotalImageCount() ?> images migrated to Cloudinary.</p>
+    <?php endif; ?>
+
+    <div class="migration_errors">
+
+        <?php
+
+            $errors = $this->getErrors();
+            $count = sizeof($errors);
+            echo "<div><strong>ERRORS ($count):</strong> (re-occuring errors refresh their timestamp)</div>";
+            echo $this->getClearErrorsButton();
+
+            foreach ($errors as $error){
+                $message = $error->getMessage();
+                $filePath = $error->getFilePath();
+                $timestamp = $error->getTimestamp();
+                echo "<div class=\"migration_error\">$filePath: $message ($timestamp)</div>";
+            }
+        ?>
+    </div>
+</p>
+
+<p>
+    <strong>
+        Note: If you have a lot of images (thousands or more), image migration may take a while.
+        You can leave this page and come back to check on progress while the migration is performed in the background.
+    </strong>
+</p>
+
+
+<p>
+    <strong>Looking for more information?</strong>
+    <a href="http://support.cloudinary.com/hc/en-us/sections/200956331-Magento" target="_blank">Visit our Knowledge Base</a>.
+</p>
+
+<p>
+    <strong>Need assistance or got feedback?</strong>
+    <a href="http://support.cloudinary.com/hc/en-us/requests/new" target="_blank">Contact our support</a>.
+</p>
