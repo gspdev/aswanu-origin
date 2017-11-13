@@ -3120,7 +3120,6 @@ footer {
     font-family: arial,sans-serif;
     font-weight: normal;
     display: block;
-    padding-left: 60px;
     padding: 0;
     line-height: 16px;
 }
@@ -3229,7 +3228,6 @@ footer {
     text-align: left;
     font-family: arial,sans-serif; }
 .seller-Box .seller-Main {
-    height: 420px;
     background: #fff; }
 .seller-Box .row{margin:0;} 	
 .seller-Box .seller-Main a {
@@ -3251,7 +3249,6 @@ footer {
 .seller-Box .seller-Main .seller-L1 {
       box-sizing: border-box;
       width: 66.66%;
-      height: 420px;
       border: solid 1px #e8e8e8; }
 .seller-Box .seller-Main .seller-L1 i.imgText,.seller-Box .seller-Main .seller-L2 i.imgText{
 	height:48px;
@@ -3273,7 +3270,6 @@ footer {
 .seller-Box .seller-Main .seller-L2 {
       box-sizing: border-box;
       width: 33.33%;
-      height: 420px;
       border-top: solid 1px #e8e8e8;
       border-bottom: solid 1px #e8e8e8; }
 .seller-Box .seller-Main .seller-L2 i.imgText {
@@ -3292,7 +3288,6 @@ footer {
 .seller-Box .seller-Main .seller-L3 {
       box-sizing: border-box;
       width: 100%;
-      height: 420px;
       border: solid 1px #e8e8e8; }
 .seller-Box .seller-Main .seller-L3 i.imgText {
 		display:none;
@@ -3325,7 +3320,6 @@ background: url(../images/new_add/seller/it_04.png) center center no-repeat\9;		
         display: inline-block;
         float: left;
         width: 50%;
-        height: 50%;
         box-sizing: border-box;
         border: solid 1px #e8e8e8;
         border-left: 0;
