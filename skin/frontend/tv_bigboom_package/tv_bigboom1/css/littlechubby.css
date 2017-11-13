@@ -285,6 +285,7 @@
 	.kind-Category,
 	.kind-Slide .kind-SlideList li a img{height:400px;}
 	.kind-R .kind-R1,.kind-R .kind-R2{height: 200px;}
+	.kind-R .kind-R2 a img{width: 100%;height: auto;}
 }
 @media (max-width:992px){
 	.data-table {
@@ -294,5 +295,6 @@
 	}
 	.kind-Slide .bx-controls{display: none;}
 	.form-list li.wide .input-box,.form-list li.wide input.input-text{width: 100%;}
-	.kind-R .kind-R2 a p{height: auto;font-size: 12px;}
+	.kind-R .kind-R2 a p{height: auto;font-size: 12px;
+		margin-top: 40px;}
 }
