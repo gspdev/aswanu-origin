@@ -22,8 +22,8 @@
 
 	.form-search .dd-select{display:none!important}
 	.search-input-box{margin:0;}
-	.searchautocomplete .nav-search-in{top:-1px!important;}
-	.form-search input.input-text{width:100%;padding-right:72px;}
+	.searchautocomplete .nav-search-in{top:-1px!important;display: none;}
+	.form-search input.input-text{width:100%;padding-right:72px;padding-left: 10px!important;}
 	.page-header-content .search-right-box{height:initial;padding:0 15px;margin-top:10px;}
 	.search-right .forPc{display: none!important;}
 	.search-right> div{margin:0;}
@@ -227,12 +227,13 @@
 	.seller-Box .seller-Main .seller-L1,.seller-Box .seller-Main .seller-L2{display:none;}
 	.seller-Box .seller-Main .seller-L3{/*height:420px;*/}
 	.container{padding:0;}
-	.kind-Category h4{line-height:initial;margin:12px 0 20px 0;}
+	.kind-Category h4 {
+		line-height: initial;
+		margin: 0 0 20px 0;
+		padding: 10px 0 0 20px;}
 	.kind-Category,.kind-Slide,.kind-Slide .bx-viewport,
 	.kind-Slide .kind-SlideList,
 	.kind-Slide .kind-SlideList li a img{height:450px;}
-
-	.kind-R>div{height:225px!important;}
 	.kind-R .kind-R2 a p{line-height:initial;}
 	.page-header-content .search-right{position: relative;z-index: 101;}
 	.search-right .head-My .myText span{padding:0;}
@@ -260,11 +261,30 @@
 	.seller-Box .seller-Main .seller-L3 a{height: 50%;}
 }
 @media (max-width: 1200px){
+	.dealproducts .products-grid li.item .item-inner{padding: 0 10px 36px 10px;}
 	.dealproducts .products-grid li.item .product-image{width: 80%;margin: 0 auto;}
 	.dealproducts .products-grid li.item .product-image .img-face-back{width:80%;left:10%;}
 }
 @media (max-width: 1280px){
+	.access-content{background: none;}
 	.access-box.container{padding:0;}
+	.access-content .col-lg-6{background: #ffffff;}
+}
+@media (min-width: 1000px) and (max-width: 1280px){
+	.kind-Slide,
+	.kind-Slide .kind-SlideList,
+	.kind-Slide .bx-viewport,
+	.kind-Category,
+	.kind-Slide .kind-SlideList li a img{height:500px;}
+	.kind-R .kind-R1,.kind-R .kind-R2{height: 250px;}
+}
+@media (min-width: 768px) and (max-width: 999px){
+	.kind-Slide,
+	.kind-Slide .kind-SlideList,
+	.kind-Slide .bx-viewport,
+	.kind-Category,
+	.kind-Slide .kind-SlideList li a img{height:400px;}
+	.kind-R .kind-R1,.kind-R .kind-R2{height: 200px;}
 }
 @media (max-width:992px){
 	.data-table {
