@@ -101,6 +101,31 @@
 				$(".itemSubMenu").each(function(){
 					$(this).find(".itemMenu>a.itemMenuName:gt(7)").css({'display':'none'}).remove();
 				});
+                /**
+                 * add itemSubMenu for '.newMenuBox' that not have Corresponding 'div'
+                 * */
+                $('.itemMenu.level1').each(function(){
+                    var $el= $(this);
+                    var $a = $el.find(".itemMenuName.level1");
+                    var a_len = $a.length;
+                    var $div = $el.find(".itemSubMenu.level1");
+                    var div_len = $div.length;
+                    if(div_len < a_len && a_len === 2){
+                        if(div_len === 0){
+                            $a.after('<div class="itemSubMenu level1 newAdd"></div>'); //success
+                        }else if(div_len === 1){
+                            var t_index = $div.index();
+                            if(t_index === 1){
+                                $a.eq(1).after('<div class="itemSubMenu level1 newAdd"></div>');
+                            }else if(t_index === 2){
+                                $a.eq(0).after('<div class="itemSubMenu level1 newAdd"></div>');
+                            }
+                        }
+                    }
+                    if(div_len < a_len && a_len === 1){
+                        $a.after('<div class="itemSubMenu level1 newAdd"></div>');
+                    }
+                });
 			});
 	</script>
 </div>

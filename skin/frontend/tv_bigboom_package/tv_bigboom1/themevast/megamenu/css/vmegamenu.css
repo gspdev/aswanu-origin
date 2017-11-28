@@ -243,4 +243,7 @@
 .nav_vmegamenu .clearBoth {
     clear:both;
 }
-
+/*new add by jerry*/
+.nav_vmegamenu .itemSubMenu.level1 {
+    height: 300px;
+}
