@@ -61,9 +61,6 @@ class Oceanpayment_OPCreditCard_Block_Pending extends Mage_Core_Block_Template
 		return $OrderId;
 	}
 	
-
-	
-
 	/**
 	 * Continue shopping URL
 	 *
@@ -74,9 +71,6 @@ class Oceanpayment_OPCreditCard_Block_Pending extends Mage_Core_Block_Template
 		return Mage::getUrl('checkout/cart');
 	}
 	
-	
-	
-	
 	public function getPaymentDetails()
 	{
 		return Mage::getSingleton('checkout/session')->getData('payment_details');
@@ -86,6 +80,8 @@ class Oceanpayment_OPCreditCard_Block_Pending extends Mage_Core_Block_Template
 	{
 		return Mage::getSingleton('checkout/session')->getData('payment_solutions');
 	}
+	
+	
 	
 
 }

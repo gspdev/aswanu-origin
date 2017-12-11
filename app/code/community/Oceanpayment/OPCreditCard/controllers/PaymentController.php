@@ -58,7 +58,7 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 	 *
 	 */
 	public function redirectAction()
-	{		
+	{
 		$session = Mage::getSingleton('checkout/session');
 		$session->setCreditCardPaymentQuoteId($session->getQuoteId());
 
@@ -76,28 +76,30 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 		$order->save();
 
 
-
+		
 		//获取配置的pay mode
 		$standard = Mage::getModel('opcreditcard/payment');
 		$pay_mode = $standard->getConfigData('pay_mode');
-	
+		
 
 		//是否开启内嵌支付
-		if($pay_mode == 1){ 
-			//内嵌
+		if($pay_mode == 1){
 			$this->loadLayout();
 			$this->getLayout()->getBlock('root')->setTemplate('page/1column.phtml');
 			$this->getLayout()->getBlock('content')->append($this->getLayout()->createBlock('opcreditcard/redirect'));
 			$this->renderLayout();	
 		}else{
-			//跳转
 			$this->getResponse()
 					->setBody($this->getLayout()
 					->createBlock('opcreditcard/redirect')
 					->setOrder($order)
 					->toHtml());
 		}
-
+		
+		
+		
+		
+		
 		$session->unsQuoteId();
 	}
 
@@ -140,9 +142,9 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 		$model = Mage::getModel('opcreditcard/payment');
 		$this->_order = Mage::getModel('sales/order');
 		$order   = $this->_order->loadByIncrementId($_REQUEST['order_number']);    //载入order模块
+
 		//获取订单状态
 		$orderStatus = $order->getStatus();
-	
 		
 		if($_REQUEST['response_type'] == 1){
 			
@@ -150,7 +152,7 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 			$this->returnLog(self::PUSH);
 			
 			$history = ' (payment_id:'.$_REQUEST['payment_id'].' | order_number:'.$_REQUEST['order_number'].' | '.$_REQUEST['order_currency'].':'.$_REQUEST['order_amount'].' | payment_details:'.$_REQUEST['payment_details'].')';
-				
+			
 			//预授权结果推送
 			$authType = '';
 			if($_REQUEST['payment_authType'] == 1){
@@ -182,7 +184,7 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 							$this->saveInvoice($order);
 						}
 					}
-
+					
 					$order->save();
 					break;
 				case 0:
@@ -206,7 +208,7 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 					$order->addStatusToHistory(
 					$model->getConfigData('order_status_payment_risk'),
 					Mage::helper('opcreditcard')->__(self::PUSH.'(High Risk)Payment Failed!'.$history));
-						
+				
 					$order->save();
 					break;
 				case '20061':
@@ -248,6 +250,7 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 		$this->returnLog(self::BrowserReturn);
 		
 		$order = $this->getOrder($_REQUEST['order_number']);       //载入order模块
+		
 		//获取订单状态
 		$orderStatus = $order->getStatus();
 		
@@ -306,7 +309,7 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 				$order->addStatusToHistory(
 				$model->getConfigData('order_status_payment_risk'),
 				Mage::helper('opcreditcard')->__(self::BrowserReturn.'(High Risk)Payment Failed!'.$history));
-			
+					
 				$order->save();
 				$url = 'opcreditcard/payment/failure';
 				break;
@@ -319,7 +322,8 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 				$url = 'opcreditcard/payment/failure';
 				break;
 			default:
-				$url = 'opcreditcard/payment/failure';					
+				$url = 'opcreditcard/payment/failure';				
+					
 		}
 			
 		$this->getJsLocationReplace(Mage::getUrl($url));
@@ -363,7 +367,7 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 		$order_currency   = $order->getOrderCurrencyCode();
 		
 		//返回交易金额
-		$order_amount     = $_REQUEST['order_amount'];
+		$order_amount     = $_REQUEST['order_amount'];//sprintf('%.2f', $order->getGrandTotal());
 		
 		//返回交易状态
 		$payment_status   = $_REQUEST['payment_status'];
@@ -371,13 +375,13 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 		//返回支付详情
 		$payment_details  = $_REQUEST['payment_details'];
 		
-		//返回支付详情
-		$payment_details  = $_REQUEST['payment_details'];
+		//用于支付结果页面显示
+		$_SESSION['payment_details'] = $payment_details;
 		
 		//用于支付结果页面显示响应代码
 		$getErrorCode		= explode(':', $payment_details);	
 		$errorCode			= $getErrorCode[0];
-		
+	
 		//返回备注
 		$order_notes       = $_REQUEST['order_notes'];
 		
@@ -408,6 +412,11 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 		
 		$session->unsetData('is_3d');
 		
+ 		//是否点击浏览器后退造成订单号重复 20061
+		if($_SESSION['errorCode'] == 20061){
+			return 20061;
+		}
+
 		//加密校验
 		if(strtoupper($local_signValue) == strtoupper($back_signValue)){
 			
@@ -419,7 +428,6 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 				}
 			}
 			
-				
 			//支付状态
 			if ($payment_status == 1) {
 				return 1;
@@ -438,11 +446,11 @@ class Oceanpayment_OPCreditCard_PaymentController extends Mage_Core_Controller_F
 					
 				return 0;
 			}
-				
+			
 		}else{
 			return 999;
 		}
-
+		
 	}
 
 	

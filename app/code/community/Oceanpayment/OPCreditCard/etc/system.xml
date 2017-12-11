@@ -218,15 +218,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </secure_country>
-                        <post_function translate="label">
-                            <label>Post Function</label>
-                            <frontend_type>select</frontend_type>
-                            <sort_order>23</sort_order>
-                            <source_model>opcreditcard/source_postfunction</source_model>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </post_function>
                         <allowspecific translate="label">
                             <label>Payment from applicable countries</label>
                             <frontend_type>allowspecific</frontend_type>

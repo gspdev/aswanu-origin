@@ -21,7 +21,7 @@
 <config>
     <modules>
         <Oceanpayment_OPCreditCard>
-            <version>1.9.0</version>
+            <version>1.6.0</version>
         </Oceanpayment_OPCreditCard>
     </modules>
     <global>

@@ -152,14 +152,14 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
 		$shipping = $order->getShippingAddress();
 		$productDetails = $this->getProductItems($order->getAllItems());
 		
-	
+		
 		$parameter = array();
 		
 		//支付币种
 		$parameter['order_currency']	= $order->getOrderCurrencyCode();
 		//金额
 		$parameter['order_amount']		= $this->formatAmount($order->getGrandTotal(), $parameter['order_currency']);//sprintf('%.2f', $order->getGrandTotal());
-
+		
 		//判断是否启用3D功能
 		if($this->getConfigData('secure_mode') == 1){
 			//检验是否需要3D验证
@@ -168,8 +168,8 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
 			$validate_arr['terminal'] = $this->getConfigData('terminal');
 			$validate_arr['securecode'] = $this->getConfigData('securecode');
 		}
-
-        //账户
+		
+		//账户
 		$parameter['account']			= $this->getConfigData('account');
 		//终端号
 		$parameter['terminal']			= $validate_arr['terminal'];
@@ -178,7 +178,7 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
 		//支付方式
 		$parameter['methods']			= 'Credit Card';
 		//订单号
-		$parameter['order_number']		= $order->getRealOrderId();	
+		$parameter['order_number']		= $order->getRealOrderId();
 		//返回地址
 		$parameter['backUrl']			= $this->getReturnURL();
 		//服务器响应地址
@@ -202,7 +202,7 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
 		//账单人地址
 		$parameter['billing_address']	= $billing->getStreet(1);
 		//账单人邮编
-		$parameter['billing_zip']		= $billing->getPostcode();		
+		$parameter['billing_zip']		= $billing->getPostcode();
 		//收货人地址信息
 		//收货人名
 		$parameter['ship_firstName']	= $shipping->getFirstname();
@@ -244,15 +244,13 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
 		//支付页面显示商户logo
 		$parameter['logoUrl']			= '';
 		
-
-		
 		Mage::getSingleton('checkout/session')->setData('pages', $parameter['pages']);
 		
 		
 		//记录发送到oceanpayment的post log
 		$this->postLog($parameter);
+
 		
-	    
         return $parameter;
     }
 
@@ -372,25 +370,26 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
         return implode("\n", $response) . "\n";
     }
 
+    
     /**
      * post log
      */
     public function postLog($data){
- 	
+    
     	//记录发送到oceanpayment的post log
-/*    	$filedate = date('Y-m-d');
-    	$newfile  = fopen( "oceanpayment_log/" . $filedate . ".log", "a+" );	 
-    	$post_log = date('Y-m-d H:i:s')."[Sent to Oceanpayment]\r\n";	 
+    	$filedate = date('Y-m-d');
+    	$newfile  = fopen( "oceanpayment_log/" . $filedate . ".log", "a+" );
+    	$post_log = date('Y-m-d H:i:s')."[Sent to Oceanpayment]\r\n";
     	foreach ($data as $k=>$v){
     		$post_log .= $k . " = " . $v . "\r\n";
-    	}	 
-    	$post_log = $post_log . "*************************************\r\n";	 
-    	$post_log = $post_log.file_get_contents( "oceanpayment_log/" . $filedate . ".log");	 
-    	$filename = fopen( "oceanpayment_log/" . $filedate . ".log", "r+" );	 
-    	fwrite($filename,$post_log); 
+    	}
+    	$post_log = $post_log . "*************************************\r\n";
+    	$post_log = $post_log.file_get_contents( "oceanpayment_log/" . $filedate . ".log");
+    	$filename = fopen( "oceanpayment_log/" . $filedate . ".log", "r+" );
+    	fwrite($filename,$post_log);
     	fclose($filename);
     	fclose($newfile);
-    	*/
+    	 
     }
     
     
@@ -435,7 +434,9 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
     	$countries_3d_str = $this->getConfigData('secure_country');
     	$countries_3d = explode(',', $countries_3d_str);
     	
-
+    	
+    
+    	
     	//账单国
     	$billing_country = $billing->getCountry();
     	//收货国
@@ -468,16 +469,11 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
     
     }
     
-    
-    
-    
-    
-    
     /**
      * 格式化金额
      */
     function formatAmount($order_amount, $order_currency){
-    	 
+    
     	if(in_array($order_currency, $this->_precisionCurrency)){
     		$order_amount = round($order_amount, 0);
     	}else{
@@ -487,9 +483,7 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
     	return $order_amount;
     
     }
-    
-    
-    
+
     /**
      * 获取订单详情
      */
@@ -513,12 +507,12 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
 		$productDetails['productNum'] = implode(';', $productNum);
 		$productDetails['productPrice'] = implode(';', $productPrice);
 		
-
     	return $productDetails;
     
     }
     
 
+    
     /**
      * 检验是否移动端
      */
@@ -536,8 +530,8 @@ class Oceanpayment_OPCreditCard_Model_Payment extends Mage_Payment_Model_Method_
     	if (isset ($_SERVER['HTTP_USER_AGENT'])){
     		$clientkeywords = array (
     				'nokia','sony','ericsson','mot','samsung','htc','sgh','lg','sharp','sie-','philips','panasonic','alcatel',
-                    'lenovo','iphone','ipod','blackberry','meizu','android','netfront','symbian','ucweb','windowsce','palm',
-                    'operamini','operamobi','openwave','nexusone','cldc','midp','wap','mobile'
+    				'lenovo','iphone','ipod','blackberry','meizu','android','netfront','symbian','ucweb','windowsce','palm',
+    				'operamini','operamobi','openwave','nexusone','cldc','midp','wap','mobile'
     		);
     		// 从HTTP_USER_AGENT中查找手机浏览器的关键字
     		if (preg_match("/(" . implode('|', $clientkeywords) . ")/i", strtolower($_SERVER['HTTP_USER_AGENT']))){

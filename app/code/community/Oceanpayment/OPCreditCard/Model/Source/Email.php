@@ -23,7 +23,8 @@ class Oceanpayment_OPCreditCard_Model_Source_Email
     {
         return array(
         	array('value' => '0', 'label' => Mage::helper('opcreditcard')->__('No')),
-            array('value' => '1', 'label' => Mage::helper('opcreditcard')->__('Yes')),
+            array('value' => '1', 'label' => Mage::helper('opcreditcard')->__('Server Push only')),
+        	array('value' => '2', 'label' => Mage::helper('opcreditcard')->__('Browser Return only')),
         );
     }
 }

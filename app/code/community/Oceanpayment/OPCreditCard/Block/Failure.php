@@ -46,7 +46,6 @@ class Oceanpayment_OPCreditCard_Block_Failure extends Mage_Core_Block_Template
 		return Mage::getSingleton('checkout/session')->getLastRealOrderId();
 	}
 
-
 	
 	/**
 	 * Continue shopping URL
@@ -67,5 +66,4 @@ class Oceanpayment_OPCreditCard_Block_Failure extends Mage_Core_Block_Template
 	{
 		return Mage::getSingleton('checkout/session')->getData('payment_solutions');
 	}
-	
 }
