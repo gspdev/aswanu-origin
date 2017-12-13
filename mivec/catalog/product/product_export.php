@@ -16,7 +16,7 @@ $cat = Mage::getModel('catalog/category')->load(94);
 $subcats = $cat->getChildren();
 
 //$fp = fopen('C:/Users/Administrator/Desktop/'.$cat->getName().date("Y-m-d").'.csv', 'w');
-$fp = fopen('C:/Users/Administrator/Desktop/222/'.$cat->getName().date("Y-m-d").'.csv', 'w');
+$fp = fopen($cat->getName().date("Y-m-d").'.csv', 'w');
 $csvHeader = array("goods_sn", "SKU","goods_name","weight","goods_img","goods_url","price1","des_en");
 fputcsv( $fp, $csvHeader,",");
 foreach(explode(',',$subcats) as $subCatid){
