@@ -32,7 +32,7 @@ foreach(explode(',',$subcats) as $subCatid){
 				$sku = trim($product->getSku());
 				$name = trim($product->getName());
 				$weight = $product->getWeight();
-				$goods_img = $product->getImage();
+				$goods_img = 'https://res-1.cloudinary.com/aswanu/image/upload/c_pad,dpr_1.0,f_auto,h_600,q_80,w_600/media/catalog/product'.$product->getImage();
 				//$goods_img =Mage::helper('catalog/image')->init($product, 'image')->resize(265);
 				$goods_url = $product->getProductUrl();
 				$price_us = $product->getPrice();
