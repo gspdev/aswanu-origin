@@ -12,11 +12,17 @@ ini_set('display_errors', 1);
 // $products->addAttributeToSelect('For iPhone');
 // $products->addAttributeToFilter('status', 1);//optional for only enabled products
 // $products->addAttributeToFilter('visibility', 4);//optional for products only visible in catalog and search
-$cat = Mage::getModel('catalog/category')->load(94);
-$subcats = $cat->getChildren();
+$cat = Mage::getModel('catalog/category')->load(173);
+	if(!$cat->getChildren()){
+		$subcats = $cat->getEntityId();
+	}else{
+		$subcats = $cat->getChildren().','.$cat->getEntityId();
+	}
+
+//print_r($subcats);exit;
 
 //$fp = fopen('C:/Users/Administrator/Desktop/'.$cat->getName().date("Y-m-d").'.csv', 'w');
-$fp = fopen($cat->getName().date("Y-m-d").'.csv', 'w');
+$fp = fopen($cat->getEntityId().'-'.date("Y-m-d").'.csv', 'w');
 $csvHeader = array("goods_sn", "SKU","goods_name","weight","goods_img","goods_url","price1","des_en");
 fputcsv( $fp, $csvHeader,",");
 foreach(explode(',',$subcats) as $subCatid){
