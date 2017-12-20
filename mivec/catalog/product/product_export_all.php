@@ -13,31 +13,28 @@ ini_set('display_errors', 1);
 // $products->addAttributeToFilter('status', 1);//optional for only enabled products
 // $products->addAttributeToFilter('visibility', 4);//optional for products only visible in catalog and search
 $cat = Mage::getModel('catalog/category')->load(173);
-	if(!$cat->getChildren()){
-		$subcats = $cat->getEntityId();
-	}else{
-		$subcats = $cat->getChildren().','.$cat->getEntityId();
-	}
+	// if(!$cat->getChildren()){
+		// $subcats = $cat->getEntityId();
+	// }else{
+		$subcats = $cat->getChildren();
+	//}
 
 //print_r($subcats);exit;
-$conf_products = Mage::getModel('catalog/product')->getCollection();
-	$conf_products->addAttributeToFilter('status', 1);//enabled
-	//print_r($conf_products);exit;
 
 //$fp = fopen('C:/Users/Administrator/Desktop/'.$cat->getName().date("Y-m-d").'.csv', 'w');
-$fp = fopen('All Products'.date("Y-m-d").'.csv', 'w');
+$fp = fopen($cat->getEntityId().'-'.date("Y-m-d").'.csv', 'w');
 $csvHeader = array("sku","name","weight","price");
 fputcsv( $fp, $csvHeader,",");
-//foreach(explode(',',$subcats) as $subCatid){
+foreach(explode(',',$subcats) as $subCatid){
 	
-	      // $_category = Mage::getModel('catalog/category')->load($subCatid);
-          // $products = Mage::getModel('catalog/category')->load($_category->getEntityId())
-          // ->getProductCollection()
-		  // ->addAttributeToFilter('status', 1)//optional for only enabled products
-          // ->addAttributeToFilter('visibility', 4)//optional for products only visible in catalog and search
-          // ->addAttributeToSelect('*');
+	      $_category = Mage::getModel('catalog/category')->load($subCatid);
+          $products = Mage::getModel('catalog/category')->load($_category->getEntityId())
+          ->getProductCollection()
+		  ->addAttributeToFilter('status', 1)//optional for only enabled products
+          ->addAttributeToFilter('visibility', 4)//optional for products only visible in catalog and search
+          ->addAttributeToSelect('*');
 		  
-	    foreach ($conf_products as $product){
+	    foreach ($products as $product){
 				$sku = trim($product->getSku());
 				$name = trim($product->getName());
 				$weight = $product->getWeight();
@@ -51,5 +48,5 @@ fputcsv( $fp, $csvHeader,",");
 				//$categoryData = $_category->getName();
 				fputcsv($fp, array($sku,$name,$weight,$price_us), ",");
 			}
-//}
+}
 fclose($fp);
