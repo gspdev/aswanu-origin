@@ -157,7 +157,20 @@
     
 
     </div>
-    
+    <div class="product-compare">
+        <?php echo $this->getChildHtml('catalog.compare.sidebar') ?>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+            var $compareList = $("#compare-items");
+            var c_len = $compareList.find("li").length;
+            if(c_len >0 ){
+                $(".product-compare").addClass("showCompare");
+            }else{
+                $(".product-compare").removeClass("showCompare");
+            }
+        });
+    </script>
     <div class="product-collateral row-fluid">
         <?php echo $this->getChildHtml('info_tabs') ?>
         <?php echo $this->getChildHtml('upsell_products') ?>

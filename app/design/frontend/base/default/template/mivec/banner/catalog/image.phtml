@@ -29,11 +29,4 @@ $image = Mage::getModel('banner/manager')
 //print_r($image->getItems());exit;
 
 ?>
-<div class="banner-left hidden-xs">
-<?php foreach ($image->getItems() as $_item) : //echo Mage::getBaseUrl('media').DS.$_item->getImage();exit;//print_r($_item);exit;?>
-<a href="<?php echo $_item->getLink();?>" title="<?php echo $_item->getTitle()?>">
-<img class="catalog" alt="" src="<?php echo Mage::getBaseUrl('media').DS.$_item->getImage();?>" style="display:block;margin-top:10px"/>
-</a>
-<?php endforeach;?>
-</div>
 <?php endif;?>
