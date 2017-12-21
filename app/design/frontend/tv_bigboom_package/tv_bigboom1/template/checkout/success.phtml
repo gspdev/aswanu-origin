@@ -45,30 +45,6 @@
 <?php endif;?>
 <?php endif;?>
 
-<p>Surprise is showing up!</p> 
-<p>Seize the moment!</p>
-<p>Don't let it slip away.</p>
-
-<?php 
-      $promo = Mage::getModel('salesrule/rule')->load(2);
-	  $coupons = $promo->getCoupons();
-  				foreach($coupons as $c)
-				{
-					
-					$aed[] = $c['code'];
-					
-				}
-	  $coupon_off_10 = implode(',',$aed);
-	  $coupon = array(explode(",", $coupon_off_10));
-					$arr = current($coupon);
-					$n=count($arr)-1;
-					for($i=1;$i<=1;$i++){
-					  $cou=rand(0,$n);
-					  $getcoupon = $arr[$cou];
-					  echo '<p>You Coupon: '.$getcoupon.'</p>';
-		}
-?>
-
 <?php if ($this->getAgreementRefId()): ?>
     <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
 <?php endif;?>
