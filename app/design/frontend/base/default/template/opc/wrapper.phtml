@@ -174,6 +174,277 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			<div  class="collapse-block hidden">
 			     <?php echo $this->getChildhtml('coupon');?>
 			</div>
+			
+			<div>
+			<?php 
+			  // echo Mage::helper('opc')->getGrandTotal();
+			  $quote = Mage::getModel('checkout/session')->getQuote();
+	          $total = $quote->getGrandTotal();
+			  //echo $total;
+			  // echo Mage::helper('core')->currency(0.88, false, false); 
+			?>
+			<p>Surprise is showing up!</p> 
+			<p>Seize the moment!</p>
+			<p>Don't let it slip away.</p>
+
+			<?php 
+			   if($total < Mage::helper('core')->currency(50, false, false)){
+				  $promo3 = Mage::getModel('salesrule/rule')->load(4);
+				  $coupons3 = $promo3->getCoupons();
+							foreach($coupons3 as $c3)
+							{
+								
+								$aed3[] = $c3['code'];
+								
+							}
+				  $coupon_off_3 = implode(',',$aed3);
+				  
+				  $promo5 = Mage::getModel('salesrule/rule')->load(5);
+				  $coupons5 = $promo5->getCoupons();
+							foreach($coupons5 as $c5)
+							{
+								
+								$aed5[] = $c5['code'];
+								
+							}
+				  $coupon_off_5 = implode(',',$aed5);
+				  
+				  $coupon_off_3_5 = $coupon_off_3.$coupon_off_5;
+				  
+				  $coupon = array(explode(",", $coupon_off_3_5));
+								$arr = current($coupon);
+								$n=count($arr)-1;
+								for($i=1;$i<=1;$i++){
+								  $cou=rand(0,$n);
+								  $getcoupon = $arr[$cou];
+								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+					}
+			 }
+			 
+              if($total>= Mage::helper('core')->currency(50, false, false) && $total<Mage::helper('core')->currency(100, false, false)){
+				  
+				  $promo2 = Mage::getModel('salesrule/rule')->load(6);
+				  $coupons2 = $promo2->getCoupons();
+							foreach($coupons2 as $c2)
+							{
+								
+								$aed2[] = $c2['code'];
+								
+							}
+				  $coupon_off_2 = implode(',',$aed2);
+				  
+				  $promo5 = Mage::getModel('salesrule/rule')->load(7);
+				  $coupons5 = $promo5->getCoupons();
+							foreach($coupons5 as $c5)
+							{
+								
+								$aed5[] = $c5['code'];
+								
+							}
+				  $coupon_off_5 = implode(',',$aed5);
+				  
+				  $promo6 = Mage::getModel('salesrule/rule')->load(8);
+				  $coupons6 = $promo6->getCoupons();
+							foreach($coupons6 as $c6)
+							{
+								
+								$aed6[] = $c6['code'];
+								
+							}
+				  $coupon_off_6 = implode(',',$aed6);
+				  
+				  $promo10 = Mage::getModel('salesrule/rule')->load(9);
+				  $coupons10 = $promo10->getCoupons();
+							foreach($coupons10 as $c10)
+							{
+								
+								$aed10[] = $c10['code'];
+								
+							}
+				  $coupon_off_10 = implode(',',$aed10);
+				  
+				  $coupon_off_2_5_6_10 = $coupon_off_2.$coupon_off_5.$coupon_off_6.$coupon_off_10;
+				  
+				  $coupon = array(explode(",", $coupon_off_2_5_6_10));
+								$arr = current($coupon);
+								$n=count($arr)-1;
+								for($i=1;$i<=1;$i++){
+								  $cou=rand(0,$n);
+								  $getcoupon = $arr[$cou];
+								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+					}
+					
+			  }
+			  
+			   if($total>=Mage::helper('core')->currency(100, false, false) && $total< Mage::helper('core')->currency(200, false, false)){
+				  
+				  $promo5 = Mage::getModel('salesrule/rule')->load(10);
+				  $coupons5 = $promo5->getCoupons();
+							foreach($coupons5 as $c5)
+							{
+								
+								$aed5[] = $c5['code'];
+								
+							}
+				  $coupon_off_5 = implode(',',$aed5);
+				  
+				  $promo8 = Mage::getModel('salesrule/rule')->load(11);
+				  $coupons8 = $promo8->getCoupons();
+							foreach($coupons8 as $c8)
+							{
+								
+								$aed8[] = $c8['code'];
+								
+							}
+				  $coupon_off_8 = implode(',',$aed8);
+				  
+				  $promo10 = Mage::getModel('salesrule/rule')->load(12);
+				  $coupons10 = $promo10->getCoupons();
+							foreach($coupons10 as $c10)
+							{
+								
+								$aed10[] = $c10['code'];
+								
+							}
+				  $coupon_off_10 = implode(',',$aed10);
+				  
+				  
+				  $promo16 = Mage::getModel('salesrule/rule')->load(13);
+				  $coupons16 = $promo16->getCoupons();
+							foreach($coupons16 as $c16)
+							{
+								
+								$aed16[] = $c16['code'];
+								
+							}
+				  $coupon_off_16 = implode(',',$aed16);
+				  
+				 $coupon_off_5_8_10_16 = $coupon_off_5.$coupon_off_8.$coupon_off_10.$coupon_off_16;
+				  
+				  $coupon = array(explode(",", $coupon_off_5_8_10_16));
+								$arr = current($coupon);
+								$n=count($arr)-1;
+								for($i=1;$i<=1;$i++){
+								  $cou=rand(0,$n);
+								  $getcoupon = $arr[$cou];
+								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+					}
+			  }
+			  
+			  
+			   if($total>=Mage::helper('core')->currency(200, false, false) && $total< Mage::helper('core')->currency(300, false, false)){
+				  
+				  $promo5 = Mage::getModel('salesrule/rule')->load(14);
+				  $coupons5 = $promo5->getCoupons();
+							foreach($coupons5 as $c5)
+							{
+								
+								$aed5[] = $c5['code'];
+								
+							}
+				  $coupon_off_5 = implode(',',$aed5);
+				  
+				  $promo8 = Mage::getModel('salesrule/rule')->load(15);
+				  $coupons8 = $promo8->getCoupons();
+							foreach($coupons8 as $c8)
+							{
+								
+								$aed8[] = $c8['code'];
+								
+							}
+				  $coupon_off_8 = implode(',',$aed8);
+				  
+				  $promo10 = Mage::getModel('salesrule/rule')->load(16);
+				  $coupons10 = $promo10->getCoupons();
+							foreach($coupons10 as $c10)
+							{
+								
+								$aed10[] = $c10['code'];
+								
+							}
+				  $coupon_off_10 = implode(',',$aed10);
+				  
+				  $promo20 = Mage::getModel('salesrule/rule')->load(17);
+				  $coupons20 = $promo20->getCoupons();
+							foreach($coupons20 as $c20)
+							{
+								
+								$aed20[] = $c20['code'];
+								
+							}
+				  $coupon_off_20 = implode(',',$aed20);
+				  
+				  $coupon_off_5_8_10_20 = $coupon_off_5.$coupon_off_8.$coupon_off_10.$coupon_off_20;
+				  
+				  $coupon = array(explode(",", $coupon_off_5_8_10_20));
+								$arr = current($coupon);
+								$n=count($arr)-1;
+								for($i=1;$i<=1;$i++){
+								  $cou=rand(0,$n);
+								  $getcoupon = $arr[$cou];
+								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+					}
+			  }
+			   if($total>=Mage::helper('core')->currency(300, false, false)){
+				  
+				  
+				  $promo18 = Mage::getModel('salesrule/rule')->load(18);
+				  $coupons18 = $promo18->getCoupons();
+							foreach($coupons18 as $c18)
+							{
+								
+								$aed18[] = $c18['code'];
+								
+							}
+				  $coupon_off_18 = implode(',',$aed18);
+				  
+				  $promo20 = Mage::getModel('salesrule/rule')->load(19);
+				  $coupons20 = $promo20->getCoupons();
+							foreach($coupons20 as $c20)
+							{
+								
+								$aed20[] = $c20['code'];
+								
+							}
+				  $coupon_off_20 = implode(',',$aed20);
+
+				  
+				  $promo24 = Mage::getModel('salesrule/rule')->load(20);
+				  $coupons24 = $promo24->getCoupons();
+							foreach($coupons24 as $c24)
+							{
+								
+								$aed24[] = $c24['code'];
+								
+							}
+				  $coupon_off_24 = implode(',',$aed24);
+				  
+				  $promo30 = Mage::getModel('salesrule/rule')->load(21);
+				  $coupons30 = $promo30->getCoupons();
+							foreach($coupons30 as $c30)
+							{
+								
+								$aed30[] = $c30['code'];
+								
+							}
+				  $coupon_off_30 = implode(',',$aed30);
+				  
+				  $coupon_off_18_20_24_30 = $coupon_off_18.$coupon_off_20.$coupon_off_24.$coupon_off_30;
+				  
+				  $coupon = array(explode(",", $coupon_off_18_20_24_30));
+								$arr = current($coupon);
+								$n=count($arr)-1;
+								for($i=1;$i<=1;$i++){
+								  $cou=rand(0,$n);
+								  $getcoupon = $arr[$cou];
+								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+					}
+			  }
+			 
+            			 
+			?>
+			</div>
+			
 		</div>
 		<?php endif;?>
 
