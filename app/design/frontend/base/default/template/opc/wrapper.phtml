@@ -180,7 +180,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			  // echo Mage::helper('opc')->getGrandTotal();
 			  $quote = Mage::getModel('checkout/session')->getQuote();
 	          $total = number_format($quote->getGrandTotal(),2);
-			 // echo $total;
+			  //echo $total;
 			  // echo Mage::helper('core')->currency(0.88, false, false); 
 			?>
 			<p>Surprise is showing up!</p> 
@@ -188,7 +188,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 
 			<?php 
 			   if($total < Mage::helper('core')->currency(50, false, false)){
-				  $promo3 = Mage::getModel('salesrule/rule')->load(2);
+				  $promo3 = Mage::getModel('salesrule/rule')->load(4);
 				  $coupons3 = $promo3->getCoupons();
 							foreach($coupons3 as $c3)
 							{
@@ -198,7 +198,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 							}
 				  $coupon_off_3 = implode(',',$aed3);
 				  
-				  $promo5 = Mage::getModel('salesrule/rule')->load(3);
+				  $promo5 = Mage::getModel('salesrule/rule')->load(5);
 				  $coupons5 = $promo5->getCoupons();
 							foreach($coupons5 as $c5)
 							{
@@ -216,7 +216,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+								  echo '<p>You Coupon: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 			 }
 			 
@@ -270,7 +270,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+								  echo '<p>You Coupon: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 					
 			  }
@@ -326,7 +326,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+								  echo '<p>You Coupon: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 			  }
 			  
@@ -381,7 +381,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+								  echo '<p>You Coupon: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 			  }
 			   if($total>=Mage::helper('core')->currency(300, false, false)){
@@ -436,7 +436,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon: '.$getcoupon.'</p>';
+								  echo '<p>You Coupon: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 			  }
 			 
