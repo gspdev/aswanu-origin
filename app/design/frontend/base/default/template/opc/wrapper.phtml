@@ -179,8 +179,8 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			<?php 
 			  // echo Mage::helper('opc')->getGrandTotal();
 			  $quote = Mage::getModel('checkout/session')->getQuote();
-	          $total = number_format($quote->getGrandTotal(),2);
-			  //echo $total;
+	          $total_price = number_format($quote->getGrandTotal(),2);
+			  $total = str_replace(',', '', $total_price);
 			  // echo Mage::helper('core')->currency(0.88, false, false); 
 			?>
 			<p>Surprise is showing up!</p>
