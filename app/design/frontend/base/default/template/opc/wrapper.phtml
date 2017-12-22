@@ -175,7 +175,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			     <?php echo $this->getChildhtml('coupon');?>
 			</div>
 			
-			<div>
+			<div class="getCoupon">
 			<?php 
 			  // echo Mage::helper('opc')->getGrandTotal();
 			  $quote = Mage::getModel('checkout/session')->getQuote();
@@ -183,7 +183,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			  //echo $total;
 			  // echo Mage::helper('core')->currency(0.88, false, false); 
 			?>
-			<p>Surprise is showing up!</p> 
+			<p>Surprise is showing up!</p>
 			<p>Seize the moment!</p>
 
 			<?php 
@@ -216,7 +216,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon Code: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
+								  echo '<p style="line-height: 40px;"><span style="font-size:12px;">You Coupon Code:</span> <span class="coupon_text" style="">'.$getcoupon.'</span></p>';
 					}
 			 }
 			 
@@ -270,7 +270,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon Code: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
+								  echo '<p>You Coupon Code: <span class="coupon_text" style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 					
 			  }
@@ -326,7 +326,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon Code: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
+								  echo '<p>You Coupon Code: <span class="coupon_text" style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 			  }
 			  
@@ -381,7 +381,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon Code: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
+								  echo '<p>You Coupon Code: <span class="coupon_text" style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 			  }
 			   if($total>=Mage::helper('core')->currency(300, false, false)){
@@ -436,7 +436,7 @@ $theme = Mage::getDesign()->getTheme('frontend');
 								for($i=1;$i<=1;$i++){
 								  $cou=rand(0,$n);
 								  $getcoupon = $arr[$cou];
-								  echo '<p>You Coupon Code: <span style="font-weight:bold;">'.$getcoupon.'</span></p>';
+								  echo '<p>You Coupon Code: <span class="coupon_text" style="font-weight:bold;">'.$getcoupon.'</span></p>';
 					}
 			  }
 			 
@@ -451,7 +451,6 @@ $theme = Mage::getDesign()->getTheme('frontend');
 			<?php echo $this->getChildhtml('customer.comment');?>
 		<?php endif;?>
     </div>
-
     <div class="opc-col-right">
 		<div class="payment-block <?php if ($this->getOnepage()->getQuote()->isVirtual()):?>clear-margin<?php endif;?>">
 			<h3><?php echo $this->__('Payment Method')?></h3>

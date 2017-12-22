@@ -3758,3 +3758,14 @@ line-height: 70px;font-family: arial,sans-serif;font-weight: 900;padding: 35px 0
 .product-compare .block .actions button.button{display: inline-block;float: none;}
 .product-compare .block .actions,#compare-items{padding: 10px 4px;text-align: left;}
 .compare .modal-dialog{width: 80%;}
+/*get Coupon*/
+.opc-wrapper-opc .getCoupon{margin: 40px 0 0 0;}
+.opc-wrapper-opc .getCoupon p{
+    color: #393939;
+    font-weight: normal;
+    font-size: 14px;
+    margin:0;
+    text-align: left;}
+.opc-wrapper-opc .getCoupon .coupon_text{
+    font-size:16px;text-decoration:underline;padding-left:12px;font-weight:bold;color:#2194d3;
+}
