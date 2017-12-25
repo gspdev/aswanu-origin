@@ -28,6 +28,8 @@
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
     <div class="add-to-cart">
+
+        <p><b style="font-size:12px;">Minimum Qty Allowed in Shopping Cart : 5</b></p>
         <div class="input-content">
         <?php if(!$_product->isGrouped()): ?>
         <label for="qty"><?php echo $this->__('Quantity') ?></label>
