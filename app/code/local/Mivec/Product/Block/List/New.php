@@ -35,7 +35,7 @@ class Mivec_Product_Block_List_New extends Mage_Core_Block_Template
     public function getProductCollection()
     {
 		//time limit + 10
-		$dayLimit = 10;
+		$dayLimit = 45;
 		$todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
 		$featureDate = date("Y-m-d" , strtotime($todayDate)- (86400*$dayLimit));
 		//echo $featureDate;exit;
