@@ -111,6 +111,11 @@
 							</div>
 							<div class="head-Wishlist fl hidden-xs">
 							<?php //edit herf by jerry?>
+							<?php
+								   $customer = Mage::getSingleton('customer/session')->getCustomer();
+								   $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
+								   echo $wishlist->getItemsCount();
+							?>
 								<a class="wishMask" href="<?php echo $this->getUrl('wishlist') ?>"></a>
 								<a class="wishText" href="javascript:void(0)">
 									<span>Wish</span>
