@@ -111,17 +111,18 @@
 							</div>
 							<div class="head-Wishlist fl hidden-xs">
 							<?php //edit herf by jerry?>
-							<?php if($status):?>
-							     <?php
-								    $customer = $session->getCustomer();
-								    $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
-								    echo $wishlist->getItemsCount();
-							     ?>
-							<?php endif;?>	 
+
 								<a class="wishMask" href="<?php echo $this->getUrl('wishlist') ?>"></a>
 								<a class="wishText" href="javascript:void(0)">
 									<span>Wish</span>
-									<span>List</span>
+									<span>List<?php if($status):?>
+                                            <b class="wish-num" style="color: #e62e04;"><?php
+                                             $customer = $session->getCustomer();
+                                             $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
+                                             if($wishlist->getItemsCount()>0){
+                                                 echo '('.$wishlist->getItemsCount().')';
+                                             }
+                                             ?></b><?php endif;?></span>
 								</a>
 							</div>
 							<div class="head-My fl">
