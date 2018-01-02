@@ -1638,19 +1638,19 @@ filter: alpha(opacity=100);opacity:1;box-shadow: 0 3px 6px rgba(51, 51, 51, 0.3)
 							-o-animation:qtyFocus 1s infinite alternate;-ms-animation:qtyFocus 1s infinite alternate;}
 @keyframes qtyFocus{
 	from{background:white;}
-	to{background:#d0bebe;}
+	to{background:#cccccc;}
 }
 @-webkit-keyframes qtyFocus{
 	from{background:white;}
-	to{background:#d0bebe;}
+	to{background:#cccccc;}
 }
 @-o-keyframes qtyFocus{
 	from{background:white;}
-	to{background:#d0bebe;}
+	to{background:#cccccc;}
 }
 @-ms-keyframes qtyFocus{
 	from{background:white;}
-	to{background:#d0bebe;}
+	to{background:#cccccc;}
 }
 .product-view .add-to-cart .input-content .qty-arrows {
     width: 18px;
@@ -2087,7 +2087,7 @@ filter: alpha(opacity=100);opacity:1;box-shadow: 0 3px 6px rgba(51, 51, 51, 0.3)
   width: 3em;
 }
 .cart-table .product-cart-actions .qtyBtn{
-	display: inline;width: 20px;height: 30px;line-height:30px;line-height:20px\9;vertical-align: top;font-size: 18px;font-weight: bold;
+	display: inline;width: 20px;height: 30px;line-height:20px;line-height:20px\9;vertical-align: top;font-size: 18px;font-weight: bold;
 }
 .cart-table .product-cart-actions .button {
   margin-bottom: 5px;
@@ -3769,3 +3769,8 @@ line-height: 70px;font-family: arial,sans-serif;font-weight: 900;padding: 35px 0
 .opc-wrapper-opc .getCoupon .coupon_text{
     font-size:16px;text-decoration:underline;padding-left:12px;font-weight:bold;color:#2194d3;
 }
+/*msg*/
+.error-msg{border: 1px solid #f16048 !important;color: #df280a !important;background-color: #faebe7;}
+.success-msg { border:1px solid #95a486 !important; color:#3d6611 !important; background-color:#eff5ea; }
+.notice-msg { border:1px solid #ffd967 !important; background-color:#fffbf0;}
+.warning-msg { border:1px solid #666e73 !important; background-color:#e6e6e6}

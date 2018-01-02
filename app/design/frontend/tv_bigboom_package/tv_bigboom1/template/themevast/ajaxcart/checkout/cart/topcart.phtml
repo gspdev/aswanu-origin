@@ -38,7 +38,7 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                             item_qty = parseInt($qtyBox.text())+1;
                                             $qtyBox.text(item_qty);
                                             ajaxMiniCart(item_id,item_qty);
-                                        }else if($j(this).hasClass("qtyReduce")){
+                                        }else if($j(this).hasClass("qtyReduce") && parseInt($qtyBox.text())>5){
                                             item_qty = parseInt($qtyBox.text());
                                             if(item_qty <= 1){
                                                 $itemBox.find(".btn-remove").click();
@@ -47,6 +47,8 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                                 $qtyBox.text(item_qty);
                                                 ajaxMiniCart(item_id,item_qty);
                                             }
+                                        }else if($j(this).hasClass("qtyReduce") && parseInt($qtyBox.text())<=5){
+                                            alert("Minimum Qty Allowed in Shopping Cart is 5 !");
                                         }
                                     });
                                 });

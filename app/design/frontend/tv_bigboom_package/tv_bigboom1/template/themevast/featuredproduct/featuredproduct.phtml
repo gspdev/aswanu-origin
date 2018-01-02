@@ -69,7 +69,7 @@ $helpLabels = $this->helper('themevast/labels');
 						<?php if($_product->isSaleable()): ?>
                             <div class="qtyBox f-left clearfix">
                                 <input type="button" value="-" class="left qtyBtn qtyReduce"/>
-                                <input type="number" class="act-input f-left"  value="5" oninput="if(value.length>3)value=value.slice(0,3)" data-toggle="tooltip" title="qty > 4"/>
+                                <input type="number" class="act-input f-left"  value="5" oninput="if(value.length>3)value=value.slice(0,3);" onchange="if(value<5)value=5;" data-toggle="tooltip" title="qty > 4"/>
                                 <input type="button" value="+" class="left qtyBtn qtyAdd"/>
                             </div>
                             <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-left forMobile" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add') ?><i class="fa fa-shopping-cart"></i></span></span></button>
@@ -110,7 +110,7 @@ $helpLabels = $this->helper('themevast/labels');
 				    var $qtyBox = jQuery(this).parent();
 				    var $input = $qtyBox.find(".act-input");
 				    var inputVal = $input.val();
-				    if(jQuery(this).hasClass("qtyReduce")&&inputVal>1){
+				    if(jQuery(this).hasClass("qtyReduce")&&inputVal>5){
 				        inputVal--;
 				        $input.val(inputVal);
                     }else if(jQuery(this).hasClass("qtyAdd")){

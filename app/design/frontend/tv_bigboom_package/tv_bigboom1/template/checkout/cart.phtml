@@ -162,12 +162,12 @@
 					var qtyObj = tr.find(".input-text.qty");
 					var qty = parseInt(qtyObj.val());
 					tr.find(".qtyBtn.qtyReduce").unbind('click').click(function(){
-							if(qty>1){
+							if(qty>5){
 								qty -=1;
 								postForm(qtyObj,qty);
 							}
 							else{
-								alert("The quantity can not less than 1.");
+								alert("The quantity can not less than 5.");
 							}
 					});
 					tr.find(".qtyBtn.qtyAdd").click(function(){

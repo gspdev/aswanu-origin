@@ -29,12 +29,13 @@
 <?php $buttonTitle = $this->__('Update Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
     <div class="add-to-cart">
+        <p><b style="font-size:12px;">Minimum Qty Allowed in Shopping Cart : 5</b></p>
         <?php if (!$_product->isGrouped()): ?>
 		<div class="input-content">
         <label for="qty"><?php echo $this->__('Qty:') ?></label>
 		<div class="box-qty">
-			<input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) qty_el.value--;return false;" class="qty-decrease">
-			<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			<input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 5 ) qty_el.value--;return false;" class="qty-decrease">
+			<input type="text" name="qty" id="qty" maxlength="12"  onchange="if(value<5)value=5;" autofocus  value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 			<input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" class="qty-increase">
 		</div>
 		</div>
@@ -42,7 +43,4 @@
         <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><?php echo $buttonTitle ?></span></button>
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>
-<script language=javascript>
-	document.getElementById("qty").focus();
-</script>
 <?php endif; ?>

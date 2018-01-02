@@ -84,7 +84,7 @@
                             <?php if($_product->isSaleable()): ?>
                                 <div class="qtyBox f-left clearfix" style="margin-right: 10px;">
                                     <input type="button" value="-" class="left qtyBtn qtyReduce"/>
-                                    <input type="number" class="act-input f-left"  value="5" oninput="if(value.length>3)value=value.slice(0,3)" data-toggle="tooltip" title="qty > 4"/>
+                                    <input type="number" class="act-input f-left"  value="5" oninput="if(value.length>3)value=value.slice(0,3)" onchange="if(value<5)value=5;" data-toggle="tooltip" title="qty > 4"/>
                                     <input type="button" value="+" class="left qtyBtn qtyAdd"/>
                                 </div>
                                 <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-left" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
@@ -148,7 +148,7 @@
                          <?php if($_product->isSaleable()): ?>
                              <div class="qtyBox clearfix">
                                  <input type="button" value="-" class="left qtyBtn qtyReduce"/>
-                                 <input type="number" class="act-input f-left"  value="5" oninput="if(value.length>3)value=value.slice(0,3)" data-toggle="tooltip" title="qty > 4"/>
+                                 <input type="number" class="act-input f-left"  value="5" oninput="if(value.length>3)value=value.slice(0,3)" onchange="if(value<5)value=5;" data-toggle="tooltip" title="qty > 4"/>
                                  <input type="button" value="+" class="left qtyBtn qtyAdd"/>
                              </div>
                             <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
@@ -174,7 +174,7 @@
                 var $qtyBox = jQuery(this).parent();
                 var $input = $qtyBox.find(".act-input");
                 var inputVal = $input.val();
-                if(jQuery(this).hasClass("qtyReduce")&&inputVal>1){
+                if(jQuery(this).hasClass("qtyReduce")&&inputVal>5){
                     inputVal--;
                     $input.val(inputVal);
                 }else if(jQuery(this).hasClass("qtyAdd")){
