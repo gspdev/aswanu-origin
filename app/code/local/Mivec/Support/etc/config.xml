@@ -37,7 +37,7 @@
     <adminhtml>
         <menu>
             <mivec module="support">
-                <title>MIVEC</title>
+                <title>Themevast</title>
                 <sort_order>80</sort_order>
                 <children>
                     <support module="support">
