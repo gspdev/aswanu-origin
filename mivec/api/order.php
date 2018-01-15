@@ -85,13 +85,13 @@ if ($_orderCollection->getItems()) {
 	       	$id_transaction = $txn_id;
 		}
 
-		if(isset($_incrementId)){
-			$read=Mage::getSingleton("core/resource")->getConnection('core_read');
-		    $table =Mage::getSingleton('core/resource')->getTableName('sales_flat_invoice');
-		    $result =$read->select()->from($table,array('creditpoint_amount','increment_id'))->where('increment_id='.$_incrementId);
-		    $amountList = $read->fetchAll($result);
-	       	$creditpointAmount = $amountList[0]['creditpoint_amount'];
-		}
+		// if(isset($_incrementId)){
+			// $read=Mage::getSingleton("core/resource")->getConnection('core_read');
+		    // $table =Mage::getSingleton('core/resource')->getTableName('sales_flat_invoice');
+		    // $result =$read->select()->from($table,array('creditpoint_amount','increment_id'))->where('increment_id='.$_incrementId);
+		    // $amountList = $read->fetchAll($result);
+	       	// $creditpointAmount = $amountList[0]['creditpoint_amount'];
+		// }
 
 		if($admin_method=='cashondelivery'){
 			if(isset($parent_id)){
@@ -181,7 +181,7 @@ if ($_orderCollection->getItems()) {
 			'state_name'		=> $_orderData['shipping_address']['region'], //州
 			'comment'           => $comment_string,
 			'discountAmount'    => $discountAmount,
-			'creditpointAmount' => $creditpointAmount,
+			//'creditpointAmount' => $creditpointAmount,
 			'customer_level'    => $customer_level,
 /*			'associations'	=> array(
 				'order_rows'	=> array(
