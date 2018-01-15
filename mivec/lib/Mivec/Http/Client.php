@@ -4,7 +4,11 @@ class Mivec_Http_Client extends Mivec_Http_Abstract
 	protected $_request;
 	protected $_reponse;
 	protected $_url;
-
+	
+	public function __construct()
+	{
+		
+	}
 	
 	public function request($url)
 	{

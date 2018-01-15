@@ -21,20 +21,56 @@ require_once 'common.php';
 
 //order
 require_once 'order.common.php';
-
 //supplier
-//require_once 'supplier.common.php';
+require_once 'supplier.common.php';
 //echo get_include_path();exit;
 
 // load PhpMailer lib
 require_once 'PhpMailer/class.phpmailer.php';
 
+define('__WEB__' , Mage::getBaseUrl());
+define('__WEB_MEDIA__' , __WEB__ . "media/");
+define('__WEB_MEDIA_PRODUCT__' , __WEB__ . "media/catalog/product");
+
 //media dir
-define('MEDIA',ROOT . '/media');
-define('MEDIA_PRODUCT',MEDIA . '/catalog/product');
+define('__MEDIA__' , 'media');
+define('__MEDIA_PRODUCT__' , '/catalog/product');
 
-//website
-define("__WEB_BASE__" , Mage::getBaseUrl());
-define("__WEB_SKIN__" , Mage::getSingleton('core/design_package')->getSkinBaseUrl());
 
+//init
+$app = Mage::app();
+$db = Mage::getSingleton('core/resource')->getConnection('core_read');
+
+//newsletter
+define("__TABLE_NEWSLETTER_CFG_SMTP__" , 'mivec_newsletter_config_smtp');
+define("__TABLE_NEWSLETTER_CFG_TEMPLATE__" , 'mivec_newsletter_config_template');
+define("__TABLE_NEWSLETTER_QUEUE__" , "mivec_newsletter_queue_list");
+define('__TABLE_NEWSLETTER_QUEUE_MAIL__' , 'mivec_newsletter_queue_mail_list');
+
+//magento
+define("__TABLE_NEWSLETTER_SUBSCRIBE__" , "newsletter_subscriber");
+
+//product
+define('__TABLE_PRICE_TIER__' , 'catalog_product_entity_tier_price');
+define('__TABLE_PRODUCT_PRICE__' , 'catalog_product_entity_decimal');
+
+//seo
+define('__TABLE_SEO_LINK_ANALYZE__' , 'mivec_seo_link_analyze');
+
+//knowledge base
+define('__TABLE_KB_ARTICLE__' , 'mivec_kb_article');
+define('__TABLE_KB_ARTICLE_PRODUCT_RELATED__' , 'mivec_kb_article_product_related');
+define('__TABLE_KB_ARTICLE_COMMENT__' , 'mivec_kb_article_comment');
+
+//ticket
+define("__TABLE_SP_TICKET__" , 'mivec_ticket');
+define("__TABLE_SP_TICKET_MSG__" , 'mivec_ticket_message');
+define("__TABLE_SP_TICKET_AGENT__" , 'mivec_ticket_agent');
+define("__TABLE_SP_TICKET_TYPE__" , 'mivec_ticket_issue_type');
+
+function db()
+{
+    global $db;
+    return $db;
+}
 //$db = Mage::getSingleton('core/resource')->getConnection('core_read');

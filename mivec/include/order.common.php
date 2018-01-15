@@ -1,4 +1,24 @@
 <?php
+
+function getInvoiceData($_order)
+{
+	if ($_order) {
+		$_data = array();
+		foreach ($_order->getInvoiceCollection() as $_in) {
+			$_invoice = Mage::getModel('sales/order_invoice')->load($_in->getId());
+			//print_r($_invoice);
+			$_data = array(
+				"id"			=> $_invoice->getId(),
+				'increment_id'	=> $_invoice->getIncrementId(),
+				'created_date'	=> $_invoice->getCreatedAt(),
+			);
+		}
+		
+		return $_data;
+	}
+}
+
+
 function getOrderDetail(Mage_Sales_Model_Order $order)
 {
 	$shippingAddress = $order->getShippingAddress();
@@ -11,7 +31,7 @@ function getOrderDetail(Mage_Sales_Model_Order $order)
 		'increment_id'	=> $order->getIncrementId(),
 		'customer_id' => $order->getData('customer_id'),
 		'email'	=> $order->getCustomerEmail(),
-		'order_date' => date("Y-m-d" , strtotime($order->getData('created_at'))),
+		'order_date' => $order->getData('created_at'),
 		'status'	=> $order->getStatus(),
 		'remote_ip'	=> $order->getData('remote_ip'),
 	);
@@ -22,36 +42,32 @@ function getOrderDetail(Mage_Sales_Model_Order $order)
 		'lastname'	=> $order->getData('customer_lastname'),
 		'email'		=> $order->getData('customer_email'),
 	);
-
-    $data['shipping_address'] = array(
-        'firstname'	=> $shippingAddress->getData('firstname'),
-        'lastname'	=> $shippingAddress->getData('lastname'),
-        'company'	=> $shippingAddress->getCompany(),
-        'city'		=> $shippingAddress->getCity(),
-        'region'	=> $shippingAddress->getRegion(),
-        'street'	=> $shippingAddress->getData('street'),
-        'telephone'	=> $shippingAddress->getTelephone(),
-        'zip'	=> $shippingAddress->getData('postcode'),
-    );
-
-	if ($country = Mage::getModel('directory/country')->loadByCode($shippingAddress->getCountryId())) {
-	    $data["shipping_address"]["country"] = $country->getName();
-    }
 	
-	$data['carrier'] = array(
+	$country = Mage::getModel('directory/country')->loadByCode($shippingAddress->getCountryId());
+	$data['shipping_address'] = array(
+		'firstname'	=> $shippingAddress->getData('firstname'),
+		'lastname'	=> $shippingAddress->getData('lastname'),
+		'company'	=> $shippingAddress->getCompany(),
+		'city'		=> $shippingAddress->getCity(),
+		'region'	=> $shippingAddress->getRegion(),
+		'street'	=> $shippingAddress->getData('street'),
+		'telephone'	=> $shippingAddress->getTelephone(),
+		'zip'	=> $shippingAddress->getData('postcode'),
+		'country_code'	=> $shippingAddress->getCountryId(),
+		'country'	=> $country->getName(),
+	);
+	
+	$data['shipping'] = array(
 		'carrier'	=> $order->getData('shipping_description'),
 		'amount'	=> $order->getData('base_shipping_amount')
 	);
-
+	
 	$data['amount'] = array(
-		'weight'	=> $order->getData('weight') . '/KG',
-		'discount'  => $order->getData('order_currency_code') . ' '
-                . number_format($order->getData("base_discount_amount"),2),
-		'subtotal'	=> $order->getData('order_currency_code') . ' ' 
-				. number_format($order->getData('subtotal') , 2),
-		'grand_total'	=> $order->getData('order_currency_code') .' '
-				. number_format($order->getData('base_grand_total') , 2),
-		'shipping'	=> $order->getData('order_currency_code') .' ' . number_format($order->getData('base_shipping_amount') , 2),
+		'weight'	=> $order->getData('weight'),
+		//'subtotal'	=> $order->getData('order_currency_code') . ' ' . number_format($order->getData('grand_total') , 2),
+		'subtotal'	=> number_format($order->getData('grand_total') , 2),
+		'grand_total'	=> number_format($order->getData('base_grand_total') , 2),
+		'shipping'	=> $order->getData('base_shipping_amount'),
 	);
 	return $data;
 }
@@ -78,16 +94,18 @@ function getOrderItems(Mage_Sales_Model_Order $order)
 		//$options = unserialize($item->getData('product_options'));
 		$_options = getItemOptions($item);//$item->getProductOptions();
 		//print_r($_options);
+		//print_r($item->getData());exit;
 		
 		$arr[] = array(
 			'id'	=> $item->getId(),
+			'product_id'	=> $item->getProductId(),
 			'name'	=> $item->getName(),
 			'options'	=> $_options,
 			'sku'	=> $item->getSku(),
 			'qty'	=> $qty,
-			'price'	=> $order->getData('order_currency_code') .' ' . number_format($price , 2),
+			'price'	=> $price,
 			'discount'	=> $discount,
-			'subtotal'	=> $order->getData('order_currency_code') . " " . (($price - $discount) * $qty)
+			'row'	=> (($price - $discount) * $qty)
 		);
 	}
 	return $arr;
@@ -110,7 +128,7 @@ function getItemOptions($_item)
 	return $result;
 }
 
-function getFormatedOptionValue($optionValue, $_truncatedValue)
+function getFormatedOptionValue($optionValue)
 {
 	$optionInfo = array();
 

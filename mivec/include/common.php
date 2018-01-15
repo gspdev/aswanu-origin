@@ -20,6 +20,7 @@ function is_crawler() {
 	return false; 
 }
 
+
 //default timezone = Hongkong
 function dateFormat($_date , $_dateZone = 'Hongkong')
 {
@@ -43,8 +44,9 @@ function jsLocation($msg='' , $url='')
 }
 
 function rands($size) {
-	for($i=0;$i<$size;$i++) {
-		$num.= rand(0,9);
+    $num = "";
+	for($i=0; $i<$size; $i++) {
+		$num .= rand(0,9);
 	}
 	return $num;
 }
@@ -135,19 +137,19 @@ function mkdirByProductImage($img)
 	}
 }
 
-function arrayToStr($arr,$deno=',') {
+function arrayToStr($arr , $separator=',') {
 	if ($arr) {
 		$str = "";
 		foreach ($arr as $_val) {
-			$str .= $_val . $deno;
+			$str .= $_val . $separator;
 		}
-		$str = trim($str,$deno);
+		$str = trim($str,$separator);
 		return $str;
 	}
 }
 
-function strToArray($str,$deno=',') {
-	if ($s = split($deno,$str)) {
+function strToArray($str , $separator=',') {
+	if ($s = split($separator,$str)) {
 		$arr = array();
 		foreach ($s as $v) {
 			$arr[] = $v;
@@ -214,6 +216,14 @@ function getCsvContent($file , $header = false)
 	}
 }
 
+function setSqlConvertToCount($sql)
+{
+    //split to get count
+    $rowsql = preg_replace('/SELECT (.*?) FROM/is','SELECT COUNT(*) FROM',$sql);
+    $rowsql = preg_replace('/(ORDER BY *.+\w+)/is','',$rowsql);
+    return $rowsql;
+}
+
 function createFCKeditor($value="",$name="content",$width="100%",$height=350,$toolbar="Default")
 {
 	//include "/js/fontis/fckeditor/fckeditor.php";
@@ -230,13 +240,6 @@ function createFCKeditor($value="",$name="content",$width="100%",$height=350,$to
 	//return $oFCKeditor->CreateHtml();
 }
 
-function convertToCount($sql)
-{
-	//split to get count
-	$rowsql = preg_replace('/SELECT (.*?) FROM/is','SELECT COUNT(*) FROM',$sql);
-	$rowsql = preg_replace('/(ORDER BY *.+\w+)/is','',$rowsql);
-	return $rowsql;
-}
 
 function pager($config , $page)
 {
