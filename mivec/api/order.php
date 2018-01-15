@@ -139,7 +139,8 @@ if ($_orderCollection->getItems()) {
 			'date_upd'	=> '',
 			'shipping_number'	=> '',
 			'id_shop_group'	=> '',
-			'id_shop'	=> 'spidermall.com',
+			//'id_shop'	=> 'spidermall.com',
+			'id_shop'	=> 'aswanu.com',
 			'secure_key'	=> $_payment->getLastTransId(), // * required
 			'recyclable'	=> 0,
 			'gift'	=> 0,
