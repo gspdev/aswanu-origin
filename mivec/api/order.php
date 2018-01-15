@@ -123,14 +123,18 @@ if ($_orderCollection->getItems()) {
 
 		$billing_address_street=$billingAddress->getStreetFull();
 
+		$order_created_at = Mage::getModel('sales/order')->loadByIncrementId($_incrementId);
+		$_totalData =$order_created_at->getData();
+		$_created_at = $_totalData['created_at'];//pay_date
+		
 		$data_array = array(
 			'order_id' => $_incrementId,
 			//'order_date'	=> date("Y-m-d H:i:s" , (strtotime($_order->getCreatedAt())+3600*8)),
 			'module'	=> $_payment->getMethod(),//payment method * required
 			'payNo'	=> $_paymentAdd['paypal_payer_email'],
 			'invoice_number'	=> $_invoiceData['id'],
-			'invoice_date'	=> $_invoiceData['created_date'],
-			'pay_date'		=> $_invoiceData['created_date'],
+			'invoice_date'	=> $_created_at,
+			'pay_date'		=> $_created_at,
 			'delivery_number'	=> '',
 			'delivery_date'		=> '',
 			'date'		=> '',
