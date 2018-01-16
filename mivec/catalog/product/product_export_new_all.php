@@ -62,7 +62,7 @@ fputcsv( $fp, $csvHeader,",");
 					$categoryData = 0;
 				}
 				
-				$gGcCode=89;
+				$gGcCode=$categoryid;
 				
 				$gGbId=0;
 				$gGoodsUpc=0;
