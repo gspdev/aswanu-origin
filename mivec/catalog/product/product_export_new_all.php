@@ -17,7 +17,8 @@ $cat = Mage::getModel('catalog/category')->load(94);
 	if(!$cat->getChildren()){
 		$subcats = $cat->getEntityId();
 	}else{
-		$subcats = $cat->getChildren().','.$cat->getEntityId();
+		$subcats = $cat->getChildren();
+		//$subcats = $cat->getChildren().','.$cat->getEntityId();
 	}
 
 	    // $categoryid = 94;
