@@ -23,7 +23,13 @@ $_orderCollection = Mage::getModel('sales/order')
 	->addAttributeToSelect('*')
 	->addAttributeToFilter('status' , __DEFAULT_STATUS__);*/
 
-$_orderCollection = Mage::getModel('sales/order')->getCollection()->addAttributeToSelect('*');
+//$_orderCollection = Mage::getModel('sales/order')->getCollection()->addAttributeToSelect('*');
+$Status='payment_review,paypal_reversed,processing';
+$orderStatus = explode(',',$Status);
+$_orderCollection = Mage::getModel('sales/order')
+	->getCollection()
+	->addAttributeToSelect('*')
+	->addFieldToFilter('status', array('in' => $orderStatus));
 
 if (!empty($_startDate)) {
 	$_orderCollection->addAttributeToFilter('created_at' ,
