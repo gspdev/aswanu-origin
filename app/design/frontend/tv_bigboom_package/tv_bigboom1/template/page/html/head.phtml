@@ -63,5 +63,15 @@
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-102042006-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-102042006-1');
+</script>
+
 <?php  $color = Mage::getStoreConfig('themevast/general/themecolor'); ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl("css/$color"); ?>" media="all" />
