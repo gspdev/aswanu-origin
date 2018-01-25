@@ -35,10 +35,12 @@ $count  = $this->getNum();
             var dnow = new Date(start_date);
             if(CountStepper>0) ddiff= new Date((dnow)-(dthen));
             else ddiff = new Date((dthen)-(dnow));
-            var gsecs = Math.floor(ddiff.valueOf()/1000);
-            var iid = "countbox_<?php echo $count; ?>";
-            CountBack(gsecs,iid, j);
-            j++;
+            if(ddiff>0){
+                var gsecs = Math.floor(ddiff.valueOf()/1000);
+                var iid = "countbox_<?php echo $count; ?>";
+                CountBack(gsecs,iid, j);
+                j++;
+            }
         })();
     </script>
 <?php endif;endif; ?>
