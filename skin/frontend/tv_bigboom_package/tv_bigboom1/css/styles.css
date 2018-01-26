@@ -3822,3 +3822,14 @@ line-height: 70px;font-weight: 900;padding: 35px 0 27px;margin: 0;color: #333; }
 /*one page checkout*/
 .opc-wrapper-opc .opc-col-left .wide .notice{color: #39b9c6;font-weight: bold;}
 .account-login{padding-bottom: 20px;}
+
+
+.banktransfer-instructions-content span,
+.checkmo-mailing-address span{font-weight:bold;}
+#payment_form_checkmo li>label{display:none;}
+#payment_form_checkmo .checkmo-mailing-address{
+	margin:25px 0 0 0;
+	line-height:26px;
+	padding: 5px;
+    background-color: #fbfaf6;
+    border: 1px solid #bbb6a5;}
