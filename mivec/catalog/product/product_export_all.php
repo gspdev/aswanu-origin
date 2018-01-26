@@ -7,6 +7,7 @@ define('MAGENTO_ROOT', getcwd());
 //require_once $mageFilename;
 Mage::setIsDeveloperMode(true);
 ini_set('display_errors', 1);
+ini_set('memory_limit','512M');
 //Mage::app();
 // $products = Mage::getModel("catalog/product")->getCollection();
 // $products->addAttributeToSelect('For iPhone');
@@ -23,7 +24,7 @@ $cat = Mage::getModel('catalog/category')->load(173);
 
 //$fp = fopen('C:/Users/Administrator/Desktop/'.$cat->getName().date("Y-m-d").'.csv', 'w');
 $fp = fopen($cat->getEntityId().'-'.date("Y-m-d").'.csv', 'w');
-$csvHeader = array("sku","name","weight","price");
+$csvHeader = array("name","sku","price");
 fputcsv( $fp, $csvHeader,",");
 foreach(explode(',',$subcats) as $subCatid){
 	
@@ -37,7 +38,7 @@ foreach(explode(',',$subcats) as $subCatid){
 	    foreach ($products as $product){
 				$sku = trim($product->getSku());
 				$name = trim($product->getName());
-				$weight = $product->getWeight();
+				//$weight = $product->getWeight();
 				//$goods_img = 'https://res-1.cloudinary.com/aswanu/image/upload/c_pad,dpr_1.0,f_auto,h_600,q_80,w_600/media/catalog/product'.$product->getImage();
 				//$goods_img =Mage::helper('catalog/image')->init($product, 'image')->resize(265);
 				//$goods_url = $product->getProductUrl();
@@ -46,7 +47,7 @@ foreach(explode(',',$subcats) as $subCatid){
 				//$categoryIds = implode('|', $product->getCategoryIds());//change the category separator if needed
 				//$_category = Mage::getModel('catalog/category')->load($categoryIds);
 				//$categoryData = $_category->getName();
-				fputcsv($fp, array($sku,$name,$weight,$price_us), ",");
+				fputcsv($fp, array($name,$sku,$price_us), ",");
 			}
 }
 fclose($fp);
