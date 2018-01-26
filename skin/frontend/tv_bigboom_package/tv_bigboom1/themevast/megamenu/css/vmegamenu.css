@@ -49,13 +49,13 @@
     padding: 0 15px;
     text-decoration: none;
     display:block;
+    font-size: 13px;
     color: #555;
     border: none;
     text-transform: capitalize;
     margin: 0;
     position: relative;
     border-top: 1px solid #f0f0f0;
-    font-size: 14px;
     background: url(../images/icon-menu.png) 0 0 no-repeat;
     padding-left: 45px;
 }
@@ -132,20 +132,29 @@
 }
 .nav_vmegamenu div.dropdown a {
     display:block;
-    /*line-height: 30px;*/
 }
-
+.nav_vmegamenu div.dropdown a.viewmore{
+    display: inline-block;
+    padding: 2px 4px;
+    margin-left: -2px;
+    border-radius: 2px;
+    transition: all 0.2s linear;}
 
 .nav_vmegamenu .itemMenu h4.level1,
 .nav_vmegamenu .itemMenu a.level1{
-    font-size: 14px;
-    /*text-transform: uppercase;*/
+    font-size: 15px;
     font-weight: bold;
     color: #555555;
     font-family: arial,sans-serif;
     word-wrap: break-word;
+    /*text-transform: uppercase;*/
 }
-
+.nav_vmegamenu .itemMenu a.level1.nochild{
+    font-size: 12px;color:#666666;padding: 4px 0 3px 0;font-weight: normal;
+}
+.nav_vmegamenu .itemMenu a.level1.nochild:hover{
+    color:#b0d95e;
+}
 .megamenu .itemMenu a.level2:before,
 .megamenu .itemMenu a.level3:before,
 .megamenu .itemMenu a.level4:before{
@@ -172,18 +181,16 @@
 .itemSubMenu>.itemMenu>a.itemMenuName:nth-child(n+9){
 	display:none;
 }
-.viewmore:hover{color:#ff0000;}
+.dropdown .viewmore{color:#b9b9b9;}
+.dropdown .viewmore:hover{text-decoration: none;color:#fff;background: #b0d95e;}
 .nav_vmegamenu .itemSubMenu a.itemMenuName {
 	font-family: arial,sans-serif;
     color: #666666;
     text-transform: none;
     font-weight: normal;
-    font-size: 13px;
-    /*border-top: 1px solid #ededed;
-    text-transform: capitalize;
-	height:25px;*/
+    font-size: 12px;
 	padding:4px 0 3px 0;
-	transition:all 0s linear;
+	transition:all 0.2s linear;
 }
 .nav_vmegamenu .itemSubMenu a.itemMenuName:hover{
 	text-decoration-color: #b0d95e;
