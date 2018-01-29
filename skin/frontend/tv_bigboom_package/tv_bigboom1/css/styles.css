@@ -580,10 +580,9 @@ tr.summary-details-excluded { font-style:italic; }
 
 /*------------------------------------.header-quick-access -----------------------------------*/
 #header-special-offer {
-    display: none;
     background: url(../images/bg-promotion.png) 50% 0 repeat #121212;
 }
-#header-special-offer .promotion { text-align: center; color: #a0a0a0; font-size: 14px; padding: 30px 0; position: relative;}
+#header-special-offer .promotion { text-align: center; color: #a0a0a0; font-size: 14px;position: relative;}
 #header-special-offer .promotion .header-special-offer-close { position: absolute; top: 0; right: 0; width: 28px; height: 28px; line-height: 28px; text-align: center; background: rgba(104, 104, 104, 0.4); cursor: pointer;}
 #header-special-offer .promotion h3 { color: #db4c52; font-family: "SF Pro Display",arial,sans-serif; font-size: 44px; margin: 0; line-height: 40px;}
 #header-special-offer .promotion .des1 { color: #eee; font-size: 24px; font-family: "SF Pro Display",arial,sans-serif; margin-bottom: 0;}
