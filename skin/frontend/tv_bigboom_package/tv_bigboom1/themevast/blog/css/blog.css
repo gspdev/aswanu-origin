@@ -16,13 +16,22 @@
 fieldset.group-select{
 	padding:0 20px;
 }
+.group-select .legend{
+    color: #333;
+    font-size: 14px;
+}
 .postTitle h2 {
     font-size: 18px;
     margin: 0px;
-    padding: 0px 0 0 20px;
-    color:#666;
+    padding: 10px 0 0 10px;
+    color:#2194d3;
     font-weight: bold;
+    font-family: 'SF Pro Dispaly',Arial;
 }
+.postWrapper>.postTitle h2 {
+    text-transform: capitalize;
+}
+
 .blog-list .postTitle h2{padding:0;}
 .postTitle h3 {
     font-size: 11px;
@@ -31,7 +40,7 @@ fieldset.group-select{
     padding-right: 20px;
     padding-bottom: 2px;
     padding-left: 0px;
-    color: #888;
+    color: #9a9a9a;
     font-style: italic;
     font-weight: normal;
 	text-align:right;
@@ -43,10 +52,11 @@ fieldset.group-select{
 }
 .postContent {
     padding-bottom: 10px;
-	text-indent:20px;
+    color: #5d5d5d;
+    font-size: 13px;
 }
 .postContent a.aw-blog-read-more { display: none;}
-.postDetails { }
+.postDetails {    color: #555; }
 .postDetails  a{color:#2194d3;}
 .postBookmarks {
     padding-bottom: 10px;
@@ -83,7 +93,7 @@ fieldset.group-select{
     font-weight: bold;
     padding:0;
 }
-.tags li{margin: 0 6px;}
+.tags li{ margin: 0 6px 0 0;}
 .tags a{display: inline-block;padding: 4px;border-radius:6px 2px;background: #a6aaab;color:#fff;transition: all 0.2s linear;}
 .tags a:hover{text-decoration: none;background: #2f85ca;}
 .tags UL {

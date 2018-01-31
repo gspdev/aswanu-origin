@@ -3,7 +3,16 @@
   margin-top: -80px;
   margin-bottom: 20px;
 }
+/*update nav-vcontainer*/
 .customer-account .nav-vcontainer{margin-top:-80px;}
+
+.catalog-category-view .main,
+.catalog-product-view .main,
+.blog-index-list .main,
+.blog-post-view .main
+{padding-top: 10px;}
+.blog-index-list .main .nav-vcontainer,
+.blog-post-view .main  .nav-vcontainer,
 .catalog-category-view .main .nav-vcontainer,
 .catalog-product-view .main .nav-vcontainer {
   margin-top: -50px;

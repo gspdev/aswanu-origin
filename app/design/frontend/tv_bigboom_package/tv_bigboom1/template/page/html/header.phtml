@@ -116,7 +116,7 @@
 								<a class="wishText" href="javascript:void(0)">
 									<span>Wish</span>
 									<span>List<?php if($status):?>
-                                            <b class="wish-num" style="color: #e62e04;"><?php
+                                            <b class="wish-num" style="color: #ef6554;"><?php
                                              $customer = $session->getCustomer();
                                              $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
                                              if($wishlist->getItemsCount()>0){
