@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+		<Eceerp_Apiprice>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Eceerp_Apiprice>
+    </modules>
+</config>

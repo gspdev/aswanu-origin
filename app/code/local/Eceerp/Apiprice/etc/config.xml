@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <Eceerp_Apiprice>
+            <version>0.1</version>
+        </Eceerp_Apiprice>
+    </modules>
+    <frontend>
+        <routers>
+            <apiprice>
+                <use>standard</use>
+                <args>
+                    <module>Eceerp_Apiprice</module>
+                    <frontName>apiprice</frontName>
+                </args>
+            </apiprice>
+        </routers>
+
+    </frontend>
+
+</config>
+
