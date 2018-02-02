@@ -20,7 +20,7 @@ class Eceerp_Apiprice_IndexController extends Mage_Core_Controller_Front_Action
 		$count = Mage::getModel('catalog/category')
 			->getProductCollection()
 			->addAttributeToSelect('*')
-			->addAttributeToFilter('status', 1)
+			//->addAttributeToFilter('status', 1)
 			->addAttributeToFilter('visibility', 4);
 		$count =  count($count);
 
