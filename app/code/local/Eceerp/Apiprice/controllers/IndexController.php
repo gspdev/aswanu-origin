@@ -41,7 +41,7 @@ class Eceerp_Apiprice_IndexController extends Mage_Core_Controller_Front_Action
 				$list = Mage::getModel('catalog/category')
 					->getProductCollection()
 					->addAttributeToSelect('*')
-					->addAttributeToFilter('status', 1)
+					//->addAttributeToFilter('status', 1)
 					->addAttributeToFilter('visibility', 4)
 					->setPage($page, $row);
 				foreach ($list as $ke => $item) {
