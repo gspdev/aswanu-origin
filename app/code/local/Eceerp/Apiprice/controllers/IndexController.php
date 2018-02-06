@@ -131,7 +131,7 @@ class Eceerp_Apiprice_IndexController extends Mage_Core_Controller_Front_Action
 			    $_SESSION['token'] = $_tokenList;
 				
 				if(!empty($showKey[2])){
-				        $product->setPrice($price);
+				        $product->setPrice($showKey[2]);
 						if($product->save()){
 						    echo 'Sku: '.$product->getSku().' Update Price '.$product->getPrice().' Success!'.'<br/>';
 				       }
