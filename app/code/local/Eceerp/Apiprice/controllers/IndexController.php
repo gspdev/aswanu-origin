@@ -123,15 +123,18 @@ class Eceerp_Apiprice_IndexController extends Mage_Core_Controller_Front_Action
 			    $_SESSION['token'] = $_tokenList;
 				if($price > 0){
 				        $product->setPrice($price);
-				}else{
-						$product->setPrice($product->getPrice());
+						if($product->save()){
+						    echo 'Sku: '.$product->getSku().' Update Price '.$product->getPrice().' Success!'.'<br/>';
+				       }
+				}
+				else{
+						//$product->setPrice($product->getPrice());
+						echo 'Sku: '.$product->getSku().' Not Update Price!'.'<br/>';
 				}
 				// $pro_price =round($product->getPrice(), 2);
 				// if($price != $pro_price){
 					
-				if($product->save()){
-						 echo 'Sku: '.$product->getSku().' Update Price '.$product->getPrice().' Success!'.'<br/>';
-				}
+				
 		}
 	
 	 }
