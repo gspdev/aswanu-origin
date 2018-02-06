@@ -124,9 +124,11 @@
 	.product-tabs li.active a{}
 	.product-tabs li{width:50%;text-align:center;}
 /*Login or Create an Account*/
-	.col2-set .col-1.new-users,.col2-set .col-2.registered-users{float:none;width:100%;padding:0;height:initial;}
+	#login-form .col2-set .col-1.new-users,#login-form .col2-set .col-2.registered-users{float:none;width:100%;padding:0;height:initial;}
 	.col2-set .col-1.new-users.visible-xs,.col2-set .col-2.registered-users:nth-child(2){margin-bottom:20px;}
 	.account-login .content{min-height:initial;}
+	.inchoo-socialconnect-login-upper{display: none;}
+	.customer-account-login .col1-layout .col-main{margin:20px 0 40px 0;}
 /*Account*/
 	@keyframes turn{
 		from{transform:rotate(92deg)}
