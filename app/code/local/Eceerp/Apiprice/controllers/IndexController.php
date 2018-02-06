@@ -110,18 +110,27 @@ class Eceerp_Apiprice_IndexController extends Mage_Core_Controller_Front_Action
 
 	public function updatePriceAction(){
 
-		$sku = $this->getRequest()->getParam('sku');
+		//$sku = $this->getRequest()->getParam('sku');
 		$_token = $this->getRequest()->getParam('token');
-        $price = $this->getRequest()->getParam('price');
-		$product = Mage::getModel('catalog/product')->loadByAttribute('sku',$sku);
+       // $price = $this->getRequest()->getParam('price');
+		
 
 		$_tokenList = 'gvikukNhVfCoJqVZoaFy';
 		
-		if (!$_token || $_tokenList != $_token) {
+		//$str = $sku.'-'.$_tokenList.'-'.$price;
+        $strbase = base64_encode($_token);
+		$showKey = explode('-',base64_decode($strbase));
+		if(!empty($showKey[0])){
+			$product = Mage::getModel('catalog/product')->loadByAttribute('sku',$showKey[0]);
+		}
+		
+		//print_r($fff[1]);exit;
+		if (!$showKey[1] || $_tokenList != $showKey[1]) {
 			die('Access Denied');
 		} else {
 			    $_SESSION['token'] = $_tokenList;
-				if($price > 0){
+				
+				if(!empty($showKey[2])){
 				        $product->setPrice($price);
 						if($product->save()){
 						    echo 'Sku: '.$product->getSku().' Update Price '.$product->getPrice().' Success!'.'<br/>';
