@@ -16,7 +16,7 @@
 	.header{height:initial;margin:0;}
 	.search-left{padding:0 0 0 15px;}
 	.header a.logo{margin-top:16px;height:30px;width:initial;}
-	.header a.logo>img{display:block;height:100%;}
+	.header a.logo>img{display:block;/*height:100%;*/padding-top: 5px;}
 	.search-right .head-My .myText span{height: 20px;line-height: 20px;color:#888888;}
 	.header-cart-mini .cart-mini-title a.shopping-cart{margin-left:-20px;}
 	.search-right .head-Cart:hover .top-line{width:61px;}
@@ -191,7 +191,7 @@
 	/*banner*/
 	.nivo-directionNav a{width: 32px;}
 	.mobile-banner-slideshow{background: url("../../../../../media/themevast/m_banner/banner_background.jpg") 0 0 no-repeat;background-size: cover;}
-	.mobile-banner-slideshow .bx-wrapper .bx-viewport{background: transparent;}
+	.mobile-banner-slideshow .bx-wrapper .bx-viewport{background: transparent;height:auto!important;}
 	.mobile-banner-list li a{display: block;}
 	.mobile-banner-list li a .text{padding: 40px 0 10px 0;font-family: "Segoe UI Symbol","Arial";
 		color: #25547f;font-size: 20px;font-weight: bold;}
