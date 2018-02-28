@@ -95,6 +95,7 @@ jQuery( document ).ready(function($) {
                 //	$content.find('.nivo-item .readmore').css("top","250px");
                 //}
             });
+            $(".banner-slideshow").addClass("loaded");
         })('.tv-nivoslider');
     }else if(newWidth <= 767){
         //mobile slider
@@ -103,21 +104,28 @@ jQuery( document ).ready(function($) {
             var $content = $(selector);
             var $slider  = $('.mobile-banner-list', $content);
             var slider 	 = $slider.bxSlider({
-                auto: 1, speed: 600, controls: 0, pager: 0, maxSlides: 1,infiniteLoop: true,
+                auto: 1, speed: 800, controls: 0, pager: 0, maxSlides: 1,infiniteLoop: true,
                 moveSlides:1,
                 slideMargin: 0,
                 autoHover: false, // stop while hover <=> slider.stopAuto(); + slider.startAuto();
             });
 
         })(".mobile-banner-slideshow");
+        $(".mobile-banner-slideshow").addClass("loaded");
     }
 
     $(window).resize(function () {
         newWidth = $(document).width();
         if(newWidth > 767){
             $(".mobile-banner-slideshow").hide();
+            if($(".banner-slideshow").hasClass("loaded")){
+                $(".banner-slideshow").show();
+            }
         }else if(newWidth <= 767){
             $(".banner-slideshow").hide();
+            if($(".mobile-banner-slideshow").hasClass("loaded")){
+                $(".mobile-banner-slideshow").show();
+            }
         }
     });
 });
