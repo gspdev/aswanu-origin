@@ -4,6 +4,7 @@ $slider = $this->getSlider();
 if(!count($slider)) return;				
 $media = Mage::getBaseUrl('media');	
 $caption = $this->getConfig('caption');
+$_mobile_imgUrl = Mage::getBaseUrl();
 ?>
 <figure class="banner-slideshow">
 	<div class="flexslider tv-nivoslider image-effect">
@@ -41,50 +42,84 @@ $caption = $this->getConfig('caption');
 		</div>
 	</div>
 </figure>
+<figure class="mobile-banner-slideshow">
+    <ul class="mobile-banner-list">
+        <li><a href="<?php echo $_mobile_imgUrl.'for-iphone-x-liquid-silicone-case-for-cl9610-5-0-black.html'?>"><img src="<?php echo $_mobile_imgUrl.'media/themevast/m_banner/silicone_case.jpg'?>" title="silicone case"></a></li>
+        <li><a href="<?php echo $_mobile_imgUrl.'for-samsung-note8-black-transparent-3d-0-33mm.html'?>"><img src="<?php echo $_mobile_imgUrl.'media/themevast/m_banner/Super_Glass.jpg'?>" title="super glass"></a></li>
+    </ul>
+</figure>
 <script type="text/javascript">
 jQuery( document ).ready(function($) {
-	(function(selector){
-		var $content = $(selector);
-		$content.find('#tv-inivoslider').nivoSlider({
-			slices: 15,
-			boxCols: 8,
-			boxRows: 4,
-			startSlide: 0,
-			controlNavThumbs: false,
-			pauseOnHover: true,
-			manualAdvance: false,
-			prevText: 'Prev',
-			nextText: 'Next',
-			effect: '<?php echo $this->getConfig('effect') ?>',
-			animSpeed: <?php echo $this->getConfig('animSpeed') ?>,
-			pauseTime: <?php echo $this->getConfig('pauseTime') ?>,
-			controlNav: <?php echo $this->getConfig('controlNav') ?>,
-			directionNav: <?php echo $this->getConfig('directionNav') ?>,
-			afterLoad:function(){
-				$content.find(".nivo-item").first().addClass("onSelect");
-			},
-			afterChange:function(){
-				var tmpActive = $content.find('.nivo-control.active').text()-1;
-				if(tmpActive>=0){
-					$content.find(".nivo-item").removeClass("onSelect").
-				eq(tmpActive).addClass("onSelect");
-				}
-			},
-			//afterLoad: function(){
-			//	$('.ajax_loading').css("display","none");
-			//},     
-			//beforeChange: function(){ 
-			//	$content.find('.nivo-item .title').css("top","-500px" );
-			//	$content.find('.nivo-item .description').css("top","-1000px");
-			//	$content.find('.nivo-item .readmore').css("top","-2000px");
-			//}, 
-			//afterChange: function(){ 
-			//	$content.find('.nivo-item .title').css("top","330px");
-			//	$content.find('.nivo-item .description').css("top","390px");
-			//	$content.find('.nivo-item .readmore').css("top","250px");
-			//}
-		});
-	})('.tv-nivoslider');
+    var newWidth = $(document).width();
+    if(newWidth > 767){
+
+        $(".banner-slideshow").show();
+        (function(selector){
+            var $content = $(selector);
+            $content.find('#tv-inivoslider').nivoSlider({
+                slices: 15,
+                boxCols: 8,
+                boxRows: 4,
+                startSlide: 0,
+                controlNavThumbs: false,
+                pauseOnHover: true,
+                manualAdvance: false,
+                prevText: 'Prev',
+                nextText: 'Next',
+                effect: '<?php echo $this->getConfig('effect') ?>',
+                animSpeed: <?php echo $this->getConfig('animSpeed') ?>,
+                pauseTime: <?php echo $this->getConfig('pauseTime') ?>,
+                controlNav: <?php echo $this->getConfig('controlNav') ?>,
+                directionNav: <?php echo $this->getConfig('directionNav') ?>,
+                afterLoad:function(){
+                    $content.find(".nivo-item").first().addClass("onSelect");
+                },
+                afterChange:function(){
+                    var tmpActive = $content.find('.nivo-control.active').text()-1;
+                    if(tmpActive>=0){
+                        $content.find(".nivo-item").removeClass("onSelect").
+                        eq(tmpActive).addClass("onSelect");
+                    }
+                },
+                //afterLoad: function(){
+                //	$('.ajax_loading').css("display","none");
+                //},
+                //beforeChange: function(){
+                //	$content.find('.nivo-item .title').css("top","-500px" );
+                //	$content.find('.nivo-item .description').css("top","-1000px");
+                //	$content.find('.nivo-item .readmore').css("top","-2000px");
+                //},
+                //afterChange: function(){
+                //	$content.find('.nivo-item .title').css("top","330px");
+                //	$content.find('.nivo-item .description').css("top","390px");
+                //	$content.find('.nivo-item .readmore').css("top","250px");
+                //}
+            });
+        })('.tv-nivoslider');
+    }else if(newWidth <= 767){
+        //mobile slider
+        $(".mobile-banner-slideshow").show();
+        (function(selector){
+            var $content = $(selector);
+            var $slider  = $('.mobile-banner-list', $content);
+            var slider 	 = $slider.bxSlider({
+                auto: 1, speed: 600, controls: 0, pager: 0, maxSlides: 1,infiniteLoop: true,
+                moveSlides:1,
+                slideMargin: 0,
+                autoHover: false, // stop while hover <=> slider.stopAuto(); + slider.startAuto();
+            });
+
+        })(".mobile-banner-slideshow");
+    }
+
+    $(window).resize(function () {
+        newWidth = $(document).width();
+        if(newWidth > 767){
+            $(".mobile-banner-slideshow").hide();
+        }else if(newWidth <= 767){
+            $(".banner-slideshow").hide();
+        }
+    });
 });
 </script>
 

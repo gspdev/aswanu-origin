@@ -1,6 +1,7 @@
 /**
 * little chubby
 */
+.mobile-banner-slideshow {display: none;}
 @media (max-width: 767px) {
 /*homePage*/
 	/*header*/
@@ -44,8 +45,8 @@
 	.navbar .brand{height:40px;line-height:40px;}
 	.navbar-brand{padding:0 15px;}
 	.navbar .btn-navbar{margin:4px 10px 0 0;}
-	#tv-inivoslider{height:160px!important;}/*set height of slide*/
-	#tv-inivoslider .nivo-main-image{height:160px!important;}
+	#tv-inivoslider{/*height:160px!important;*/}/*set height of slide*/
+	#tv-inivoslider .nivo-main-image{/*height:160px!important;*/}
 	.home-content .products-grid>li{/*width:145px!important;*/margin:0!important;}/*set featuredproduct*/
 	.icon-new, .icon-sale{right:0;}
 	.searchautocomplete .searchautocomplete-placeholder{left:0;min-width:initial;max-width:initial;}
@@ -189,6 +190,8 @@
 	button.btn-checkout span span{padding: 10px 20px;}
 	/*banner*/
 	.nivo-directionNav a{width: 32px;}
+	.mobile-banner-slideshow .bx-wrapper{padding: 0;}
+	.banner-slideshow{display: none;}
 	.banner-slideshow .nivo-directionNav .nivo-prevNav{left:0;z-index: 11;}
 	.banner-slideshow .nivo-directionNav .nivo-nextNav{right:0;z-index: 11;}
 	.featuredproduct .forPc{display: none!important;}
