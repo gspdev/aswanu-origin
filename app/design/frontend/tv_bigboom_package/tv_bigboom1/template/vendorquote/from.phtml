@@ -514,7 +514,6 @@
                     </div>
             </div>
         </fieldset>
-		<input type="hidden" name="invoice_status" value="1"> 
     </form>
     <p id="login_status" data-status="<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>1<?php else: ?>0<?php endif; ?>"></p>
 </div>
@@ -787,7 +786,7 @@
                                 '<td class="img"><span><img style="width: 30px;height: 30px;margin-bottom: 6px;" src="' + tmpData[j].image + '"/></span></td>' +
                                 '<td class="name">' + tmpData[j].name + '</td>' +
                                 '<td class="price">' + tmpData[j].price + '</td>' +
-                                '<td class="check"><input class="my-repair" name="repairs[]" value="' + tmpData[j].id + '" title="' + tmpData[j].name + '" id="' + tmpData[j].id + '" type="checkbox"><label for="' + tmpData[j].id + '"></label></td></tr>';
+                                '<td class="check"><input class="my-repair" value="' + tmpData[j].id + '" title="' + tmpData[j].name + '" id="' + tmpData[j].id + '" type="checkbox"><label for="' + tmpData[j].id + '"></label></td></tr>';
 
                         }
                         if (mtd === 'product' && sort === 0) {} else if (mtd === 'product' && sort === 1) {}
@@ -935,7 +934,7 @@
             $('#reapirs-selected').empty();
             jQuery('input.my-repair:checkbox:checked').each(function () {
                 selected++;
-                $('#reapirs-selected').append('<li>' + selected + '. ' + $(this).attr('title') +'<span class="product_price">'+$(this).parent().parent().find(".price").text()+'</span><input class="user_price" type="number" data-value="'+$(this).val()+'" name="user_price[]"/>'+'</li>');
+                $('#reapirs-selected').append('<li>' + selected + '. ' + $(this).attr('title') +'<span class="product_price">'+$(this).parent().parent().find(".price").text()+'</span><input class="user_price" type="number" data-value="'+$(this).val()+'" name="user_price['+$(this).val()+'][]"/>'+'</li>');
                 $('.no-select').hide();
             });
             if (selected == 0) {
