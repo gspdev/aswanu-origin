@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+	  <vendorquote_index_index>
+            <reference name="root">
+                <action method="setTemplate"><template>page/1column.phtml</template></action>
+            </reference>
+			<action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/repair.js</name>
+                </action>
+			<action method="addItem">
+                    <type>skin_css</type>
+                    <name>css/repair.css</name>
+                </action>	
+		<default>
+          <reference name="content">
+          </reference>
+      </default>
+            <reference name="content">
+			     <!--<block  type="catalog/product_list" category_id="90" name="loproduct"  template="catalog/product/list.phtml"/>-->
+               <block type="vendorquote/quote" name="vendorquote_content"  template="vendorquote/from.phtml">  
+			       <!-- <block type="vendorquote/billing" name="vendorquote.billing" template="vendorquote/billing.phtml"/> -->
+			   </block>
+            </reference>
+        </vendorquote_index_index>
+		
+		
+	<!-- <customer_account translate="label"> -->
+        <!-- <reference name="customer_account_navigation"> -->
+            <!-- <action method="addLink" translate="label" module="repairdevice"><name>repair-device customer</name><path>repairdevice/content/</path><label>My Repair Device</label></action> -->
+        <!-- </reference> -->
+    <!-- </customer_account> -->
+	
+    <!-- <repairdevice_content_index> -->
+    	<!-- <update handle="customer_account" /> -->
+    	<!-- <reference name="my.account.wrapper"> -->
+			<!-- <block type="repairdevice/list" name="repairdevice_content" template="repairdevice/repair_list.phtml"/>         -->
+    	<!-- </reference> -->
+    <!-- </repairdevice_content_index> -->
+    
+     <!-- <repairdevice_content_view> -->
+    	<!-- <update handle="customer_account" /> -->
+    	<!-- <reference name="my.account.wrapper"> -->
+			<!-- <block type="repairdevice/repairdevice" name="repairdevice_content" template="repairdevice/view.phtml"/>         -->
+    	<!-- </reference> -->
+    <!-- </repairdevice_content_view> -->
+		
+	
+</layout> 

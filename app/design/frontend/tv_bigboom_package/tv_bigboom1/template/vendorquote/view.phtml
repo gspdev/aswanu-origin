@@ -1,0 +1,111 @@
+
+<div class="page-title">
+    <h1><?php echo $this->getTitle() ?></h1>
+</div>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo Mage::helper('repairdevice')->getSaveUrl() ?>" method="post" id="awrma-new-form" enctype="multipart/form-data" >
+	<fieldset>
+	<?php echo $this->getBlockHtml('formkey'); ?>
+	<input type="hidden" name="customer_id" value="<?php echo $this->getCustomerId() ?>" />
+	<ul class="form-list">
+        <li>
+            <label for="Number" class="required"><em></em><?php //echo $this->__('ID:') ?></label>
+            <div class="input-box" >
+                <?php //echo $this->getRepairdevice()->getRepairdeviceId(); ?>
+            </div>
+        </li>
+        <li>
+            <label for="Imei" class="required"><em></em><?php echo $this->__('Imei:') ?></label>
+            <div class="input-box">
+                <?php echo $this->getRepairdevice()->getImei(); ?>
+            </div>
+        </li>
+        <li>
+            <label for="Screencode" class="required"><em></em><?php echo $this->__('Screencode:') ?></label>
+            <div class="input-box">
+                <?php echo $this->getRepairdevice()->getScreencode(); ?>
+            </div>
+        </li>
+        <li>
+            <label for="Detailed" class="required"><em></em><?php echo $this->__('Detailed:') ?></label>
+            <div class="input-box">
+                <?php //echo $this->getSubtotal(); ?>
+                <?php echo $this->getRepairdevice()->getDetailed(); ?>
+            </div>
+        </li>
+        <li>
+            <label for="ShippingMethod" class="required"><em></em><?php echo $this->__('Shipping Method:') ?></label>
+            <div class="input-box">
+                <h4><?php echo $this->getShippingMethod(); ?></h4>
+            </div>
+			<?php 
+			   $getAddressIds = $this->getAddress($this->getRepairdevice()->getRepairdeviceId());
+			   foreach($getAddressIds as $itemId):?>
+			     <?php $address = Mage::getModel('repairdevice/repairaddress')->load($itemId); ?>
+				 <?php if($address->getTypeAddress()==0): ?>
+				    <div>
+				       <h6><?php echo $this->__('Billing Adress'); ?>:</h6>
+					   Country: &nbsp; &nbsp;<?php echo $address->getCountryId(); ?>
+					   Street: &nbsp; &nbsp;<?php echo $address->getStreet(); ?>
+					   City: &nbsp; &nbsp;<?php echo $address->getCity(); ?>
+					   Postcode: &nbsp; &nbsp;<?php echo $address->getPostcode(); ?>
+					   Telephone: &nbsp; &nbsp;<?php echo $address->getTelephone(); ?>
+                    </div>
+				 <?php else:?>
+				    <div>
+				       <h6><?php echo $this->__('Shipping Adress'); ?>:</h6>
+					   Country: &nbsp; &nbsp;<?php echo $address->getCountryId(); ?>
+					   Street: &nbsp; &nbsp;<?php echo $address->getStreet(); ?>
+					   City: &nbsp; &nbsp;<?php echo $address->getCity(); ?>
+					   Postcode: &nbsp; &nbsp;<?php echo $address->getPostcode(); ?>
+					   Telephone: &nbsp; &nbsp;<?php echo $address->getTelephone(); ?>
+				    </div>
+				 <?php endif;?>
+				  
+               <?php endforeach; ?>			
+        </li>
+		<li>
+		<label for="ProductList" class="required"><em></em><?php echo $this->__('Customer Repair Items Products:') ?>&nbsp;&nbsp;</label>
+
+		<?php 
+		  $_productIds = $this->getProduct($this->getRepairdevice()->getRepairdeviceId());
+		  foreach($_productIds as $productId): ?>
+		     <?php $product = Mage::getModel('catalog/product')->load($productId); ?>
+		         <div>
+					    Product Id:&nbsp;&nbsp;<?php echo $product->getId(); ?>&nbsp;&nbsp;&nbsp;&nbsp;
+						Product Sku:&nbsp;&nbsp;<span><?php echo $product->getSku(); ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+					    Product Name:&nbsp;&nbsp;<span><?php echo $product->getName(); ?> </span>
+				 </div>
+				  
+		 <?php endforeach; ?>
+        </li>
+		
+		
+		
+		<?php $_productIds = $this->getProductInvoice($this->getRepairdevice()->getRepairdeviceId());
+		if($_productIds):?>
+		   <li>
+			<label for="ProductList" class="required"><em></em><?php echo $this->__('Repair Invocie Products:') ?>&nbsp;&nbsp;</label>
+			<?php 
+			  
+			  foreach($_productIds as $productId): ?>
+				 <?php $product = Mage::getModel('catalog/product')->load($productId); ?>
+					 <div>
+							Product Id:&nbsp;&nbsp;<?php echo $product->getId(); ?>&nbsp;&nbsp;&nbsp;&nbsp;
+							Product Sku:&nbsp;&nbsp;<span><?php echo $product->getSku(); ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+							Product Name:&nbsp;&nbsp;<span><?php echo $product->getName(); ?> </span>
+					 </div>
+					  
+			 <?php endforeach; ?>
+        </li>
+		<?php endif;?>
+    </ul>
+	
+	<div class="buttons-set">
+	    <p class="required"><?php //echo $this->__('* Required Fields') ?></p>
+	    <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+	    <!--<button type="submit" title="<?php echo $this->__('Save Repairdevice') ?>" class="button"><span><span><?php echo $this->__('Save Repairdevice') ?></span></span></button>-->
+	</div>
+	</fieldset>
+</form>

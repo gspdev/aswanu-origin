@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ProductQuote_Vendorquote>
+            <active>true</active>
+           <codePool>local</codePool>
+       </ProductQuote_Vendorquote>
+    </modules>
+</config>
