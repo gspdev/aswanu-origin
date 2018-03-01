@@ -503,55 +503,12 @@
                             <h2 class="repair-title"><span class="repair-step"><span>3</span></span><span>Enhetsinformation</span>
                             </h2>
                             <div class="row">
-                                <div class="col-sm-6"><h4>Serie/IMEI-nummer:</h4>
-                                    <input name="imei" id="imei" class="input-text required-entry" type="text"/>
-                                </div>
-                                <div class="col-sm-6"><h4>Skärmlås:</h4>
-                                    <input type="text" name="screencode" id="screencode" class="input-text required-entry" value=""/>
-                                </div>
                                 <div class="col-sm-12">
                                     <h4><span class="req-item">*</span>Beskriv problemet:</h4>
                                     <textarea name="detailed" id="detailed" cols="5" rows="3" class="required-entry"></textarea>
                                 </div>
                                 <p class="req-info"><span class="req-item">*</span>Måsta vara ifyllt</p></div>
                         </div>
-                        <div class="shipping-info">
-                            <h2 class="repair-title">
-                                <span class="repair-step">
-                                    <span>4</span>
-                                </span>
-                                <span>VÄLJ OM ENHETEN SKA SKICKAS ELLER LÄMNAS I BUTIK</span>
-                            </h2>
-							
-                            <div class="shipping-methods">
-                                <ul id="poll-answers">
-                                    <li>
-                                        <input name="shipping_store" type="radio" value="0" title="Existing" id="store_box" class="radio store">
-                                        <span class="label"><label for="vote_1"><?php echo $this->__('Lämna i butik'); ?></label></span>
-
-                                        <ul id="shipping-store">
-                                            <li><span class="label"><label>Välj butik:</label></span></li>
-                                            <li>
-                                                <input name="shipping_method" type="radio" value="2" title="Existing" id="2new" class="radio poll_vote">
-                                                <span class="label"><label for="vote_1"><?php echo $this->__('Kungsgatan 29, 11156 Stockholm, Sverige'); ?></label></span>
-                                            </li>
-                                            <li>
-                                                <input name="shipping_method" type="radio" value="3" title="Existing" id="3new" class="radio poll_vote">
-                                                <span class="label"><label for="vote_1"><?php echo $this->__('Tivolivägen 2, 12631 Hägersten, Sverige'); ?></label></span>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input name="shipping_method" type="radio" value="1" title="New" id="1new" class="radio poll_vote">
-                                       <!-- <input name="shipping_address" type="text" value="" title="New" id="post_shipping_address" class="radio poll_vote">-->
-                                        <span class="label"><label for="vote_1"><?php echo $this->__('Skicka in med post'); ?></label></span>
-                                    </li>
-                                </ul>
-                                
-                            </div>
-                            <div class="shippingWarn validation-advice" style="display: none;">Detta är ett
-                                obligatoriskt fält.
-                            </div>
                         </div>
                         <button type="submit" class="k-button k-primary" id="order">Beställ</button>
                     </div>
@@ -610,6 +567,12 @@
     #reloading_modal.fade.in{opacity: 0.5;background: #000;}
     #reloading_modal .modal-dialog{width:40px;margin:400px auto 0 auto;}
     #reloading_modal .modal-content{border:none;background: none;box-shadow: none;}
+    .user_price{
+        display: inline-block;
+        width: 60px!important;
+        height: 20px;
+        margin: 0 0 0 10px;}
+    .product_price{margin: 0 0 0 20px;}
 </style>
 <!-- edit by Jerry -->
 <!-- reloading（Modal） -->
@@ -685,73 +648,6 @@
 </script>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        var reloading_obj;
-        var step = 0;
-        //1,*****find sessionStorage*****
-        if(sessionStorage._repair){
-            $("#reloading_modal").modal('show');
-            reloading_obj = JSON.parse(sessionStorage._repair);
-        }
-        function handle_repair() {
-            var repair_val;
-            if(sessionStorage._repair){
-                switch (step){
-                    case 1:
-                        log(step+', load category.');
-                        repair_val = reloading_obj.brand;
-                        $("#categoryList li").each(function(){
-                            if($(this).attr("data-id") === repair_val)
-                                $(this).click();
-                        });
-                        break;
-                    case 2:
-                        log(step+', load model.');
-                        repair_val = reloading_obj.model;
-                        $("#productList li").each(function(){
-                            if($(this).attr("data-id") === repair_val)
-                                $(this).click();
-                        });
-                        break;
-                    case 3:
-                        log(step+', load other.');
-                        repair_val = reloading_obj.other;
-                        $("#otherList li").each(function(){
-                            if($(this).attr("data-id") === repair_val)
-                                $(this).click();
-                        });
-                        break;
-                    case 4:
-                        log(step+', load product list.');
-
-                        var arr_list = reloading_obj.repair_list;
-
-                        for(var m = 0;m < arr_list.length;m++){
-                            $("#repairs .my-repair").each(function(){
-                                if($(this).val() === arr_list[m])
-                                    $(this).click();
-                            });
-                        }
-                        $('#reapirs-selected').empty();
-                        var selected = 0;
-                        jQuery('input.my-repair:checkbox:checked').each(function () {
-                            selected++;
-                            $('#reapirs-selected').append('<li>' + selected + '. ' + jQuery(this).attr('title') + '</li>');
-                            $('.no-select').hide();
-                        });
-
-                        //other info
-                        $("#imei").val(reloading_obj.imei);
-                        $("#screencode").val(reloading_obj.screen_code);
-                        $("#detailed").val(reloading_obj.detailed);
-                        $("#reloading_modal").modal('hide');
-                        log('*, fill text.');
-                        break;
-                    default:
-                        log(step+', default');
-                        break;
-                }
-            }
-        }
         function log(msg) {
             if(window.console){
                 console.log(msg);
@@ -846,7 +742,6 @@
                         }else if(sort === 2){
                             step = 3;
                         }
-                        handle_repair();
                     }
                 });
             } else {
@@ -898,8 +793,6 @@
                         if (mtd === 'product' && sort === 0) {} else if (mtd === 'product' && sort === 1) {}
                         repairs.setHtml(str);
                         $("#repair-block").show();
-                        step = 4;
-                        handle_repair();
                     },
                     error: function () {
                         alert("Ajax error!");
@@ -979,9 +872,6 @@
         otherHead.init();
         otherBox.loaded();
 
-
-        $("#billing-address-select").attr("onchange",''); // billing address select onchange initialize
-        $("#poll-answers input").attr("checked",false);
         ajaxCategory(2, 'category', 0);//First load categoryList
         //2,*****handle sessionStorage*****
 
@@ -1045,7 +935,7 @@
             $('#reapirs-selected').empty();
             jQuery('input.my-repair:checkbox:checked').each(function () {
                 selected++;
-                $('#reapirs-selected').append('<li>' + selected + '. ' + jQuery(this).attr('title') + '</li>');
+                $('#reapirs-selected').append('<li>' + selected + '. ' + $(this).attr('title') +'<span class="product_price">'+$(this).parent().parent().find(".price").text()+'</span><input class="user_price" type="number" data-value="'+$(this).val()+'" name="user_price[]"/>'+'</li>');
                 $('.no-select').hide();
             });
             if (selected == 0) {
@@ -1057,84 +947,7 @@
                 $(this).closest('tr').removeClass('checked');
             }
         });
-        //choose shipping method
-        $(document).on('click','#poll-answers .radio',function(){
-            //shipping-store checked , and choose store  #store_box
-            if($('#poll-answers #store_box:radio:checked').attr("checked") && $(this).hasClass("store")){
-                newAddress.loaded();//hide shipping address
-                shipStore.loading();//show shipping store-list
-                $("#1new:radio").attr("checked",false);//set method post false
-            }
-            //user post checked , value = 1
-            if($('#poll-answers #1new:radio:checked').attr("checked") && !$(this).hasClass("store")
-                && $("#login_status").attr("data-status") === '1'){
-                //user login successfully , there exist option 'new address' and 'exist address'
-                if ($("#billing-address-select").length > 0 ) {
-                    newAddress.loading();//show new address box
-                    shipStore.loaded();//hide store box
-                    $("#store_box:radio,#shipping-store input:radio").attr("checked", false);//set store input false
-                } else if ($("#billing-address-select").length === 0) { //user not login , there not exist address-select box
-                    newAddress.loading();//show new address box
-                    billingNewForm.loading();//show billing new address
-                    shipStore.loaded();//hide store box
-                    $("#store_box:radio,#shipping-store input:radio").attr("checked", false);//set store input false
-                }
-            }
-            if(($('#poll-answers #1new:radio:checked').attr("checked") && !$(this).hasClass("store"))
-                && ($("#login_status").attr("data-status") < 1)){
 
-                shipStore.loaded();//hide store box
-                $("#store_box:radio,#shipping-store input:radio").attr("checked", false);//set store input false
-
-                //1，create repair obj to save user's option
-                var repair_obj2 = {
-                    "status":"0",
-                    "brand":$("#catHead>.img").attr("data-id"),
-                    "model":$("#proHead>.img").attr("data-id"),
-                    "other":"0",
-                    "repair_list":[],
-                    "imei":$("#imei").val(),
-                    "screen_code":$("#screencode").val(),
-                    "detailed":$("#detailed").val()
-                };
-
-                if($("#otherHead>.img").length > 0){
-                    repair_obj2.other = $("#otherHead>.img").attr("data-id");
-                }
-                var $selected_list = $('#repairs input.my-repair:checkbox:checked');
-                for(var l = 0;l < $selected_list.length;l++){
-                    repair_obj2.repair_list[l] =  $selected_list.eq(l).val();
-                }
-
-                //2，save repair message at sessionStorage
-                var repair_str2 = JSON.stringify(repair_obj2);
-                sessionStorage._repair = repair_str2;
-                $("#myModal").modal({show: true, keyboard: true});
-            }
-        });
-        //make change between new address and old address
-        $(document).on('click','#billing-address-select',function(){
-            $("#billing-address-select").change(function () {
-                if(!$(this).val()){ // choose new address
-                    billingNewForm.loading();
-                }
-                if($(this).val()>0){// choose exist address
-                    billingNewForm.loaded();
-                }
-            });
-            if(!$("#billing-address-select").val()){ // no old address , so show the new address
-                billingNewForm.loading();
-            }
-        });
-        //make change on use-bill-address-as-ship-address
-        $("#co-billing-form .bill_use_for_address").attr("checked",true); addShipAddress.loaded(); //initialize use-bill-address-as-ship-addresss and set it checked
-        $(document).on('click','#co-billing-form .bill_use_for_address',function(){
-            if($(this).is(':checked')){
-                addShipAddress.loaded();
-            }else{
-                addShipAddress.loading();
-            }
-        });
         //hide all repairList when click element of option
         function hideRepairList() {
             categoryList.hideList();
@@ -1161,20 +974,6 @@
 
             awrmaNewForm.validator.validate();// form validate
 
-            var $shippingMethod = $(".shipping-methods .poll_vote:radio:checked");//get shipping method
-            //alert("$shippingMethod.val" + $shippingMethod.val());
-
-            if ($shippingMethod.length <= 0) { //validate if there exist shipping method
-                $(".shipping-info .shipping-methods").addClass("validation-failed");
-                $(".shippingWarn").show();
-                event.preventDefault(); // Compatible standard Browsers
-                window.event.returnValue = false; // Compatible IE6~8
-                return false;
-            } else if ($shippingMethod.length === 1) {
-                $(".shipping-info .shipping-methods").removeClass("validation-failed");
-                $(".shippingWarn").hide();
-            }
-
             if($("#repairs input[type='checkbox']:checked").length <= 0){ //validate product list if there exist products selected by customer
                 $(".repair-table").addClass("validation-failed");
                 $(".selectWarn").show();
@@ -1188,29 +987,6 @@
             //2 , validate success , update form by remove some elements
             //deal with sessionStorage
             if($("#login_status").attr("data-status") < 1){
-                //1，create repair obj to save user's option
-                var repair_obj = {
-                    "status":"0",
-                    "brand":$("#catHead>.img").attr("data-id"),
-                    "model":$("#proHead>.img").attr("data-id"),
-                    "other":"0",
-                    "repair_list":[],
-                    "imei":$("#imei").val(),
-                    "screen_code":$("#screencode").val(),
-                    "detailed":$("#detailed").val()
-                };
-
-                if($("#otherHead>.img").length > 0){
-                    repair_obj.other = $("#otherHead>.img").attr("data-id");
-                }
-                var $selected_list = $('#repairs input.my-repair:checkbox:checked');
-                for(var l = 0;l < $selected_list.length;l++){
-                    repair_obj.repair_list[l] =  $selected_list.eq(l).val();
-                }
-
-                //2，save repair message at sessionStorage
-                var repair_str = JSON.stringify(repair_obj);
-                sessionStorage._repair = repair_str;
 
                 //3,show login and register
                 $("#myModal").modal({show:true,keyboard: true});
@@ -1222,31 +998,7 @@
             // before submit remove some input elements , when customer have signed in.
             if($("#login_status").attr("data-status") === '1'){
 
-                //sessionStorage._repair = "";//init _repair
-                sessionStorage.removeItem("_repair");
                 $("#myModal").modal({show:false});
-
-                if($('#poll-answers #store_box:radio:checked').attr("checked")){//customer choose store
-                    $("#billing-new-address-form").remove();
-                    $("#billing-address-select").remove();
-                    $("#ship-form-address").remove();
-                    $(".bill_use_for_address").remove();
-                }
-                if(!$('#poll-answers #store_box:radio:checked').attr("checked")) {
-                    //old bill , same shipping
-                    if ($("#billing-address-select").val() > 0 && $("#co-billing-form .bill_use_for_address").is(':checked')) {
-                        $("#billing-new-address-form").remove();
-                        $("#ship-form-address").remove();
-                        //old bill , new shipping
-                    } else if ($("#billing-address-select").val() > 0 && !$("#co-billing-form .bill_use_for_address").is(':checked')) {
-                        $("#billing-new-address-form").remove();
-                        //new bill , same shipping
-                    } else if (!$("#billing-address-select").val() && $(".bill_use_for_address").is(':checked')) {
-                        $("#ship-form-address").remove();
-                        //new bill , new shipping
-                    } else if (!$("#billing-address-select").val() && !$(".bill_use_for_address").is(':checked')) {
-                    }
-                }
             }
         });
     });
