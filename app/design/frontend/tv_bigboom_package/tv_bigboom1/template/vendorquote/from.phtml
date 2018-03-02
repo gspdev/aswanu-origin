@@ -290,6 +290,7 @@
 
     .repair-selected {
         margin-top: 20px;
+        padding: 4px;
     }
 
     #products-selected li .remove{
@@ -393,7 +394,7 @@
                -webkit-transform: scaleY(1.0);
            }
     }
-    #repair-block{display: none;}
+    #repair-block{/*display: none;*/}
     input[type="number"].user_price{
         -moz-appearance: textfield;
     }
@@ -401,6 +402,8 @@
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }
+    .repair-table{position: relative;}
+    #ajaxloading{position: absolute;z-index: 99;top:0;left:50%;}
 </style>
 
 <?php echo $this->getMessagesBlock()->toHtml() ?>
@@ -425,15 +428,6 @@
             <div id="ie_ajax" style="width: 60px;height: 60px;margin:40px auto;">
                 <img src="/media/loading_ie.gif">
             </div>
-            <div id="ajaxloading">
-                <div class="spinner">
-                    <div class="rect1"></div>
-                    <div class="rect2"></div>
-                    <div class="rect3"></div>
-                    <div class="rect4"></div>
-                    <div class="rect5"></div>
-                </div>
-            </div>
             <div id="repair-block">
                 <h2 class="repair-title"><span class="repair-step"><span>2</span></span><span>Please Select Product</span></h2>
                 <div class="repair-table">
@@ -449,28 +443,37 @@
                         <!--ajax product list-->
                         <tbody></tbody>
                     </table>
+                    <div id="ajaxloading">
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="validation-advice selectWarn" style="display: none;">This is a required field.</div>
                 <div class="repair-selected">
                     <span>my select:</span>
                     <span class="no-select">no product selected</span>
                     <!--selected list-->
                     <ul id="products-selected"></ul>
                 </div>
-                    <div class=" customerPart">
-                        <div class="device-info">
-                            <h2 class="repair-title"><span class="repair-step"><span>3</span></span><span>Enhetsinformation</span>
-                            </h2>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h4><span class="req-item">*</span>Note:</h4>
-                                    <textarea name="detailed" id="detailed" cols="5" rows="3" class="required-entry"></textarea>
-                                </div>
-                                <p class="req-info"><span class="req-item">*</span>Must be filled</p></div>
-                        </div>
-                        </div>
-                        <button type="submit" class="k-button k-primary" id="order">submit</button>
+                <div class="validation-advice selectWarn" style="display: none;">This is a required field.</div>
+                <div class=" customerPart">
+                    <div class="device-info">
+                        <h2 class="repair-title"><span class="repair-step"><span>3</span></span><span>Enhetsinformation</span>
+                        </h2>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4><span class="req-item">*</span>Note:</h4>
+                                <textarea name="description" id="description" cols="5" rows="3" class="required-entry"></textarea>
+                            </div>
+                            <p class="req-info"><span class="req-item">*</span>Must be filled</p></div>
                     </div>
+                    </div>
+                    <button type="submit" class="k-button k-primary" id="order">submit</button>
+                </div>
         </fieldset>
     </form>
     <p id="login_status" data-status="<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>1<?php else: ?>0<?php endif; ?>"></p>
@@ -694,14 +697,13 @@
                         }
                         $("#repairs>tbody").html(str);
                         $("#ie_ajax,#ajaxloading").removeClass("loading");
-                        $("#repair-block").show();
                     },
-                    error: function () {alert("Ajax error!");}
+                    error: function () {alert("AjaxProdoct error!");}
                 });
             } else {log("error : your browser not supported ajax.");}
         }
         /**
-         *click title and show the category list below
+         * click title and show the category list below
          *
          * click category list and ajax category
          * */
@@ -845,18 +847,19 @@
         $("#order").click(function(event){
             var event = event || window.event;
 
+            awrmaNewForm.validator.validate();// form validate
             /**
              * validate product list if there exist products selected by customer
              * */
-            if($("#repairs input[type='checkbox']:checked").length <= 0){
-                $(".repair-table").addClass("validation-failed");
+            if($("#products-selected li").length <= 0){
+                $(".repair-selected").addClass("validation-failed");
                 $(".selectWarn").show();
-                awrmaNewForm.validator.validate();// form validate
 
                 event.preventDefault(); // Compatible standard Browsers
                 window.event.returnValue = false; // Compatible IE6~8
+                return false;
             }else{
-                $(".repair-table").removeClass("validation-failed");
+                $(".repair-selected").removeClass("validation-failed");
                 $(".selectWarn").hide();
             }
 
