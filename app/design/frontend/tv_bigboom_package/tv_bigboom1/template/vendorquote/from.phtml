@@ -30,7 +30,7 @@
         text-transform: uppercase;
         color: #434343;
         font: 700 20px/1.35 "SF Pro Display","Helvetica Neue","Helvetica","Arial",sans-serif;
-        margin: 0 0 1rem;
+        margin: 2rem 0 1rem;
     }
 
     .repair-title span {
@@ -105,7 +105,7 @@
         border-color: #666;
     }
 
-    .repairList {
+    .categoryList {
         display: none;
         position: absolute;
         z-index: 100;
@@ -116,43 +116,46 @@
         overflow-y: auto;
     }
 
-
-    .repairList.active {
+    .categoryList.active {
         display: block;
         border: 1px solid #c1c4bc;
     }
 
-    .repairList li {
+    .categoryList li {
         padding: 4px 10px;
     }
 
-    .repairList li:hover {
+    .categoryList li:hover {
         background: #c1c4bc;
         color: #fff;
     }
 
-    .repairList li .img, .repairList li .name {
+    .categoryList li .img, .categoryList li .name {
         display: inline-block;
         float: left;
     }
 
 
-    .repairList li .img{
+    .categoryList li .img{
         width: 60px;
         height: 60px;
         float: left;
     }
-    .repairList li .name {
+    .categoryList li .name {
         padding: 20px 20px 10px 0;
     }
-    .listBox .head {
+    .listBox .title {
         position: relative;
         padding: 6px 10px;
         border: 1px solid #cccccc;
         color: #000;
         height: 36px;
+        cursor: pointer;
         background: #ffffff;
         box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .listBox .disabled .title{
+        background: #f1f1f1;
     }
     /*.listBox .head::after {
         content: '';
@@ -164,7 +167,7 @@
         border-color: #666 transparent transparent;
     }*/
 
-    .listBox .head.loading::after {
+    .listBox .title.loading::after {
         content: '';
         position: absolute;
         width: 16px;
@@ -217,7 +220,7 @@
         }
     }
 
-    .head .img {
+    .title .img {
         display: inline-block;
         vertical-align: middle;
         width: 24px;
@@ -226,10 +229,10 @@
         border-radius: 50%;
     }
 
-    .head .img>img{
+    .title .img>img{
         height:100%;
     }
-    .repairList > span {
+    .categoryList > span {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -237,7 +240,7 @@
         vertical-align: top;
         margin: 20px 10px 10px 5px;
     }
-    .repairList li .img {
+    .categoryList li .img {
         /*-moz-box-shadow: inset 0 0 30px rgba(0, 0, 0, .3);
         -webkit-box-shadow: inset 0 0 30px rgba(0, 0, 0, .3);
         box-shadow: inset 0 0 30px rgba(0, 0, 0, .3);*/
@@ -249,11 +252,10 @@
         background-repeat: no-repeat;
         background-position: 50% 50%;*/
     }
-    .repairList li .img>img{
+    .categoryList li .img>img{
         height:100%;
     }
     .repair-table{
-        width: 680px;
         height:240px;
         border: 1px solid #c1c4bc;
         overflow-y: auto;;
@@ -286,37 +288,23 @@
         font-weight: 700;
     }
 
-    .device-name {
-        margin: 20px 0;
-    }
-
-    #my-device .img {
-        display: inline-block;
-        width: 60px;
-        height: 60px;
-        margin-left: 20px;
-        background-size: contain;
-        margin-right: 5px;
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-    }
-
-    #my-device .name {
-        display: inline-block;
-        font: 700 16px/1.55 "SF Pro Display","Helvetica Neue","Helvetica","Arial",sans-serif;
-        color: #000;
-        padding-left: 16px;
-    }
-
     .repair-selected {
         margin-top: 20px;
     }
 
-    #reapirs-selected li {
-        line-height: 30px;
+    #products-selected li .remove{
+        cursor: pointer;
+        border: 1px solid #434343;
+        background: #f57c7c;
+        color:#fff;
+        padding: 2px 4px;
+        margin: 0 0 0 10px;
+        border-radius: 5px;
     }
 
-    #reapirs-selected li{
+    #products-selected li {
+        line-height: 30px;
+
         color: #333;
     }
 
@@ -326,13 +314,6 @@
         margin-right: 40%;
     }
 
-    #shipping-store,#shipNewAddress,#billing-new-address-form,#ship-form-address{display: none;}
-    #shipping-store.loading,#billing-new-address-form.loading,#ship-form-address.loading{display: block;}
-    #shipNewAddress.loading{
-        display: block;
-        border:1px solid #c1c4bc;
-        padding: 20px 14px;
-    }
     /*loading*/
     #ajaxloading,#ajaxerror{display: none;}
     #ajaxloading.loading,#ajaxerror.loading{display: block;}
@@ -392,25 +373,10 @@
         color: #2db8c7;
         font-size: 14px;
     }
-    .head .nav-down-arrow.loading{
+    .title .nav-down-arrow.loading{
         display: none;
     }
-    #co-billing-form h3,.shipHead {
-        font-weight: 600;
-        color: #404040;
-        font-size: 16px;
-        text-align: left;
-        border-bottom: 1px solid #b6b6b6;
-        padding-bottom: 8px;
-        line-height: 1;
-        margin-bottom: 20px;
-        text-transform: none;
-    }
-    .control input.checkbox{
-        width: auto;
-    }
-    .other_outer{display: none;}
-    .other_outer.loading{display: block;}
+
     #ie_ajax{display: none;}
     #ie_ajax.loading{display: block\9;}
     @-webkit-keyframes stretchdelay {
@@ -427,6 +393,14 @@
                -webkit-transform: scaleY(1.0);
            }
     }
+    #repair-block{display: none;}
+    input[type="number"].user_price{
+        -moz-appearance: textfield;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
 </style>
 
 <?php echo $this->getMessagesBlock()->toHtml() ?>
@@ -440,29 +414,16 @@
             <input type="hidden" name="customer_id" value="<?php echo $this->getCustomerId() ?>"/>
             <h2 class="repair-title"><span class="repair-step"><span>1</span></span><span><?php echo $this->__('Välj modell att laga'); ?></span>
             </h2>
-            <div class="row listBox">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5 fs_box">
-                    <h4><?php echo $this->__('märke:'); ?></h4>
-                    <div id="catHead" class="head"></div>
-                    <ul id="categoryList" class="repairList"></ul>
-                    <div class="first_step"></div>
-                </div>
-                <div class="col-sm-5 products_listbox">
-                    <h4><?php echo $this->__('Model:'); ?></h4>
-                    <div id="proHead" class="head"></div>
-                    <ul id="productList" class="repairList"></ul>
-                </div>
-                <div class="col-sm-6"></div>
-                <div class="col-sm-5 other_outer">
-                    <h4><?php echo $this->__(''); ?></h4>
-                    <div id="otherHead" class="head"></div>
-                    <ul id="otherList" class="repairList"></ul>
+            <div class="row listBox" id="select_box">
+                <div class="col-sm-5 col-sm-offset-1" id="child_category_0" data-sorter="0" >
+                    <h4>&nbsp;</h4>
+                    <div class="title">Please Select<span class="nav-down-arrow"></span></div>
+                    <ul class="categoryList"></ul>
                 </div>
             </div>
             <p id="ajaxerror" style="font-size: 20px;margin:40px auto;text-align: center;">This service will be provided soon.</p>
             <div id="ie_ajax" style="width: 60px;height: 60px;margin:40px auto;">
-                <img src="/media/repair/loading_ie.gif">
+                <img src="/media/loading_ie.gif">
             </div>
             <div id="ajaxloading">
                 <div class="spinner">
@@ -473,30 +434,28 @@
                     <div class="rect5"></div>
                 </div>
             </div>
-            <div id="repair-block" style="display: none">
-                <div id="product-image"></div>
-                <div class="device-name"><span>Vald modell: </span><span id="my-device"></span></div>
-                <h2 class="repair-title"><span class="repair-step"><span>2</span></span><span>Välj typ av reparation</span></h2>
+            <div id="repair-block">
+                <h2 class="repair-title"><span class="repair-step"><span>2</span></span><span>Please Select Product</span></h2>
                 <div class="repair-table">
                     <table id="repairs">
                         <thead>
                         <tr>
                             <td></td>
-                            <td class="name">Typ av reparation</td>
+                            <td class="name">Product Name</td>
                             <td class="price">Price</td>
-                            <td class="check">Välj</td>
+                            <td class="check">Select</td>
                         </tr>
                         </thead>
                         <!--ajax product list-->
                         <tbody></tbody>
                     </table>
                 </div>
-                <div class="validation-advice selectWarn" style="display: none;">Detta är ett obligatoriskt fält.</div>
+                <div class="validation-advice selectWarn" style="display: none;">This is a required field.</div>
                 <div class="repair-selected">
-                    <span>Min reparation:</span>
-                    <span class="no-select">Ingen typ av reparation vald</span>
+                    <span>my select:</span>
+                    <span class="no-select">no product selected</span>
                     <!--selected list-->
-                    <ul id="reapirs-selected"></ul>
+                    <ul id="products-selected"></ul>
                 </div>
                     <div class=" customerPart">
                         <div class="device-info">
@@ -504,21 +463,19 @@
                             </h2>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h4><span class="req-item">*</span>Beskriv problemet:</h4>
+                                    <h4><span class="req-item">*</span>Note:</h4>
                                     <textarea name="detailed" id="detailed" cols="5" rows="3" class="required-entry"></textarea>
                                 </div>
-                                <p class="req-info"><span class="req-item">*</span>Måsta vara ifyllt</p></div>
+                                <p class="req-info"><span class="req-item">*</span>Must be filled</p></div>
                         </div>
                         </div>
-                        <button type="submit" class="k-button k-primary" id="order">Beställ</button>
+                        <button type="submit" class="k-button k-primary" id="order">submit</button>
                     </div>
-            </div>
         </fieldset>
     </form>
     <p id="login_status" data-status="<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>1<?php else: ?>0<?php endif; ?>"></p>
 </div>
 <style>
-
     #reloading_modal .modal-content>img{margin-left: -20px;}
     #myModal .login{float: right;}
     #myModal .modal-dialog{margin:200px auto 0 auto;}
@@ -544,6 +501,7 @@
     }
     #myModal .btn-default{
         background: #fc6908;
+        color:#ffffff;
     }
     @media (min-width: 768px){
         #myModal .modal-dialog {
@@ -579,7 +537,7 @@
      aria-hidden="true" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <img src="/media/repair/loading_ie.gif">
+            <img src="/media/loading_ie.gif">
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
@@ -646,113 +604,66 @@
     //]]>
 </script>
 <script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        function log(msg) {
-            if(window.console){
-                console.log(msg);
-            }
-        }
+    jQuery(document).ready(function($){
+        ajaxCategory(2,0);
         /**
-         * Ajax category by id.
+         * load category by id
+         * 'sorter' means category's depth,
          * */
-        function ajaxCategory(id, method, sort) {
-            var mtd = method;
-            if (jQuery.ajax) {
-                jQuery.ajax({
-                    type: "get",
-                    async: true,
-                    url: "<?php echo $repairUrl . 'vendorquote/index/category'?>",
-                    data: {id: id},
-                    dataType: "json",
-                    beforeSend: function () {
-                        $("#repair-block").hide();
-                        repairs.init();
-                        selected.init();
-                        $('.no-select').show();
-                        ajaxerror.loaded();
-                        if (mtd === 'category' && sort === 0) {
-                            catHead.loading();
-                            proHead.init();
-                            productList.init();
-                            repairs.init();
-                            cDown.loading();
-                        } else if (mtd === 'category' && sort === 1) {
-                            otherBox.loaded();
-                            proHead.loading();
-                            proHead.init();
-                            productList.init();
-                            repairs.init();
-                            pDown.loading();
-                        } else if (mtd === 'category' && sort === 2) {
-                            /*
-                            *when choose 'mac'
-                            *show other box
-                            * */
-                            otherHead.loading();
-                            otherHead.init();
-                            otherList.init();
-                            repairs.init();
-                            oDown.loading();
-                            otherBox.loading();
-                        }
-                    },
-                    complete: function () {
-                        if (mtd === 'category' && sort === 0) {
-                            catHead.loaded();
-                            cDown.loaded();
-                        } else if (mtd === 'category' && sort === 1) {
-                            pDown.loaded();
-                            proHead.loaded();
-                        } else if (mtd === 'category' && sort === 2) {
-                            oDown.loaded();
-                            otherHead.loaded();
-                        }
-                    },
-                    success: function (data) {
-                        var tmpData = data;
-                        var len = tmpData.length;
-                        var str = '';
-                        if(len <= 0 && sort === 2){
-                            otherBox.loaded();
-                            otherHead.setCtn("För närvarande finns inget val!");
-                            ajaxerror.loading();
-                            return false;
-                        }
-                        if (len <= 0) {
-                            return false;
-                        }
-                        for (var j = 0; j < len; j++) {
-                            str += '<li class="clearfix" data-id="' + tmpData[j].id + '"><span class="img"><img class="img-responsive" src="'+tmpData[j].image+'"></span><span class="name">' + tmpData[j].name + '</span></li>';
-                        }
-                        if (mtd === 'category' && sort === 0) {
-                            $("#categoryList").html(str);
+        function ajaxCategory(id,sorter) {
 
-                        } else if (mtd === 'category' && sort === 1) {
-                            $("#productList").html(str);
-                            productList.showList();
-                        } else if (mtd === 'category' && sort === 2) {
-                            $("#otherList").html(str);
-                            otherList.showList();
+            var elStr = '#child_category_'+sorter;
+            if(jQuery.ajax){
+                jQuery.ajax({
+                    type:"get",
+                    async:true,
+                    url:"<?php echo $repairUrl . 'vendorquote/index/category'?>",
+                    data:{id:id},
+                    dataType:"json",
+                    beforeSend:function(){
+                        if(sorter >= 1){
+                            updateCategoryBox(sorter);
                         }
-                        if(sort === 0){
-                            step = 1;
-                        }else if(sort === 1){
-                            step = 2;
-                        }else if(sort === 2){
-                            step = 3;
+                        updateCategoryStatus(sorter,0);
+                        $("#ajaxerror").hide();
+                        $("#repairs>tbody").empty();
+                    },
+                    complete:function () {
+                        updateCategoryStatus(sorter,1);
+                    },
+                    success:function (data) {
+                        var tmpData = data;
+                        var tmpLen = tmpData.length;
+                        var htmlStr = '';
+                        if(tmpLen <= 0){
+                            log("No Child Category!Loading products!");
+                            updateCategoryBox(sorter);
+                            ajaxProduct(id);
+                            return false;
                         }
+                        for (var j = 0; j < tmpLen; j++) {
+                            htmlStr += '<li class="clearfix" data-id="' + tmpData[j].id + '"><span class="name">' + tmpData[j].name + '</span></li>';
+                        }
+                        /**
+                         * check category element exist or not exist
+                         * */
+                        if($(elStr).length < 1){
+                            $("#select_box").append(createCategoryBox(sorter));
+                        }
+                        $(elStr).find(".categoryList").html(htmlStr).end().show();
+                    },
+                    error:function () {
+                        log("AjaxCategory Error.");
                     }
                 });
-            } else {
-                if (window.console.log)
-                    console.log("error : your browser not supported ajax.");
+            }else{
+                log("error : your browser not supported ajax.");
             }
         }
         /**
          * Ajax product by id.
          * */
-        function ajaxProduct(id, method, sort) {
-            var mtd = method;
+        function ajaxProduct(id) {
             if (jQuery.ajax) {
                 jQuery.ajax({
                     type: "get",
@@ -761,24 +672,16 @@
                     data: {id: id},
                     dataType: "json",
                     beforeSend: function () {
-                        ajaxerror.loaded();
-                        $("#repair-block").hide();
-                        repairs.init();
-                        selected.init();
-                        $('.no-select').show();
-                        showLoading.loading();
-                        ieLoading.loading();
+                        $("#ie_ajax,#ajaxloading").addClass("loading");
                     },
-                    complete: function () {
-                        showLoading.loaded();
-                        ieLoading.loaded();
-                    },
+                    complete: function () {},
                     success: function (data) {
                         var tmpData = data;
                         var len = tmpData.length;
                         var str = '';
                         if (len <= 0) {
-                            ajaxerror.loading();
+                            $("#ajaxerror").show();
+                            $("#ie_ajax,#ajaxloading").removeClass("loading");
                             return false;
                         }
                         for (var j = 0; j < len; j++) {
@@ -786,196 +689,170 @@
                                 '<td class="img"><span><img style="width: 30px;height: 30px;margin-bottom: 6px;" src="' + tmpData[j].image + '"/></span></td>' +
                                 '<td class="name">' + tmpData[j].name + '</td>' +
                                 '<td class="price">' + tmpData[j].price + '</td>' +
-                                '<td class="check"><input class="my-repair" value="' + tmpData[j].id + '" title="' + tmpData[j].name + '" id="' + tmpData[j].id + '" type="checkbox"><label for="' + tmpData[j].id + '"></label></td></tr>';
+                                '<td class="check"><input class="my-select" value="' + tmpData[j].id + '" title="' + tmpData[j].name + '" id="' + tmpData[j].id + '" type="checkbox"><label for="' + tmpData[j].id + '"></label></td></tr>';
 
                         }
-                        if (mtd === 'product' && sort === 0) {} else if (mtd === 'product' && sort === 1) {}
-                        repairs.setHtml(str);
+                        $("#repairs>tbody").html(str);
+                        $("#ie_ajax,#ajaxloading").removeClass("loading");
                         $("#repair-block").show();
                     },
-                    error: function () {
-                        alert("Ajax error!");
-                    }
+                    error: function () {alert("Ajax error!");}
                 });
-            } else {
-                if (window.console.log)
-                    console.log("error : your browser not supported ajax.");
-            }
+            } else {log("error : your browser not supported ajax.");}
         }
-        //catHead proHead
-        var catHead = new RepairList("#catHead", "<span>Välj märke</span><span class='nav-down-arrow'></span>");
-        var proHead = new RepairList("#proHead", "<span>Välj model</span><span class='nav-down-arrow'></span>");
-        var otherHead = new RepairList("#otherHead","<span>Välj</span><span class='nav-down-arrow'></span>");
-        var cDown = new RepairList("#catHead .nav-down-arrow","");
-        var pDown = new RepairList("#proHead .nav-down-arrow","");
-        var oDown = new RepairList("#otherHead .nav-down-arrow","");
-        //categoryList productList
-        var categoryList = new RepairList("#categoryList", '');
-        var productList = new RepairList("#productList", '');
-        var otherList = new RepairList("#otherList",'');
-        var repairs = new RepairList("#repairs tbody", '');
-        //product list
-        var selected = new RepairList("#reapirs-selected", '');
-        //loading
-        var showLoading = new RepairList("#ajaxloading",'');
-        var ajaxerror = new RepairList("#ajaxerror",'');
-        var ieLoading = new RepairList("#ie_ajax",'');
-        //my-device
-        var mydevice = new RepairList("#my-device", '');
-        //ship to store
-        var shipStore = new RepairList("#shipping-store", '');
-        var newAddress = new RepairList("#shipNewAddress",'');
-        var billingNewForm = new RepairList("#billing-new-address-form",'');
-        var addShipAddress = new RepairList("#ship-form-address",'');
-        //var other box
-        var otherBox = new RepairList(".other_outer","");
-        //create object 'RepairList'
-        function RepairList(id, inner) {
-            this.id = id;
-            this.inner = inner;
-            this.init = function () {
-                var $el = $(id);
-                $el.html(inner);
-            };
-            this.setCtn = function (ctn) {
-                var $el = $(id);
-                $el.html(ctn);
-            };
-            this.loading = function () {
-                var $el = $(id);
-                $el.addClass("loading");
-            };
-            this.loaded = function () {
-                var $el = $(id);
-                $el.removeClass("loading");
-            };
-            this.showList = function () {
-                var $el = $(id);
-                hideRepairList();
-                $el.addClass("active");
-            };
-            this.hideList = function () {
-                var $el = $(id);
-                $el.removeClass("active");
-            };
-            this.setHtml = function (str) {
-                var $el = $(id);
-                $el.html(str);
-            }
-        }
-
-
-        //init
-        catHead.init();
-        proHead.init();
-        otherHead.init();
-        otherBox.loaded();
-
-        ajaxCategory(2, 'category', 0);//First load categoryList
-        //2,*****handle sessionStorage*****
-
-
-        // show option list when click head
-        $(".head").click(function () {
+        /**
+         *click title and show the category list below
+         *
+         * click category list and ajax category
+         * */
+        $("#select_box").delegate(".title","click",function () {
+            hideAllCategoryList();
             var $head = $(this);
-            var $repairList = $head.parent().find(".repairList");
-            hideRepairList();
-            if ($repairList.children("li").length > 0) {
-                $repairList.addClass("active");
+            var $categoryList = $head.parent().find(".categoryList");
+            if ($categoryList.children("li").length > 0 && !$categoryList.closest(".col-sm-5").hasClass("disabled")) {
+                $categoryList.addClass("active");
             }
-        });
-
-        // set nav-down-arrow when click
-        $(".head").delegate(".nav-down-arrow","click",function(){
-            $(this).parent(".head").click();
-        });
-
-        // set head when click category box and model box
-        $(".repairList").delegate("li", "click", function () {
+        }).delegate("li.clearfix", "click", function () {
             var $li = $(this);
-            if (!$li.hasClass("repair")) {
-                $li.parent().parent().find(".head").html($li.html() + '<span class="nav-down-arrow"></span>');
-
-                $li.parent().parent().find(".head>.img").attr('data-id',$li.attr("data-id"));
-            }
-            hideRepairList();
-            if ($("#proHead").find(".name").length === 1) {
-                mydevice.setCtn($("#proHead").html());
-            }
-        });
-
-        $("#categoryList").delegate("li", 'click', function () {
-            var tmpId = $(this).attr("data-id");
-            ajaxCategory(tmpId, 'category', 1);// ajax model
-            $("#repair-block").hide();// hide repair block
-        });
-        $("#productList").delegate("li", "click", function () {
-            var tmpId = $(this).attr("data-id");
-            repairs.init();// repair product initialize
-
-            /*
-            *show more choice when choose mac
-            * Category id of Mac : 2636
-            */
-            if($("#catHead .img").attr("data-id") === "2641" ){
-                ajaxCategory(tmpId,'category',2);
+            var $categoryBox = $li.parent().parent();
+            var _sorter = parseInt($categoryBox.attr("data-sorter"));
+            $categoryBox.find(".title").html($li.html() + '<span class="nav-down-arrow"></span>');
+            if(_sorter >= 0){
+                ajaxCategory($li.attr("data-id"),_sorter+1);
             }else{
-                ajaxProduct(tmpId, 'product');// ajax products
+                return false;
             }
+            hideAllCategoryList();
         });
-        $("#otherList").delegate("li","click",function () {
-            var tmpId = $(this).attr("data-id");
-            repairs.init();// repair product initialize
-            ajaxProduct(tmpId, 'product');// ajax products
-        });
-        //select product => add to "selected box" ($('#reapirs-selected'))
-        $(document).on('click', '.my-repair', function () {
-            var selected = 0;
-            $('#reapirs-selected').empty();
-            jQuery('input.my-repair:checkbox:checked').each(function () {
+        function log(msg) {if(window.console){console.log(msg);}}
+        /**
+         * hide all category list
+         * */
+        function hideAllCategoryList() {
+            $(".categoryList").removeClass("active");
+        }
+        /**
+         * create category box
+         * */
+        function createCategoryBox(sorter) {
+            var _tmpCategoryStr = '<h4>&nbsp;</h4><div class="title"><span class="name">Please Select</span><span class="nav-down-arrow"></span></div><ul class="categoryList"></ul></div>';
+            if(sorter % 2 === 0){
+                return '<div class="col-sm-5 col-sm-offset-1" id="child_category_'+sorter+'" data-sorter="'+sorter+'">' + _tmpCategoryStr;
+            }else{
+                return '<div class="col-sm-5" id="child_category_'+sorter+'" data-sorter="'+sorter+'">' + _tmpCategoryStr;
+            }
+        }
+        /**
+         * hide some category box and clear category list of it
+         * */
+        function updateCategoryBox(sorter) {
+            var _sorter = sorter;
+            var max_sorter = parseInt($("#select_box>div").last().attr("data-sorter"));
+
+            for(var k = _sorter; k <= max_sorter; k++){
+                var elStr = "#child_category_" + k;
+                $(elStr).hide().find(".name").text('Please Select').end().find(".categoryList").html('');
+            }
+        }
+        function updateCategoryStatus(sorter,status) {
+            if(status === 0){
+                for(var m = 0; m <= sorter; m++){
+                    var _elStr = "#child_category_" + m;
+                    $(_elStr).addClass("disabled");
+                }
+            }else if(status === 1){
+                for(var n = 0; n <= sorter; n++){
+                    var n_elStr = "#child_category_" + n;
+                    $(n_elStr).removeClass("disabled");
+                }
+            }
+        }
+        /**
+         *select product => add to "selected box"
+         *
+         * */
+        var select_array = [];
+        var selected = 0;
+        $(document).on('click', '.my-select', function () {
+            if ($(this).is(':checked')) {
+                select_array[selected] = {
+                    val:$(this).val(),
+                    name:$(this).attr('title'),
+                    price:$(this).closest('tr').find(".price").text(),
+                    status:'1'
+                };
                 selected++;
-                $('#reapirs-selected').append('<li>' + selected + '. ' + $(this).attr('title') +'<span class="product_price">'+$(this).parent().parent().find(".price").text()+'</span><input class="user_price" type="number" data-value="'+$(this).val()+'" name="user_price['+$(this).val()+'][]"/>'+'</li>');
+            }else{//change status when unchecked
+                for(var s = 0; s < select_array.length; s++){
+                    if(select_array[s].val === $(this).val()){
+                        select_array[s].status = '0';
+                    }
+                }
+            }
+            showSelectedProduct();
+        });
+        $('#products-selected').on('click','.remove',function () {
+            for(var s = 0; s < select_array.length; s++){
+                if(select_array[s].val === $(this).closest('li').find(".id").val()){
+                    select_array[s].status = '0';
+                    $("#repairs tr").each(function () {
+                        if($(this).find(".my-select").val() === select_array[s].val){
+                            $(this).find(".my-select").attr("checked",false);
+                        }
+                    });
+                }
+            }
+
+            showSelectedProduct();
+        });
+        /**
+         * show all selected product
+         * */
+        function showSelectedProduct() {
+            var _tmpSelected = '';
+            var count = 0;
+            for(var t = 0; t < select_array.length; t++){
+                if(select_array[t].status === '1'){
+                    count++;
+                    _tmpSelected += '<li><span class="select_num">' + count + '</span>. ' + select_array[t].name +'<span class="product_price">'+select_array[t].price+'</span>'+
+                        '<input class="id" type="hidden" name="user_price['+select_array[t].val+'][id]" value="'+select_array[t].val+'"/>'+
+                        '<input class="user_price" type="number" onchange="if(value<0)value=0.00;"  name="user_price['+select_array[t].val+'][price]"/><span class="remove">Del</span></li>';
+                }
+            }
+            $('#products-selected').html(_tmpSelected);
+
+            if($("#products-selected li").length > 0){
                 $('.no-select').hide();
-            });
-            if (selected == 0) {
+            }else{
                 $('.no-select').show();
             }
-            if ($(this).is(':checked')) {
-                $(this).closest('tr').addClass('checked');
-            }else {
-                $(this).closest('tr').removeClass('checked');
-            }
-        });
-
-        //hide all repairList when click element of option
-        function hideRepairList() {
-            categoryList.hideList();
-            productList.hideList();
-            otherList.hideList();
         }
-
-        //hide all repairlist when click other elements
+        /**
+         *hide all repairlist when click other elements
+         * */
         $(document).click(function (e) {
-            if (!$(e.target).hasClass("head") &&
-                !$(e.target).hasClass("repairList") &&
-                !$(e.target).parent().hasClass("head") &&
-                !$(e.target).hasClass("nav-down-arrow")&&!$(e.target).hasClass("img") &&
-                !$(e.target).hasClass("name")&&!$(e.target).parent().hasClass("img")
+            if (!$(e.target).hasClass("title") &&
+                !$(e.target).hasClass("categoryList") &&
+                !$(e.target).parent().hasClass("title") &&
+                !$(e.target).hasClass("nav-down-arrow")&& !$(e.target).hasClass("name")
             ){
-                $(".repairList").removeClass("active");
+                $(".categoryList").removeClass("active");
             }
         });
-
-        //form validate and submit
-        $("#order").click(function (event) {
-            //1 , first , form validate
+        /**
+         * form validate and submit
+         * */
+        $("#order").click(function(event){
             var event = event || window.event;
 
-            awrmaNewForm.validator.validate();// form validate
-
-            if($("#repairs input[type='checkbox']:checked").length <= 0){ //validate product list if there exist products selected by customer
+            /**
+             * validate product list if there exist products selected by customer
+             * */
+            if($("#repairs input[type='checkbox']:checked").length <= 0){
                 $(".repair-table").addClass("validation-failed");
                 $(".selectWarn").show();
+                awrmaNewForm.validator.validate();// form validate
+
                 event.preventDefault(); // Compatible standard Browsers
                 window.event.returnValue = false; // Compatible IE6~8
             }else{
@@ -983,21 +860,11 @@
                 $(".selectWarn").hide();
             }
 
-            //2 , validate success , update form by remove some elements
-            //deal with sessionStorage
             if($("#login_status").attr("data-status") < 1){
-
-                //3,show login and register
                 $("#myModal").modal({show:true,keyboard: true});
 
                 event.preventDefault();
                 window.event.returnValue = false;
-            }
-
-            // before submit remove some input elements , when customer have signed in.
-            if($("#login_status").attr("data-status") === '1'){
-
-                $("#myModal").modal({show:false});
             }
         });
     });

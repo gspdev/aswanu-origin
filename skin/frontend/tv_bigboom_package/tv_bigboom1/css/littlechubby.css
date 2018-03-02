@@ -140,9 +140,9 @@
 		to{transform:rotate(88deg)}
 	}
 	.col-left.sidebar{position:relative;}
-	.showBlockAcc{position: fixed;z-index: 201;left: -45px;top: 260px;}
+	.showBlockAcc{position: fixed;z-index: 201;left: -54px;top: 260px;}
 	.block-account-left{left:0!important;}
-	.showBlockAcc>a{display:block;padding:0 12px;width:120px;height:30px;line-height:30px;box-shadow: 0px 0px 0 4px rgba(0, 0, 0, 0.1);
+	.showBlockAcc>a{display:block;padding:0 12px;width:130px;height:30px;line-height:30px;box-shadow: 0px 0px 0 4px rgba(0, 0, 0, 0.1);
 		border-radius:10px 10px 1px 1px;background:#e15f5f;color:#fff;font-weight:bold;transform:rotate(90deg);
 		animation:turn 2s linear infinite alternate;-webkit-animation:turn 2s linear infinite alternate;}
 	.showBlockAcc>a:hover{text-decoration:none;}
