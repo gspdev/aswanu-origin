@@ -18,7 +18,7 @@
     }
 
     .page-title.repair-head h1 {
-        margin: 0 0 20px 0;
+        margin: 40px 0 20px 0;
         text-align: center;
         text-transform: capitalize;
         color: #434343;
@@ -422,13 +422,14 @@
                     <h4>&nbsp;</h4>
                     <div class="title">Please Select<span class="nav-down-arrow"></span></div>
                     <ul class="categoryList"></ul>
+                    <div class="first_step"></div>
                 </div>
             </div>
             <p id="ajaxerror" style="font-size: 20px;margin:40px auto;text-align: center;">This service will be provided soon.</p>
             <div id="ie_ajax" style="width: 60px;height: 60px;margin:40px auto;">
                 <img src="/media/loading_ie.gif">
             </div>
-            <div id="repair-block">
+            <div id="repair-block" class="row">
                 <h2 class="repair-title"><span class="repair-step"><span>2</span></span><span>Please Select Product</span></h2>
                 <div class="repair-table">
                     <table id="repairs">
@@ -454,8 +455,8 @@
                     </div>
                 </div>
                 <div class="repair-selected">
-                    <span>My select:</span>
-                    <span class="no-select">no product selected</span>
+                    <span style="font-weight: bold;">My select:</span>
+                    <span class="no-select">no product selected.</span>
                     <!--selected list-->
                     <ul id="products-selected"></ul>
                 </div>

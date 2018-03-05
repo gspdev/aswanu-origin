@@ -3837,3 +3837,13 @@ line-height: 70px;font-weight: 900;padding: 35px 0 27px;margin: 0;color: #333; }
 	padding: 5px;
     background-color: #fbfaf6;
     border: 1px solid #bbb6a5;}
+/*vendorquote*/
+#child_category_0{position: relative;}
+#child_category_0 .first_step{
+    position: absolute;
+    z-index: 6;
+    width: 165px;
+    height: 60px;
+    left: -120px;
+    bottom: -70px;
+    background: url(../images/first_step.png) 0 0 no-repeat;}
