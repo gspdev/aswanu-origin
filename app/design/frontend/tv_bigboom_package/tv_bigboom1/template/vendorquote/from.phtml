@@ -20,14 +20,14 @@
     .page-title.repair-head h1 {
         margin: 0 0 20px 0;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: capitalize;
         color: #434343;
         font: 700 30px/1.15 "SF Pro Display","Helvetica Neue","Helvetica","Arial",sans-serif;
     }
 
     .repair-title {
         text-align: center;
-        text-transform: uppercase;
+        text-transform: capitalize;
         color: #434343;
         font: 700 20px/1.35 "SF Pro Display","Helvetica Neue","Helvetica","Arial",sans-serif;
         margin: 2rem 0 1rem;
@@ -282,9 +282,9 @@
     td.name {
         padding: 0 12px;
     }
-
-    td.price {
-        padding-left: 10px;
+    thead .name{font-weight: 700;}
+    td.price , td.check{
+        padding: 0 10px;
         font-weight: 700;
     }
 
@@ -408,14 +408,14 @@
 
 <?php echo $this->getMessagesBlock()->toHtml() ?>
 <div class="page-title repair-head">
-    <h1><?php echo $this->__('REPARATIONER'); ?></h1>
+    <h1><?php echo $this->__('Product Quote'); ?></h1>
 </div>
 <div class="repair-form">
     <form action="<?php echo Mage::helper('vendorquote')->getSaveUrl() ?>" method="post" id="new-form" enctype="multipart/form-data">
         <fieldset>
             <?php echo $this->getBlockHtml('formkey'); ?>
             <input type="hidden" name="customer_id" value="<?php echo $this->getCustomerId() ?>"/>
-            <h2 class="repair-title"><span class="repair-step"><span>1</span></span><span><?php echo $this->__('Välj modell att laga'); ?></span>
+            <h2 class="repair-title"><span class="repair-step"><span>1</span></span><span><?php echo $this->__('Choose a product catalog'); ?></span>
             </h2>
             <div class="row listBox" id="select_box">
                 <div class="col-sm-5 col-sm-offset-1" id="child_category_0" data-sorter="0" >
@@ -454,7 +454,7 @@
                     </div>
                 </div>
                 <div class="repair-selected">
-                    <span>my select:</span>
+                    <span>My select:</span>
                     <span class="no-select">no product selected</span>
                     <!--selected list-->
                     <ul id="products-selected"></ul>
@@ -462,7 +462,7 @@
                 <div class="validation-advice selectWarn" style="display: none;">This is a required field.</div>
                 <div class=" customerPart">
                     <div class="device-info">
-                        <h2 class="repair-title"><span class="repair-step"><span>3</span></span><span>Enhetsinformation</span>
+                        <h2 class="repair-title"><span class="repair-step"><span>3</span></span><span>Additional information</span>
                         </h2>
                         <div class="row">
                             <div class="col-sm-12">
@@ -503,7 +503,7 @@
         margin-left: 20px;
     }
     #myModal .btn-default{
-        background: #fc6908;
+        background: #b0d95e;
         color:#ffffff;
     }
     @media (min-width: 768px){
@@ -555,28 +555,27 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <h3>If you want to have your phone repaired , please login in at first:</h3>
                 <div class="row">
                     <div class="col-sm-6 login">
                         <form action="<?php echo Mage::helper('vendorquote')->getSaveLogUrl() ?>" method="post">
                         <div class="content">
-                            <h2>Befintlig kund? Logga in</h2>
-                            <p>Om du redan har ett konto hos oss, vänligen logga in.</p>
+                            <h2>Registered Customers</h2>
+                            <p>If you have an account with us, please log in.</p>
                                 <ul class="form-list">
                                     <li>
-                                        <label for="email" class="required"><em>*</em>E-postadress</label>
+                                        <label for="email" class="required"><em>*</em>Email Address</label>
                                         <div class="input-box">
                                             <input class="input-text required-entry validate-email" id="email" type="email" name="login[username]" autocapitalize="off" autocorrect="off" spellcheck="false" >
                                         </div>
                                     </li>
                                     <li>
-                                        <label for="pass" class="required"><em>*</em>Lösenord</label>
+                                        <label for="pass" class="required"><em>*</em>Password</label>
                                         <div class="input-box">
                                             <input class="input-text required-entry validate-password" id="pass" type="password" name="login[password]" >
                                         </div>
                                     </li>
                                 </ul>
-                            <p class="required">* Obligatoriska fält</p>
+                            <p class="required">* Required Fields</p>
                         </div>
                         <div class="buttons-set">
                             <button type="submit" class="button"  name="send" id="sendLogin" title="<?php echo $this->__('Log in'); ?>"><span><span><?php echo $this->__('Log in'); ?></span></span></button>
@@ -609,6 +608,23 @@
 <script type="text/javascript">
     jQuery(document).ready(function($){
         ajaxCategory(2,0);
+        /**
+         * find sessionStorage
+         * */
+        var ven_obj;
+        var select_array = [];
+        var selected = 0;
+        if(sessionStorage._vendorquote){
+            $("#reloading_modal").modal('show');
+            ven_obj = JSON.parse(sessionStorage._vendorquote);
+            for(var _s = 0; _s < ven_obj.select_list.length; _s++){
+                select_array.push(ven_obj.select_list[_s]);
+            }
+            selected = select_array.length;
+            showSelectedProduct();
+            $("#description").val(ven_obj.description);
+            $("#reloading_modal").modal('hide');
+        }
         /**
          * load category by id
          * 'sorter' means category's depth,
@@ -773,17 +789,26 @@
          *select product => add to "selected box"
          *
          * */
-        var select_array = [];
-        var selected = 0;
         $(document).on('click', '.my-select', function () {
-            if ($(this).is(':checked')) {
-                select_array[selected] = {
-                    val:$(this).val(),
-                    name:$(this).attr('title'),
-                    price:$(this).closest('tr').find(".price").text(),
-                    status:'1'
-                };
-                selected++;
+            if ($(this).is(':checked') && select_array.length >= 0) {
+                var count = 0;
+                for(var _e = 0; _e < select_array.length;_e++){
+                    if(select_array[_e].val === $(this).val()){
+                        select_array[_e].status = '1';
+                        select_array[_e].user_price = '';
+                        count++;
+                    }
+                }
+                if(count === 0){
+                    select_array[selected] = {
+                        val:$(this).val(),
+                        name:$(this).attr('title'),
+                        price:$(this).closest('tr').find(".price").text(),
+                        status:'1',
+                        user_price:''
+                    };
+                    selected++;
+                }
             }else{//change status when unchecked
                 for(var s = 0; s < select_array.length; s++){
                     if(select_array[s].val === $(this).val()){
@@ -804,7 +829,15 @@
                     });
                 }
             }
-
+            showSelectedProduct();
+        }).on('blur','.user_price',function(){
+            var _tmp_user_price = $(this).val();
+            var _tmp_id = $(this).closest('li').find(".id").val();
+            for(var l = 0; l < select_array.length; l++){
+                if(select_array[l].val === _tmp_id){
+                    select_array[l].user_price = _tmp_user_price;
+                }
+            }
             showSelectedProduct();
         });
         /**
@@ -817,8 +850,9 @@
                 if(select_array[t].status === '1'){
                     count++;
                     _tmpSelected += '<li><span class="select_num">' + count + '</span>. ' + select_array[t].name +'<span class="product_price">'+select_array[t].price+'</span>'+
-                        '<input class="id" type="hidden" name="user_price['+select_array[t].val+'][id]" value="'+select_array[t].val+'"/>'+
-                        '<input class="user_price" type="number" onchange="if(value<0)value=0.00;"  name="user_price['+select_array[t].val+'][price]"/><span class="remove">Del</span></li>';
+                        '<input class="id" type="hidden" name="user_price['+select_array[t].val+'][id]" value="'+select_array[t].val+'">'+
+                        '<input class="user_price" type="number" onchange="if(value<0)value=0.00;" tabindex="'+(t+1)+'"  name="user_price['+select_array[t].val+'][price]" value="'+select_array[t].user_price+'">' +
+                        '<span class="remove">Del</span></li>';
                 }
             }
             $('#products-selected').html(_tmpSelected);
@@ -862,12 +896,23 @@
                 $(".repair-selected").removeClass("validation-failed");
                 $(".selectWarn").hide();
             }
-
-            if($("#login_status").attr("data-status") < 1){
+            if($("#login_status").attr("data-status") < 1 && awrmaNewForm.validator.validate() && $("#products-selected li").length > 0){
                 $("#myModal").modal({show:true,keyboard: true});
+                //save info to sessionStorage
+                var ven_obj2 = {
+                    "select_list":select_array,
+                    "description":$("#description").val()
+                };
+
+                var ven_str = JSON.stringify(ven_obj2);
+                sessionStorage._vendorquote = ven_str;
 
                 event.preventDefault();
                 window.event.returnValue = false;
+            }
+            if($("#login_status").attr("data-status") === 1){
+                sessionStorage.removeItem("_vendorquote");
+                $("#myModal").modal({show:false});
             }
         });
     });
