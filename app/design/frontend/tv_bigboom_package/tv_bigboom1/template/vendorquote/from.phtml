@@ -68,6 +68,7 @@
         margin-top: 1.6em;
         color: #333333;
         font: 600 16px/1.35 "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        text-align:left;
     }
 
     .listBox {
@@ -121,7 +122,9 @@
         -moz-transition: all linear 0.25s;
         -o-transition: all linear 0.25s;
     }
-
+    #order, #select_imgBox .btn-close{
+        margin-bottom:0;
+    }
     #order:focus, #order:hover {
         background-color: #666;
         border-color: #666;
@@ -334,7 +337,7 @@
         text-align: center;
     }
 
-    thead td.name {
+    thead td.name,thead td.sku {
         text-align: left
     }
 
@@ -760,10 +763,15 @@
 
         #products-selected .sku {
             width: 20%;
+            padding-bottom: 5px!important;
+        }
+        #products-selected .name{
+            width:60%;
         }
 
         #products-selected .user_price {
             width: 40px !important;
+            height:24px;
         }
 
         #products-selected .note textarea {
@@ -781,13 +789,15 @@
         #products-selected .remove {
             margin: 0;
         }
-
+        #products-selected .remove  .fa-times{
+            vertical-align:top;
+        }
         #products-selected .note {
-            width: 10%
+            width: 10%;display: none;
         }
         #select_imgBox .modal-dialog{
             width: 90%;
-            margin:5%;
+            margin:25% 5% 0;
         }
     }
 </style>
@@ -809,7 +819,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <p class="modal-title" id="myModalLabel">
                     点击 'ESC' 键 或点击右侧的按钮<br/>
-                    或点击黑色区域以关闭图片窗口
+                    或点击灰色区域以关闭图片窗口
                 </p>
             </div>
 
@@ -1176,7 +1186,6 @@
                 }
             }
             $('#products-selected tbody').html(_tmpSelected);
-
             if ($("#products-selected tbody tr").length > 0) {
                 $('.no-select').hide();
                 $("#products-selected thead").show();
