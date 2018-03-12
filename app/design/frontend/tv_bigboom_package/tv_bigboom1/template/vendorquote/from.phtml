@@ -172,10 +172,11 @@
 
     .listBox .title {
         position: relative;
-        padding: 6px 10px;
+        padding: 0 10px;
         border: 1px solid #cccccc;
         color: #000;
         height: 36px;
+        line-height:36px;
         cursor: pointer;
         background: #ffffff;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -303,7 +304,7 @@
             width: 100%;
         }
     }
-
+    #repairs {width:100%;}
     #repairs thead {
         display: none;
     }
@@ -333,18 +334,20 @@
 
     thead td {
         font-weight: 700;
-        padding: 0 12px 10px 12px;
         text-align: center;
     }
-
-    thead td.name,thead td.sku {
+    .select_num{padding-bottom:10px;}
+    thead td.name,thead td.sku,thead td.user_price_box {
         text-align: left
     }
 
     td.sku, td.name, td.check {
         padding: 0 12px;
     }
-
+    td.note{
+        min-width:200px;
+        text-align:right;
+    }
     .repair-selected {
         margin-top: 20px;
         padding: 4px;
@@ -382,7 +385,7 @@
     }
 
     #ajaxloading.loading {
-        margin-left: -50px;
+        margin-left: -25px;
     }
 
     #ajaxloading, #ajaxloading.loading {
@@ -503,13 +506,14 @@
     #ajaxerror {
         position: absolute;
         z-index: 99;
-        top: 40px;
+        top: 60px;
         left: 0;
         width: 100%;
     }
 
     #products-selected {
         margin: 2rem 0 0;
+        width:100%;
     }
 
     #products-selected thead {
@@ -548,7 +552,7 @@
                         <thead>
                         <tr>
                             <td></td>
-                            <td class="sku">产品编码</td>
+                            <td class="sku">编码</td>
                             <td class="name">产品名称</td>
                             <td class="check">选择</td>
                         </tr>
@@ -575,11 +579,12 @@
                     <table id="products-selected">
                         <thead>
                         <tr>
-                            <td class="select_num"></td>
+                            <td class="select_num">编号</td>
                             <td class="sku">产品编码</td>
                             <td class="name">产品名称</td>
                             <td class="user_price_box">报价</td>
                             <td class="remove_box">删除</td>
+                            <td class="edit_box">备注</td>
                             <td class="note">备注</td>
                         </tr>
                         </thead>
@@ -655,9 +660,8 @@
         }
     }
 
-    #myModalLabel {
+    #myModalLabel,#myModalLabel2 {
         font-weight: normal;
-        font-size: 20px;
     }
 
     #reloading_modal.fade.in {
@@ -674,6 +678,7 @@
         padding: 10px;
         border-radius: 10px 6px;
         background: #fff;
+        margin:100px auto 30px;;
     }
 
     #select_imgBox .modal-content {
@@ -681,12 +686,15 @@
         border: none;
         text-align: center;
     }
-    #select_imgBox .modal-footer{padding: 12px;}
+    #select_imgBox .modal-header{padding:4px;}
+    #select_imgBox .modal-footer{padding: 6px 10px 0 10px;}
     #select_imgBox .modal_content img {
         margin: 0 auto;
     }
-    #select_imgBox #myModalLabel{font-size: 10px;}
-
+    #product_note{display:block;width:100%;padding:20px 12px;height:100px;}
+    #select_imgBox #myModalLabel,#enter_box #myModalLabel2{font-size: 10px;}
+    #enter_box .modal-dialog{margin: 120px 10px 0 10px;}
+    #enter_box .modal-footer button{color:#fff;background:#2194d3;}
     #reloading_modal .modal-dialog {
         width: 40px;
         margin: 400px auto 0 auto;
@@ -707,15 +715,16 @@
     }
 
     .note textarea {
+        width:150px;
         height: 30px;
         line-height: 30px;
         text-indent: 10px;
         padding: 0;
         margin: 0 0 10px 0;
-        overflow: hidden
+        overflow: hidden;
     }
 
-    tbody .remove {
+    #products-selected .remove {
         display: block;
         border-radius: 2px;
         text-align: center;
@@ -724,13 +733,21 @@
         color: #ff0000;
         font-size: 20px;
         cursor: pointer;
+        transition:all 0.2s linear;
     }
-
+    #products-selected .edit_box{display:none;}
+    #products-selected .remove:hover{
+        color:#6f6464;
+    }
     #new-form .validation-advice {
         font-family: Arial, Helvetica, sans-serif;
     }
 
     @media (max-width: 767px) {
+        #repairs td,#products-selected td{min-width:32px;padding:0;}
+        #select_box h4{
+            margin:0;
+        }
         #myModal .login {
             float: none;
         }
@@ -766,14 +783,15 @@
             padding-bottom: 5px!important;
         }
         #products-selected .name{
-            width:60%;
+            width:50%;
         }
 
         #products-selected .user_price {
+            margin:0;
             width: 40px !important;
             height:24px;
         }
-
+        
         #products-selected .note textarea {
             text-indent: 0;
         }
@@ -782,18 +800,22 @@
             word-break: break-all;
         }
 
-        #products-selected .select_num {
+        #products-selected .select_num, #products-selected .note {
             display: none;
         }
-
+        #products-selected .edit_box{display:block;}
+        #products-selected tbody .edit_box{
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s linear;
+        }
         #products-selected .remove {
             margin: 0;
+            font-size:18px;
+            width:32px;
         }
-        #products-selected .remove  .fa-times{
-            vertical-align:top;
-        }
-        #products-selected .note {
-            width: 10%;display: none;
+        #products-selected .remove  .fa-times,#products-selected .edit_box .fa-pencil-square-o{
+            vertical-align:top;padding: 2px 4px 4px 4px;
         }
         #select_imgBox .modal-dialog{
             width: 90%;
@@ -811,6 +833,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<!-- img show modal -->
 <div class="modal fade" id="select_imgBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true" data-keyboard="false" data-backdrop="true">
     <div class="modal-dialog">
@@ -832,13 +855,35 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- add other info to selected prodcut  -->
+<div class="modal fade" id="enter_box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
+     aria-hidden="true" data-keyboard="false" data-backdrop="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <p class="modal-title" id="myModalLabel2">
+                    点击 '保存' 键保存<br/>
+                    点击右侧的按钮或点击灰色区域以关闭图片窗口
+                </p>
+            </div>
+            <div class="modal-body">
+                <textarea id="product_note" maxlength="100"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- user login modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                 </button>
-                <h4 class="modal-title" id="myModalLabel">
+                <h4 class="modal-title" id="myModalLabel3">
                     请先登录
                 </h4>
             </div>
@@ -898,7 +943,7 @@
 </div><!-- /.modal -->
 <script type="text/javascript">
     //<![CDATA[
-    var awrmaNewForm = new VarienForm('new-form', true);
+    //var awrmaNewForm = new VarienForm('new-form', true);
     //]]>
 </script>
 <script type="text/javascript">
@@ -1143,6 +1188,7 @@
             for (var s = 0; s < select_array.length; s++) {
                 if (select_array[s].id === $(this).closest('tr').find(".id").val()) {
                     select_array[s].status = '0';
+                    select_array[s].info = '';
                     $("#repairs tr").each(function () {
                         if ($(this).find(".my-select").val() === select_array[s].id) {
                             $(this).find(".my-select").attr("checked", false);
@@ -1168,8 +1214,31 @@
                     select_array[i].info = _tmp_text;
                 }
             }
+        }).on('click','.fa-pencil-square-o',function(){
+            var _tmp_id = $(this).closest("tr").find(".id").val();
+            for (var i = 0; i < select_array.length; i++) {
+                if (select_array[i].id === _tmp_id) {
+                    $("#product_note").val(select_array[i].info);
+                }
+            }
+            $("#product_note").attr("data-id",$(this).closest('tr').find(".id").val());
+            $("#enter_box").modal({show: true, keyboard: true});
         });
+        /**
+        * save product_note at enter_box
+        * */
+        $("#enter_box .modal-footer").delegate("button","click",function(){
 
+            var _id = $(this).closest(".modal-dialog").find("#product_note").attr("data-id");
+            var _tmp_text = $("#product_note").val();
+            for (var i = 0; i < select_array.length; i++) {
+                if (select_array[i].id === _id) {
+                    select_array[i].info = _tmp_text;
+                }
+            }
+            $("#enter_box").modal('hide');
+            $("#product_note").text('').val('');
+        });
         /**
          * show all selected product
          * */
@@ -1182,7 +1251,7 @@
                     _tmpSelected += '<tr><td class="select_num">' + count + '</td><td class="sku"><span>' + select_array[t].sku + '</span></td><td class="name"><span>' + select_array[t].name + '</span></td>' +
                         '<td class="user_price_box"><input class="id" type="hidden" name="user_price[' + select_array[t].id + '][id]" value="' + select_array[t].id + '">' +
                         '<input class="user_price" type="number" onchange="if(value<0)value=0.00;" tabindex="' + (t + 1) + '"  name="user_price[' + select_array[t].id + '][price]" value="' + select_array[t].user_price + '"></td>' +
-                        '<td class="remove_box"><span class="remove"><i class="fa fa-times" aria-hidden="true"></i></span></td><td class="note"><textarea maxlength="100" name="user_price[' + select_array[t].id + '][note]">' + select_array[t].info + '</textarea></td></tr>';
+                        '<td class="remove_box"><span class="remove"><i class="fa fa-times" aria-hidden="true"></i></span></td><td class="edit_box"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td><td class="note"><textarea maxlength="100" name="user_price[' + select_array[t].id + '][note]">' + select_array[t].info + '</textarea></td></tr>';
                 }
             }
             $('#products-selected tbody').html(_tmpSelected);
@@ -1213,7 +1282,8 @@
         $("#order").click(function (event) {
             var event = event || window.event;
 
-            awrmaNewForm.validator.validate();// form validate
+            //awrmaNewForm.validator.validate();// form validate
+            
             /**
              * validate product list if there exist products selected by customer
              * */
@@ -1228,7 +1298,7 @@
                 $(".repair-selected").removeClass("validation-failed");
                 $(".selectWarn").hide();
             }
-            if ($("#login_status").attr("data-status") < 1 && awrmaNewForm.validator.validate() && $("#products-selected tbody tr").length > 0) {
+            if ($("#login_status").attr("data-status") < 1 && $("#products-selected tbody tr").length > 0) {
                 $("#myModal").modal({show: true, keyboard: true});
                 //save info to sessionStorage
                 var ven_obj2 = {
@@ -1244,7 +1314,7 @@
             }
             if ($("#login_status").attr("data-status") === '1') {
                 sessionStorage.removeItem("_vendorquote");
-                $("#myModal").modal({show: false});
+                $("#myModal").modal('hide');
             }
         });
     });
