@@ -23,7 +23,7 @@ $count  = $this->getNum();
 <?php if ($_product->getSpecialPrice() != 0 || $_product->getSpecialPrice() != "") : ?>
     <script type="text/javascript">
 		<?php if ($caption) : ?>
-			var DisplayFormat = "<div clas='timer-day box'><span class='day count'>%%D%%d</span></div><div clas='timer-hour box'><span class='hour count'>%%H%%:</span></div><div clas='timer-min box'><span class='min count'>%%M%%:</span><span class='title'></div><div clas='timer-sec box'><span class='sec count'>%%S%%</span></div>";
+			var DisplayFormat = "<i class='fa fa-clock-o' aria-hidden='true'></i><div class='timer-day box'><span class='day count'>%%D%%</span></div><div class='timer-hour box'><span class='hour count'>%%H%%:</span></div><div class='timer-min box'><span class='min count'>%%M%%:</span><span class='title'></div><div clas='timer-sec box'><span class='sec count'>%%S%%</span></div>";
         <?php else : ?>
 			var DisplayFormat = "<span class='day'>%%D%%</span><span style='margin:0px 4px'>:</span><span class='hour'>%%H%%</span><span style='margin:0px 4px'>:</span><span class='min'>%%M%%</span><span style='margin:0px 4px'>:</span><span class='sec'>%%S%%</span>";
 		<?php endif; ?>

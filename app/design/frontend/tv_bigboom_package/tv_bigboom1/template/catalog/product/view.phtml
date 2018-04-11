@@ -42,9 +42,13 @@
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
         <div class="row">
             <div class="product-img-box col-sm-12 col-md-5 col-sms-6 col-smb-12">
-                <?php echo $this->getChildHtml('media') ?>     
+                <?php echo $this->getChildHtml('media') ?>   
+                <!--mobile image-->
+                <div class="mobile-direction">
+                    <a class="prevNav"><i class="fa fa-angle-left"></i></a>
+                    <a class="nextNav"><i class="fa fa-angle-right"></i></a>
+                </div>  
             </div>
-            
             <div class="product-shop col-sm-12 col-md-7 col-sms-6 col-smb-12">
                 <div class="product-name">
                     <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
@@ -168,6 +172,23 @@
                 $(".product-compare").addClass("showCompare");
             }else{
                 $(".product-compare").removeClass("showCompare");
+            }
+        });
+        jQuery(document).ready(function($){
+            var img_len=$(".img-list>li").length;
+            var img_index=0;
+            $(".mobile-direction .prevNav").click(function(){
+                if(img_index>=1){
+                    img_index--;
+                    changeImg(img_index);}
+            });
+            $(".mobile-direction .nextNav").click(function(){
+                if(img_index<img_len-1){
+                    img_index++;
+                    changeImg(img_index);}
+            });
+            function changeImg(i){
+                $(".img-list li").eq(i).children("a").click();
             }
         });
     </script>

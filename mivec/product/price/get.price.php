@@ -1,8 +1,8 @@
 <?php
 require 'config.php';
 
-//currency rate
-$_rate = 6.53;
+//currency rate 6.53
+$_rate = 6.2983;
 
 $result = array();
 if ($_cost = $app->getRequest()->getParam("cost")) {
@@ -55,6 +55,8 @@ button.btn-checkout span span { padding:5px 25px; font-size:1.1666em; /*14px*/ }
 button.button1 {	-webkit-border-fit:lines; /* <- Safari & Google Chrome Fix */ 
 	overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer;
 }
+ul{margin:0;padding:20px;}
+.rate{padding:0 0 0 20px;}
 </style>
 <div class="container">
     <form method="get" action="?">
@@ -64,7 +66,7 @@ button.button1 {	-webkit-border-fit:lines; /* <- Safari & Google Chrome Fix */
         </tr>
       <tr>
         <td width="21%" bgcolor="#FFFFFF">Cost</td>
-          <td width="79%" bgcolor="#FFFFFF"><input type="text" name="cost" value="<?php echo $app->getRequest()->getParam("cost");?>"/></td>
+          <td width="79%" bgcolor="#FFFFFF"><input type="text" name="cost" value="<?php echo $app->getRequest()->getParam("cost");?>"/> <span>&nbsp;rate: <?php print_r($_rate)?></span></td>
       </tr>
       <tr>
         <td bgcolor="#FFFFFF">Result</td>
@@ -73,6 +75,16 @@ button.button1 {	-webkit-border-fit:lines; /* <- Safari & Google Chrome Fix */
       <tr>
         <td colspan="2" bgcolor="#FFFFFF"><button id="submit" type="submit" class="button btn-cart"> <span><span>Query</span></span> </button></td>
       </tr>
+      <tr bgcolor="#ffffff">
+          <td colspan="2" bgcolor=#ffffff>
+            <ul>
+              <li>2018 04/03<span class="rate">6.28</span></li>
+              <li>2018 03/27<span class="rate">6.26</span></li>
+              <li>2018 03/20<span class="rate">6.33</span></li>
+              <li>2018 04/09<span class="rate">6.2983</span></li>
+            </ul>
+          </td>
+        </tr>
     </table>
     </form>
 </div>

@@ -17,7 +17,7 @@ $_webMiniCartUrl = Mage::getBaseUrl();
 						<span class="cartText hidden-xs">Cart</span>
 					</a>
                 </div>
-				<div class="top-line"></div>
+                <div class="top-line"></div>
                 <div class="top-cart-content">
                     <?php $_items = $this->getRecentItems() ?>
                     <?php if (count($_items)): ?>
@@ -38,17 +38,15 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                             item_qty = parseInt($qtyBox.text())+1;
                                             $qtyBox.text(item_qty);
                                             ajaxMiniCart(item_id,item_qty);
-                                        }else if($j(this).hasClass("qtyReduce") && parseInt($qtyBox.text())>5){
+                                        }else if($j(this).hasClass("qtyReduce")){
                                             item_qty = parseInt($qtyBox.text());
-                                            if(item_qty <= 1){
-                                                $itemBox.find(".btn-remove").click();
-                                            }else if(item_qty>1){
+                                            if(item_qty>1){
                                                 item_qty -=1;
                                                 $qtyBox.text(item_qty);
                                                 ajaxMiniCart(item_id,item_qty);
+                                            }else if(item_qty <=1){
+                                                alert("Minimum Qty Allowed in Shopping Cart is 1 !");
                                             }
-                                        }else if($j(this).hasClass("qtyReduce") && parseInt($qtyBox.text())<=5){
-                                            alert("Minimum Qty Allowed in Shopping Cart is 5 !");
                                         }
                                     });
                                 });
@@ -74,7 +72,7 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                                                         return false;
                                                     }
                                                     sumMiniCart();
-                                                    showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Your cart has been updated</p></div>');
+                                                    showBoxInfo('<div class ="ajaxcartReponse"><p class ="info">Your cart has been updated.</p></div>');
                                                 },
                                                 error: function(XMLHttpRequest, textStatus, errorThrown){
                                                     showBoxInfo('<div class ="ajaxcartReponse"><p class="info">Can&acute;t update cart now,please try again</p></div>')
@@ -104,7 +102,7 @@ $_webMiniCartUrl = Mage::getBaseUrl();
                     <?php if ($_cartQty && $this->isPossibleOnepageCheckout()): ?>
                         <div class="actions clearfix">
                             <?php echo $this->getChildHtml('extra_actions') ?>
-                            <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>" class="left action_cart">UPDATE</a>
+                            <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>" class="left action_cart">Update</a>
                             <button type="button" title="<?php echo $this->__('Checkout') ?>" class="button right" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
                         </div>
                     <?php else:?>

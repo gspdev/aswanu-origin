@@ -29,14 +29,14 @@
 <?php if($_product->isSaleable()): ?>
     <div class="add-to-cart">
 
-        <p><b style="font-size:12px;">Minimum Qty Allowed in Shopping Cart : 5</b></p>
+        <p style="display:none;"><b style="font-size:12px;">Minimum Qty Allowed in Shopping Cart : 1</b></p>
         <div class="input-content">
         <?php if(!$_product->isGrouped()): ?>
         <label for="qty"><?php echo $this->__('Quantity') ?></label>
         <div class="box-qty">
-            <input type="text" name="qty" id="qty" maxlength="12" value="5" title="<?php echo $this->__('Qty') ?>" onchange="if(value<5)value=5;" autofocus class="input-text qty"/>
+            <input type="text" name="qty" id="qty" maxlength="12" value="1" title="<?php echo $this->__('Qty') ?>" onchange="if(value<0)value=1;" autofocus class="input-text qty"/>
             <input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" class="qty-increase">
-            <input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 5 ) qty_el.value--;return false;" class="qty-decrease">
+            <input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) qty_el.value--;return false;" class="qty-decrease">
         </div>
         <?php endif; ?>
         </div>

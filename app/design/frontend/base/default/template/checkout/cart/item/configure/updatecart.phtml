@@ -34,8 +34,8 @@
 		<div class="input-content">
         <label for="qty"><?php echo $this->__('Qty:') ?></label>
 		<div class="box-qty">
-			<input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 5 ) qty_el.value--;return false;" class="qty-decrease">
-			<input type="text" name="qty" id="qty" maxlength="12"  onchange="if(value<5)value=5;" autofocus  value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			<input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) qty_el.value--;return false;" class="qty-decrease">
+			<input type="text" name="qty" id="qty" maxlength="12"  onchange="if(value<0)value=1;" autofocus  value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 			<input type="button" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" class="qty-increase">
 		</div>
 		</div>

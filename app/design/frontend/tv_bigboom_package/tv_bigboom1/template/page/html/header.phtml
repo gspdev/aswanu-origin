@@ -46,7 +46,7 @@
     <div class="header-quick-access">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-4">
                     <div class="quick-access">
                         
 						<div class="header-left">
@@ -61,7 +61,7 @@
 						</div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-8">
+                <div class="col-xs-6 col-sm-8 col-md-9 col-lg-8">
                     <div class="header-toplinks">
 						<div class="language-currency">
 							<div class="header-language">
@@ -88,21 +88,32 @@
         <div class="container">
             <div class="page-header-content">
                 <div class="row">
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 search-left">
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 search-left">
                         <?php if ($this->getIsHomePage()):?>
-                        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+                            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                                <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                                <img class="img_m" src="<?php echo '/skin/frontend/tv_bigboom_package/tv_bigboom1/images/logo_m.png' ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                            </a>
+                        </h1>
                         <?php else:?>
-                        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                            <strong><?php echo $this->getLogoAlt() ?></strong>
+                            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                            <img class="img_m" src="<?php echo '/skin/frontend/tv_bigboom_package/tv_bigboom1/images/logo_m.png' ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                        </a>
                         <?php endif?>
                     </div>
-                    <div class="col-xs-9 col-sm-6 col-md-6 col-lg-6">
+                    <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 search-box">
                         <?php echo $this->getChildHtml('topSearch') ?>
                     </div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 f-right search-right-box">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 f-right search-right-box">
 						<div class="search-right clear_fix">
 							<div class="head-Cart fl">
 								<a href="<?php echo$this->getUrl('checkout/cart')?>" class="forPc"></a>
-                                <a href="javascript:void(0)" class="forMobile"></a>
+                                <a href="javascript:void(0)" class="forMobile">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </a>
 								<div class="header-cart-mini">
 									<div class="topcart-mini-container">
 										<?php echo $this->getChildHtml('top_cart_mini') ?>
@@ -127,7 +138,7 @@
 							</div>
 							<div class="head-My fl">
 								<a href="<?php echo $this->getUrl('customer/account')?>" class="myAccount forPc"></a>
-                                <a href="javascript:void(0)" class="myAccount forMobile"></a>
+                                <a href="javascript:void(0)" class="myAccount forMobile"><i class="fa fa-user" aria-hidden="true"></i></a>
 								<a class="myText signin hidden-xs" href="<?php echo $this->getUrl('customer/account') ?>">
                                 <?php if (!empty($session->getId())):?>
 									<span>Hi,<i><?php echo $customer_data->getLastname()?></i></span>
@@ -153,11 +164,11 @@
 									<p class="myDrop-Join">New to Aswanu? <a href="<?php echo $this->getUrl('customer/account/create') ?>" title="Join Free" class="register">Join Free</a></p>
                                 <?php endif;?>
 									<ul class="myDrop-List">
-										<li><a href="<?php echo $this->getUrl('customer/account/')?>">My Aswasu</a></li>
-										<li><a href="<?php echo $this->getUrl('sales/order/history')?>">My Orders</a></li>
-										<li><a href="<?php echo $this->getUrl('review/customer/')?>">My Reviews</a></li>
-										<li><a href="<?php echo $this->getUrl('wishlist')?>">My Favorites</a></li>
-										<li><a href="<?php echo $this->getUrl('vendorquote')?>">My product Quote</a></li>
+										<li><i class="fa fa-user" aria-hidden="true"></i><a href="<?php echo $this->getUrl('customer/account/')?>">My Aswasu</a></li>
+										<li><i class="fa fa-file-text" aria-hidden="true"></i><a href="<?php echo $this->getUrl('sales/order/history')?>">My Orders</a></li>
+										<li><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="<?php echo $this->getUrl('review/customer/')?>">My Reviews</a></li>
+										<li><i class="fa fa-heart" aria-hidden="true"></i><a href="<?php echo $this->getUrl('wishlist')?>">My Favorites</a></li>
+										<li><i class="fa fa-list-ul" aria-hidden="true"></i><a href="<?php echo $this->getUrl('vendorquote')?>">My Product Quote</a></li>
 									</ul>
 									<a class="myDrop-Request" href="mailto:Marketing@aswanu.com">Submit a Buying Request</a>
 									<p class="grey">Let us help you find what you need</p>
@@ -177,20 +188,57 @@
     <?php echo $this->getChildHtml('topContainer'); ?>
 </header>
 <script type="text/javascript">
-    jQuery(document).ready(function($){
+    //jQuery(document).ready(function($){
         //if(!localStorage._promotion_close){
             //$("#header-special-offer .promotion").show();
         //}
         //$("#header-special-offer .promotion .header-special-offer-close").click(function(){
             //localStorage._promotion_close = '1';
         //});
-    });
+    //});
     jQuery(document).ready(function($){
+        if($(document).width() < 767){
+            $(".page-header-content .search-left").after("<div class='col-xs-2 mobile-menu-box hidden-sm'><i class='fa fa-bars'></i></div>"
+            +"<div class='col-xs-2 mobile-search-box'><i class='fa fa-search'></i></div>");
+        }
+        $(".mobile-menu-box").delegate(".fa-bars","click",function(){//mobile menu
+            $("#navbar-inner .navbar-toggle").click();
+            if($('.search-box').hasClass("search-selected")){
+                $(".page-header-content .search-box").removeClass("search-selected").hide();
+            }
+        });
+        $(".mobile-search-box").delegate(".fa-search","click",function(e){//mobilde search
+            if($("#navbar-inner").hasClass("navbar-active")){
+                $("#navbar-inner .navbar-toggle").click();
+            }
+            if($('.search-box').hasClass("search-selected") && $("#search").val().length === 27){
+                var event = event || window.event;
+                event.preventDefault(); // Compatible standard Browsers
+                window.event.returnValue = false; // Compatible IE6~8
+                $(".page-header-content .search-box").removeClass("search-selected").hide();
+                return false;
+            }
+
+            if($('.search-box').hasClass("search-selected")){
+                $("#search_mini_form").submit();
+            }
+            if(!$('.search-box').hasClass("search-selected")){
+                $(".page-header-content .search-box").addClass("search-selected").show();
+            }
+        });
+        $(".search-right .forMobile").click(function(){
+            hideMenu();
+        });
+        function hideMenu(){
+            if($("#navbar-inner").hasClass("navbar-active")){
+                $("#navbar-inner .navbar-toggle").click();
+            }
+        }
         $("#header-special-offer .promotion .header-special-offer-close").click(function () {
             delCookie("notice");
             setCookie("notice","0","h20");
         });
-        checkNotice();
+        //checkNotice();
         function checkNotice() {
             var isBlock = getCookie("notice");
             if(isBlock == null || isBlock == "" || isBlock == "1"){

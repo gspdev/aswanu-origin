@@ -58,6 +58,21 @@ $helpTimer = $this->helper('timer'); $num = 1;
 				
 				<?php echo $helpTimer->getTimer($_product, $num); $num++;//Product Timer ?>
 				<?php echo $helpLabels->getLabels($_product); //Product labels ?>
+				<!-- edit by jerry -->
+				<div class="actions">
+					<?php if($cart): ?>
+						<?php if($_product->isSaleable()): ?>
+                            <div class="qtyBox f-left clearfix">
+                                <input type="button" value="-" class="left qtyBtn qtyReduce"/>
+                                <input type="number" class="act-input f-left"  value="1" oninput="if(value.length>3)value=value.slice(0,3);" onchange="if(value<0)value=1;" data-toggle="tooltip" title="qty > 4"/>
+                                <input type="button" value="+" class="left qtyBtn qtyAdd"/>
+                            </div>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-left" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
+						<?php else: ?>
+							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+						<?php endif; ?>
+					<?php endif; ?>
+				</div>
 			</div>
 		</li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
@@ -65,4 +80,4 @@ $helpTimer = $this->helper('timer'); $num = 1;
         <?php endif ?>
         <?php endforeach ?>
 	<?php endif ?>
-</div> 
+</div>

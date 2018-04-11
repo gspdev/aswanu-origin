@@ -69,11 +69,10 @@ $helpLabels = $this->helper('themevast/labels');
 						<?php if($_product->isSaleable()): ?>
                             <div class="qtyBox f-left clearfix">
                                 <input type="button" value="-" class="left qtyBtn qtyReduce"/>
-                                <input type="number" class="act-input f-left"  value="5" oninput="if(value.length>3)value=value.slice(0,3);" onchange="if(value<5)value=5;" data-toggle="tooltip" title="qty > 4"/>
+                                <input type="number" class="act-input f-left"  value="1" oninput="if(value.length>3)value=value.slice(0,3);" onchange="if(value<1)value=1;" data-toggle="tooltip" title="qty > 0"/>
                                 <input type="button" value="+" class="left qtyBtn qtyAdd"/>
                             </div>
-                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-left forMobile" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add') ?><i class="fa fa-shopping-cart"></i></span></span></button>
-							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-right forPc" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart f-left" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><i class="fa fa-shopping-cart"></i><?php echo $this->__('Add to Cart') ?></span></span></button>
 						<?php else: ?>
 							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
 						<?php endif; ?>
@@ -94,23 +93,28 @@ $helpLabels = $this->helper('themevast/labels');
 	<?php if($slide) : ?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
-				(function(selector){
-					var $content = $(selector);
-					var $slider  = $('<?php echo $class ?>', $content);
-					var slider 	 = $slider.bxSlider({
-						<?php echo $this->setBxslider() ?>
-						//infiniteLoop: false,
-						moveSlides:1,
-						slideMargin: 10,
-						autoHover: true, // stop while hover <=> slider.stopAuto(); + slider.startAuto();
-					})
-		
-				})(".featuredproduct");
-				jQuery(".featuredproduct").delegate(".qtyBtn","click",function(){
+				if($(document).width() < 767){
+
+				}else{
+				
+					(function(selector){
+						var $content = $(selector);
+						var $slider  = $('<?php echo $class ?>', $content);
+						var slider 	 = $slider.bxSlider({
+							<?php echo $this->setBxslider() ?>
+							//infiniteLoop: false,
+							moveSlides:1,
+							slideMargin: 10,
+							autoHover: true, // stop while hover <=> slider.stopAuto(); + slider.startAuto();
+						})
+			
+					})(".featuredproduct");
+				}
+				jQuery(".featuredproduct,.dealproducts").delegate(".qtyBtn","click",function(){
 				    var $qtyBox = jQuery(this).parent();
 				    var $input = $qtyBox.find(".act-input");
 				    var inputVal = $input.val();
-				    if(jQuery(this).hasClass("qtyReduce")&&inputVal>5){
+				    if(jQuery(this).hasClass("qtyReduce")&&inputVal>1){
 				        inputVal--;
 				        $input.val(inputVal);
                     }else if(jQuery(this).hasClass("qtyAdd")){

@@ -66,6 +66,15 @@
     </div>
     <div id="back-top" class="hidden-xs"><i class="fa fa-angle-up"></i></div>
 </footer>
+<script>
+    jQuery(document).ready(function($){
+        var $footerEL=$(".footer-information>.row>div");
+        $footerEL.append('<i class="add fa fa-plus" aria-hidden="true"></i>')
+            .delegate(".add","click",function(){
+                    $(this).parent().find(".footer-static-content").slideToggle();
+                });
+        });
+</script>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_social_right')->toHtml() ?>
 <!--show message of 'qty > 0'-->
 <script type="text/javascript">
