@@ -1054,7 +1054,7 @@
                         for (var j = 0; j < len; j++) {
                             str += '<tr>' +
                                 '<td class="img"><span><img style="width: 30px;height: 30px;margin-bottom: 6px;" src="' + tmpData[j].image + '"/></span></td>' +
-                                '<td class="sku">' + tmpData[j].id + '</td>' +
+                                '<td class="sku">' + tmpData[j].sku + '</td>' +
                                 '<td class="name">' + tmpData[j].name + '</td>' +
                                 '<td class="check"><input class="my-select" value="' + tmpData[j].id + '" title="' + tmpData[j].name + '" id="' + tmpData[j].id + '" type="checkbox"><label for="' + tmpData[j].id + '"></label></td></tr>';
 
@@ -1166,6 +1166,7 @@
                 if (count === 0) {
                     select_array[selected] = {
                         id: $(this).val(),
+						sku:$(this).closest('tr').find(".sku").text(),
                         name: $(this).attr('title'),
                         price: $(this).closest('tr').find(".price").text(),
                         status: '1',

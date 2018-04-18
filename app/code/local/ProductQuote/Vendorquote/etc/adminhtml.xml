@@ -35,7 +35,7 @@
                 <action>vendorquote/adminhtml_vendorquote</action>
             </vendorquote>
         </menu>
-        <acl>
+        <!--<acl>
             <resources>
                 <all>
                     <title>Allow Everything</title>
@@ -49,5 +49,5 @@
                     </children>
                 </admin>
             </resources>
-        </acl>
+        </acl>-->
 </config>

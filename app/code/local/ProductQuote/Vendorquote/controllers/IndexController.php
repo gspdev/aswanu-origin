@@ -78,7 +78,7 @@ class ProductQuote_Vendorquote_IndexController extends Mage_Core_Controller_Fron
            
 //            $price = (float)round($taxHelper->getPrice($product,$product->getPrice(),$taxHelper->displayPriceIncludingTax()));
             $price = Mage::helper('core')->currency($taxHelper->getPrice($product,$product->getPrice(),$taxHelper->displayPriceIncludingTax()), true, false);
-            array_push($respone, array( "name" => $product->getName(), "price" =>$price , "id" => $product->getId(), "image" => $product->getImageUrl()));
+            array_push($respone, array("sku"=>$product->getSku(), "name" => $product->getName(), "price" =>$price , "id" => $product->getId(), "image" => $product->getImageUrl()));
         }      
             
         $this->getResponse()->clearHeaders()->setHeader('Content-Type', 'application/json')->setBody(Mage::helper('core')->jsonEncode($respone));
@@ -129,14 +129,48 @@ class ProductQuote_Vendorquote_IndexController extends Mage_Core_Controller_Fron
             }
            
         }
-	     $this->_redirect('*/*/');
-
-           
+	     $this->_redirect('*/*/'); 
 		
     }
 	
 	public function saveAction(){
-		
-		
+		$status = Mage::getSingleton('customer/session')->isLoggedIn();
+		if($status){
+			//var_dump(__METHOD__);
+			if($data = $this->getRequest()->getPost()){
+				if (!$this->_validateFormKey()) {
+					$this->_redirect('*/*/');
+					return;
+				}
+				$productIdAndPrice = $this->getRequest()->getPost('user_price');
+				// foreach($ff as $key=>$val){
+					// print_r($key);exit;
+				// }
+				$todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+				$description = $data['description'];
+				$resource = Mage::getSingleton('core/resource');
+				$inster = Mage::getSingleton('core/resource')->getConnection('core_write');
+				foreach ($productIdAndPrice as $key => $value) {
+                      
+				 $arr[] =array('id'=> $value['id'],'price'=>$value['price'],'note'=>$value['note']);
+							
+				 
+				}
+				 foreach ($arr as $key=>$val) {
+				
+					$product = Mage::getModel('catalog/product')->load($val['id']);
+					$tableName = $resource->getTableName('product_quote_vendor');
+					$sql_inster = "INSERT INTO ".$tableName." (customer_id,product_sku,quote_price,description,note,create_at)VALUES('".$data['customer_id']."','".$product->getSku()."','".$val['price']."','$description','".$val['note']."','$todayDate')";
+					$inster->query($sql_inster);  
+					
+				 }
+				 Mage::getSingleton('core/session')->
+					addSuccess(Mage::helper('vendorquote')
+					->__('Your products quote was submitted successfully.'));
+					
+					$this->_redirect('*/*/');
+					return;  
+	      } 
+	   }
 	}
 }
