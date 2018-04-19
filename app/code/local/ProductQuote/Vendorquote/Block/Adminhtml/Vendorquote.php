@@ -35,4 +35,9 @@ class ProductQuote_Vendorquote_Block_Adminhtml_Vendorquote extends Mage_Adminhtm
         parent::__construct();
 	    $this->_removeButton('add');
     }
+
+	public function setElementClassw($v)
+    {
+        echo $v;
+    }
 }
