@@ -41,7 +41,7 @@ class ProductQuote_Vendorquote_Block_Adminhtml_Vendorquote_Edit_Tab_Form extends
 		  $_customer = $this->helper('vendorquote/customer')->getCustomer($formData->getCustomerId());
 		  
 		  $fieldset->addField('quote_price', 'text', array(
-	          'label'     => Mage::helper('vendorquote')->__('Quote Price224444:'),
+	          'label'     => Mage::helper('vendorquote')->__('Quote Price:'),
 	          'class'     => 'required-entry',
 	          'required'  => true,	
 	          'name'      => 'quote_price',
