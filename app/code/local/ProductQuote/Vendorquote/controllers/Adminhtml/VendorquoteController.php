@@ -37,7 +37,6 @@ class  ProductQuote_Vendorquote_Adminhtml_VendorquoteController extends Mage_Adm
     }
 	public function indexAction()
     {
-		echo 2132423;
         $this->_initAction()->renderLayout();
     }
 	
