@@ -26,18 +26,24 @@
  
 class  ProductQuote_Vendorquote_Adminhtml_VendorquoteController extends Mage_Adminhtml_Controller_action
 {
-	protected function _initAction()
-    {
-        $this->loadLayout()->_setActiveMenu('vendorquote/vendorquote')
-                           ->_addBreadcrumb(
-                      Mage::helper('adminhtml')->__('Vendorquote Manager'),            
-                      Mage::helper('adminhtml')->__('Vendorquote Manager')
-                         );
-        return $this;
-    }
+	// protected function _initAction()
+    // {
+        // $this->loadLayout()->_setActiveMenu('vendorquote/vendorquote')
+                           // ->_addBreadcrumb(
+                      // Mage::helper('adminhtml')->__('Vendorquote Manager'),            
+                      // Mage::helper('adminhtml')->__('Vendorquote Manager')
+                         // );
+        // return $this;
+    // }
 	public function indexAction()
     {
-        $this->_initAction()->renderLayout();
+        $this->loadLayout();
+        // $this->_setActiveMenu('Cales/merchandiser');
+
+
+        $this->_addContent($this->getLayout()->createBlock('vendorquote/adminhtml_vendorquote_main'));
+           
+        $this->renderLayout();
     }
 	
 	public function newAction()
