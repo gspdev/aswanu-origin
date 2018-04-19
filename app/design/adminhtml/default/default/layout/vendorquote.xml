@@ -28,9 +28,9 @@
 
 <layout version="0.1.0">
     <vendorquote_adminhtml_vendorquote_index>
-        <reference name="content">
+        
             <block type="vendorquote/adminhtml_vendorquote" name="vendorquote"></block>
-        </reference>
+        
     </vendorquote_adminhtml_vendorquote_index>
 	
 </layout>

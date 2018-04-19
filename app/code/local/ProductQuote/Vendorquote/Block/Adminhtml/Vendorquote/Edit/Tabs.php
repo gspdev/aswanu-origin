@@ -31,7 +31,7 @@ class ProductQuote_Vendorquote_Block_Adminhtml_Vendorquote_Edit_Tabs extends Mag
       parent::__construct();
       $this->setId('vendorquote_tabs');
       $this->setDestElementId('edit_form');
-      $this->setTitle(Mage::helper('vendorquote')->__('Vendorquote information'));
+      $this->setTitle(Mage::helper('vendorquote')->__('Vendorquote information2432'));
   }
  
   protected function _beforeToHtml()
