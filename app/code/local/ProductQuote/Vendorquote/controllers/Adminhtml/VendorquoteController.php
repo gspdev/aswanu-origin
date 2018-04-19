@@ -26,15 +26,14 @@
  
 class  ProductQuote_Vendorquote_Adminhtml_VendorquoteController extends Mage_Adminhtml_Controller_action
 {
-	protected function _initAction()
-    {
-        // $this->loadLayout();
-        // return $this;
-    }
+	// protected function _initAction()
+    // {
+        // // $this->loadLayout();
+        // // return $this;
+    // }
 	public function indexAction()
     {
-		$this->loadLayout();
-        $this->renderLayout();
+		$this->loadLayout()->renderLayout();
     }
 	
 	public function newAction()
