@@ -79,7 +79,7 @@
                 <class>ProductQuote_Vendorquote_Model_Mysql4</class>
                 <entities>
                     <vendorquote>
-                        <table>vendorquote</table>
+                        <table>product_quote_vendor</table>
                     </vendorquote>
                 </entities>
             </vendorquote_mysql4>

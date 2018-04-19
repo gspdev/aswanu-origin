@@ -70,7 +70,7 @@ class ProductQuote_Vendorquote_Block_Adminhtml_Vendorquote_Grid extends Mage_Adm
       // ));
 	  
 	  $this->addColumn('product_sku', array(
-          'header'    =>  Mage::helper('vendorquote')->__('Product Sku222'),
+          'header'    =>  Mage::helper('vendorquote')->__('Product Sku'),
          // 'align'     =>  'left',
           'width'     =>  '50px',
           'index'     =>  'product_sku',
