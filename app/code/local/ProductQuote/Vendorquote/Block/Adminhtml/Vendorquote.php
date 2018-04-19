@@ -30,8 +30,8 @@ class ProductQuote_Vendorquote_Block_Adminhtml_Vendorquote extends Mage_Adminhtm
     {
         $this->_controller     = 'adminhtml_vendorquote';
         $this->_blockGroup     = 'vendorquote';
-        $this->_headerText     = Mage::helper('vendorquote')->__('Vendorquote Manager');
-        $this->_addButtonLabel = Mage::helper('vendorquote')->__('Add Vendorquote');
+        $this->_headerText     = Mage::helper('vendorquote')->__('Vendorquote Manager666');
+        $this->_addButtonLabel = Mage::helper('vendorquote')->__('Add Vendorquote222');
         parent::__construct();
 	    $this->_removeButton('add');
     }

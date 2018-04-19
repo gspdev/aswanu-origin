@@ -38,9 +38,9 @@ class ProductQuote_Vendorquote_Block_Adminhtml_Vendorquote_Grid extends Mage_Adm
  
   protected function _prepareCollection()
   {
-      // $collection = Mage::getModel('vendorquote/vendorquote')->getCollection();
-	  // $collection->getSelect()->group('product_sku')->order('create_at', 'DESC');
-      // $this->setCollection($collection);
+      $collection = Mage::getModel('vendorquote/vendorquote')->getCollection();
+	  $collection->getSelect()->group('product_sku')->order('create_at', 'DESC');
+      $this->setCollection($collection);
       return parent::_prepareCollection();
 	  
 	  
@@ -62,7 +62,48 @@ class ProductQuote_Vendorquote_Block_Adminhtml_Vendorquote_Grid extends Mage_Adm
   protected function _prepareColumns()
   {
 	  
-      
+      // $this->addColumn('id', array(
+          // 'header'    =>  Mage::helper('vendorquote')->__('ID'),
+         // // 'align'     =>  'left',
+          // 'width'     =>  '50px',
+          // 'index'     =>  'id',
+      // ));
+	  
+	  $this->addColumn('product_sku', array(
+          'header'    =>  Mage::helper('vendorquote')->__('Product Sku222'),
+         // 'align'     =>  'left',
+          'width'     =>  '50px',
+          'index'     =>  'product_sku',
+      ));
+	  
+	 
+	
+	$this->addColumn('action', array(
+          'header'    =>  Mage::helper('vendorquote')->__('Action'),
+          'width'     =>  '100',
+          'type'      =>  'action',
+          'getter'    =>  'getId',
+		  //'align'    =>  'right',
+          'actions'   =>  array(
+                             array(
+                                'caption'   =>  Mage::helper('vendorquote')->__('Check'),
+                                'url'       =>  array('base'=> '*/*/edit'),
+                                'field'     =>  'id',
+								
+                             ),
+							 // array(
+								// 'caption'   => 'Delete',
+								// 'url'       => array('base'=> '*/*/delete'),
+								// 'field'     => 'id',
+								// 'confirm'   => 'Are you sure that the record will be delete?'
+							// )
+          ),
+          'filter'    =>  false,
+          'sortable'  =>  false,
+          'index'     =>  'stores',
+          'is_system' =>  true,
+      ));
+       
       return parent::_prepareColumns();
   }
   
