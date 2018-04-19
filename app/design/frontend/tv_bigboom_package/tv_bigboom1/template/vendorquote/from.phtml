@@ -795,7 +795,7 @@
             width: 40px !important;
             height:24px;
         }
-        
+
         #products-selected .note textarea {
             text-indent: 0;
         }
@@ -947,7 +947,7 @@
 </div><!-- /.modal -->
 <script type="text/javascript">
     //<![CDATA[
-    //var awrmaNewForm = new VarienForm('new-form', true);
+    var awrmaNewForm = new VarienForm('new-form', true);
     //]]>
 </script>
 <script type="text/javascript">
@@ -1255,7 +1255,7 @@
                     count++;
                     _tmpSelected += '<tr><td class="select_num">' + count + '</td><td class="sku"><span>' + select_array[t].sku + '</span></td><td class="name"><span>' + select_array[t].name + '</span></td>' +
                         '<td class="user_price_box"><input class="id" type="hidden" name="user_price[' + select_array[t].id + '][id]" value="' + select_array[t].id + '">' +
-                        '<input class="user_price" type="number" onchange="if(value<0)value=0.00;" tabindex="' + (t + 1) + '"  name="user_price[' + select_array[t].id + '][price]" value="' + select_array[t].user_price + '"></td>' +
+                        '<input class="user_price required-entry" type="number" onchange="if(value<0)value=0.00;" tabindex="' + (t + 1) + '"  name="user_price[' + select_array[t].id + '][price]" value="' + select_array[t].user_price + '"></td>' +
                         '<td class="remove_box"><span class="remove"><i class="fa fa-times" aria-hidden="true"></i></span></td><td class="edit_box"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td><td class="note"><textarea maxlength="100" name="user_price[' + select_array[t].id + '][note]">' + select_array[t].info + '</textarea></td></tr>';
                 }
             }
@@ -1288,7 +1288,7 @@
             var event = event || window.event;
 
             //awrmaNewForm.validator.validate();// form validate
-            
+
             /**
              * validate product list if there exist products selected by customer
              * */
