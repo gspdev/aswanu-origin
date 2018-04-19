@@ -28,11 +28,7 @@
 
 <layout version="0.1.0">
     <vendorquote_adminhtml_vendorquote_index>
-             <action method="setElementClassw"><value>top-container</value></action>
-            <block type="vendorquote/adminhtml_vendorquote" name="vendorquote11">
-			   <action method="setElementClassw"><value>top-container</value></action>
-			</block>
-        
+            <block type="vendorquote/adminhtml_vendorquote" name="vendorquote"></block>
     </vendorquote_adminhtml_vendorquote_index>
 	
 </layout>
