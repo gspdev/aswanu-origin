@@ -509,9 +509,13 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 	
 	
 	public function paymentsAction(){
+		header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 		if ($this->_expireAjax()) {
 			return;
 		}
+		
 		$responseData = array();
 		$responseData['payments'] = $this->_getPaymentMethodsHtml();
 		$this->getResponse()->setHeader('Content-type','application/json', true);
