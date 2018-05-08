@@ -273,6 +273,9 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 				$responseData['error'] = true;
 				$responseData['message'] = $result['message'];
 			}
+			header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			$this->getResponse()->setHeader('Content-type','application/json', true);
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 		}
@@ -315,7 +318,9 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 					$responseData['reload_totals'] = true;
 			}
 		}
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 		$this->getResponse()->setHeader('Content-type','application/json', true);
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($responseData));
 	
@@ -446,7 +451,9 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 				$result['error'] = true;
 				$result['message'] = $result['message'];
 			}
-			
+			header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			$this->getResponse()->setHeader('Content-type','application/json', true);
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 		}
@@ -490,7 +497,9 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 			$this->getOnepage()->getQuote()->collectTotals()->save();
 			
 			
-			
+			header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			$this->getResponse()->setHeader('Content-type','application/json', true);
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($responseData));
 		}
@@ -561,7 +570,9 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			Mage::logException($e);
 			$result['error'] = $this->__('Unable to set Payment Method.');
 		}
-		
+		header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 		$this->getResponse()->setHeader('Content-type','application/json', true);
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 	}
@@ -681,7 +692,9 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 		}else{
 			$result['redirect'] = Mage::getUrl('checkout/onepage/success', array('_secure'=>true)) ;
 		}
-		
+		header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 		$this->getResponse()->setHeader('Content-type','application/json', true);
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 	}
