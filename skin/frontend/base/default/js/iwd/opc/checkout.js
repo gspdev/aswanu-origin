@@ -673,8 +673,7 @@ IWD.OPC.Checkout = {
 		/** PULL PAYMENTS METHOD AFTER LOAD PAGE **/
 		pullPayments: function(){
 			IWD.OPC.Checkout.lockPlaceOrder();
-			// IWD.OPC.Checkout.xhr = $j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/payments',function(response){
-			IWD.OPC.Checkout.xhr = $j.post('https://www.aswanu.com/onepage/json/payments',function(response){
+			IWD.OPC.Checkout.xhr = $j.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/payments',function(response){
 				IWD.OPC.Checkout.xhr = null;
 				
 				if (typeof(response.error)!="undefined"){
